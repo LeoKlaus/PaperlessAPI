@@ -47,7 +47,7 @@ struct FilterRule: Codable, Equatable {
     }
 }
 
-/// Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src/documents/models.py#L480
+// Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src/documents/models.py#L480
 enum RuleType: RawRepresentable, Codable, Equatable {
     case titleContains              //0
     case contentContains            //1

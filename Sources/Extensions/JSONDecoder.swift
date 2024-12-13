@@ -38,5 +38,9 @@ extension JSONDecoder.DateDecodingStrategy {
         throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid date: \(string)")
     }
     
+    /// Paperless uses a number of different date formats in API responses, this should cover all of them
+    /// - yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX
+    /// - yyyy-MM-dd'T'HH:mm:ssXXXXX
+    /// - yyyy-MM-dd)
     static let paperlessDateFormat = Self.iso8601WithOptionalFractionalSecondsAndYMD
 }
