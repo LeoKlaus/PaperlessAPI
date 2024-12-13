@@ -53,29 +53,4 @@ struct Document: Codable {
         case customFields = "custom_fields"
         case pageCount = "page_count"
     }
-    
-    init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(Int.self, forKey: .id)
-        correspondent = try container.decodeIfPresent(Int.self, forKey: .correspondent)
-        documentType = try container.decodeIfPresent(Int.self, forKey: .documentType)
-        storagePath = try container.decodeIfPresent(Int.self, forKey: .storagePath)
-        title = try container.decodeIfPresent(String.self, forKey: .title)
-        content = try container.decodeIfPresent(String.self, forKey: .content)
-        tags = try container.decode([Int].self, forKey: .tags)
-        created = try container.decode(Date.self, forKey: .created)
-        createdDate = try container.decode(Date.self, forKey: .createdDate)
-        modified = try container.decode(Date.self, forKey: .modified)
-        added = try container.decode(Date.self, forKey: .added)
-        deletedAt = try container.decodeIfPresent(Date.self, forKey: .deletedAt)
-        archiveSerialNumber = try container.decodeIfPresent(Int.self, forKey: .archiveSerialNumber)
-        originalFileName = try container.decode(String.self, forKey: .originalFileName)
-        archivedFileName = try container.decode(String.self, forKey: .archivedFileName)
-        owner = try container.decodeIfPresent(Int.self, forKey: .owner)
-        userCanChange = try container.decodeIfPresent(Bool.self, forKey: .userCanChange)
-        isSharedByRequester = try container.decodeIfPresent(Bool.self, forKey: .isSharedByRequester)
-        notes = try container.decodeIfPresent([Note].self, forKey: .notes)
-        customFields = try container.decodeIfPresent([CustomFieldContent].self, forKey: .customFields)
-        pageCount = try container.decodeIfPresent(Int.self, forKey: .pageCount)
-    }
 }
