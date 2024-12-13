@@ -46,10 +46,10 @@ enum CustomFieldValue: Codable, Equatable {
             return
         }
         
-        throw Custom_Field_Error.missingValue
+        throw CustomFieldError.missingValue
     }
     
-    enum Custom_Field_Error: Error {
+    enum CustomFieldError: Error {
         case missingValue
     }
 }
