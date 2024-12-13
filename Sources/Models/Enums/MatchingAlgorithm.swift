@@ -5,6 +5,7 @@
 //  Created by Leo Wehrfritz on 13.12.24.
 //
 
+// Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src/documents/models.py#L48
 enum MatchingAlgorithm: RawRepresentable, Codable {
     case matchNone      //0
     case matchAny       //1
