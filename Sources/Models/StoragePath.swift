@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StoragePath {
+struct StoragePath: Codable {
     let id: Int
     let slug: String
     let name: String
@@ -29,5 +29,6 @@ struct StoragePath {
         case isInsensitive = "is_insensitive"
         case documentCount = "document_count"
         case owner
+        case userCanChange = "user_can_change"
     }
 }
