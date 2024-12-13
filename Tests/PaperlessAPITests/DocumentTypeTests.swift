@@ -33,7 +33,7 @@ import Foundation
     #expect(documentType.slug == "tax-form")
     #expect(documentType.name == "Tax Form")
     #expect(documentType.match == "tax form, tax, taxes")
-    #expect(documentType.matchingAlgorithm == 2)
+    #expect(documentType.matchingAlgorithm == .matchAll)
     #expect(documentType.isInsensitive)
     #expect(documentType.documentCount == 2)
     #expect(documentType.owner == 3)

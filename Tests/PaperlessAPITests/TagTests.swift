@@ -19,7 +19,7 @@ import Foundation
   "color": "#52D35F",
   "text_color": "#000000",
   "match": "",
-  "matching_algorithm": 1,
+  "matching_algorithm": 3,
   "is_insensitive": true,
   "is_inbox_tag": false,
   "document_count": 8,
@@ -38,7 +38,7 @@ import Foundation
     #expect(tag.color == "#52D35F")
     #expect(tag.textColor == "#000000")
     #expect(tag.match == "")
-    #expect(tag.matchingAlgorithm == 1)
+    #expect(tag.matchingAlgorithm == .matchLiteral)
     #expect(tag.isInsensitive)
     #expect(!(tag.isInboxTag))
     #expect(tag.documentCount == 8)

@@ -34,7 +34,7 @@ import Foundation
     #expect(correspondent.slug == "exciting-graphix-gmbh")
     #expect(correspondent.name == "Exciting Graphix GmbH")
     #expect(correspondent.match == "exciting, graphix, exiting graphix gmbh")
-    #expect(correspondent.matchingAlgorithm == 1)
+    #expect(correspondent.matchingAlgorithm == .matchAny)
     #expect(correspondent.isInsensitive)
     #expect(correspondent.documentCount == 2)
     #expect(correspondent.owner == 3)

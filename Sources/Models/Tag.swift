@@ -14,7 +14,7 @@ struct Tag: Codable {
     let color: String
     let textColor: String
     let match: String
-    let matchingAlgorithm: Int
+    let matchingAlgorithm: MatchingAlgorithm
     let isInsensitive: Bool
     let isInboxTag: Bool
     let documentCount: Int?

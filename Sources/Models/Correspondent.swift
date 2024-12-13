@@ -12,7 +12,7 @@ struct Correspondent: Codable {
     let slug: String
     let name: String
     let match: String
-    let matchingAlgorithm: Int
+    let matchingAlgorithm: MatchingAlgorithm
     let isInsensitive: Bool
     let documentCount: Int?
     let owner: Int?
