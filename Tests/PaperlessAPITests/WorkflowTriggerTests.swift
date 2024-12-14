@@ -9,7 +9,7 @@ import Testing
 import Foundation
 @testable import PaperlessAPI
 
-@Test func decodeWorkflow() async throws {
+@Test func decodeWorkflowTrigger() async throws {
     
     let json = """
 {
@@ -36,7 +36,6 @@ import Foundation
     
     
     let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .paperlessDateFormat
     let workflowTrigger = try decoder.decode(WorkflowTrigger.self, from: json)
     
     #expect(workflowTrigger.id == 2)
