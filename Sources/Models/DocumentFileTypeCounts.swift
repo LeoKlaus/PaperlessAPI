@@ -1,4 +1,11 @@
+//
+//  DocumentFileTypeCounts.swift
+//  PaperlessAPI
+//
+//  Created by Leo Wehrfritz on 14.12.24.
+//
 
+import UniformTypeIdentifiers
 
 struct DocumentFileTypeCounts: Codable, Equatable {
     let mimeType: UTType?
