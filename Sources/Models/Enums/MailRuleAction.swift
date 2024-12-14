@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MailRuleAction: RawRepresentable, Codable {
+enum MailRuleAction: RawRepresentable, Codable, Equatable {
     case delete, move, markAsRead, flag, tag
     case unknown(Int)
     
