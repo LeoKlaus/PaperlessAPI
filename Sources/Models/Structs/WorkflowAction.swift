@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-struct WorkflowAction: Codable {
+struct WorkflowAction: PaperlessObject {
     let id: Int
     let type: WorkflowActionType
     let assignTitle: String?

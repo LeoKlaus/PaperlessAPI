@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MailRule: Codable {
+struct MailRule: PaperlessObject {
     let id: Int
     let name: String
     let account: Int

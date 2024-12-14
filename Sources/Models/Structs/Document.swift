@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Document: Codable {
+struct Document: PaperlessObject {
     let id: Int
     let correspondent: Int?
     let documentType: Int?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Group: Codable {
+struct Group: PaperlessObject {
     let id: Int
     let name: String
     let permissions: [Permission]

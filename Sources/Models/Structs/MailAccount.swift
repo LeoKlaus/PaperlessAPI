@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MailAccount: Codable {
+struct MailAccount: PaperlessObject {
     let id: Int
     let name: String
     let imapServer: String

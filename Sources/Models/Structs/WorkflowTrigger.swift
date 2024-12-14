@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WorkflowTrigger: Codable, Equatable {
+struct WorkflowTrigger: PaperlessObject, Equatable {
     let id: Int
     let sources: [WorkflowTriggerSource]
     let type: WorkflowTriggerType

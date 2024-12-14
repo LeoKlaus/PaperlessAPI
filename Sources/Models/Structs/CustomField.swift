@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CustomField: Codable {
+struct CustomField: PaperlessObject {
     var id: Int
     var name: String
     var dataType: CustomFieldDataType

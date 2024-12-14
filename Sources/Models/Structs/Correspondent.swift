@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Correspondent: Codable {
+struct Correspondent: PaperlessObject {
     let id: Int
     let slug: String
     let name: String

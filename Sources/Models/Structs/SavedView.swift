@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SavedView: Codable {
+struct SavedView: PaperlessObject {
     let id: Int
     let name: String
     let showOnDashboard: Bool

@@ -1,5 +1,5 @@
 //
-//  StoragePath.swift
+//  Tag.swift
 //  PaperlessAPI
 //
 //  Created by Leo Wehrfritz on 13.12.24.
@@ -7,14 +7,16 @@
 
 import Foundation
 
-struct StoragePath: Codable {
+struct Tag: PaperlessObject {
     let id: Int
     let slug: String
     let name: String
-    let path: String
+    let color: String
+    let textColor: String
     let match: String
     let matchingAlgorithm: MatchingAlgorithm
     let isInsensitive: Bool
+    let isInboxTag: Bool
     let documentCount: Int?
     let owner: Int?
     let userCanChange: Bool?
@@ -23,10 +25,12 @@ struct StoragePath: Codable {
         case id
         case slug
         case name
-        case path
+        case color
+        case textColor = "text_color"
         case match
         case matchingAlgorithm = "matching_algorithm"
         case isInsensitive = "is_insensitive"
+        case isInboxTag = "is_inbox_tag"
         case documentCount = "document_count"
         case owner
         case userCanChange = "user_can_change"

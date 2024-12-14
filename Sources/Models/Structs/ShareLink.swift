@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ShareLink: Codable {
+struct ShareLink: PaperlessObject {
     let id: Int
     let created: Date
     let expiration: Date?

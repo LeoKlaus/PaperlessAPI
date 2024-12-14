@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable, Equatable {
+struct User: PaperlessObject, Equatable {
     let id: Int
     let username: String
     let email: String?

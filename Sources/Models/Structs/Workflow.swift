@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-struct Workflow: Codable {
+struct Workflow: PaperlessObject {
     let id: Int
     let name: String
     let order: Int
