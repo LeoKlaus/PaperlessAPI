@@ -40,4 +40,5 @@ enum APIEndpoint: String {
     case remoteVersion = "/api/remote_version/"
     case statistics = "/api/statistics/"
     case uiSettings = "/api/ui_settings/"
+    case profile = "/api/profile/"
 }
