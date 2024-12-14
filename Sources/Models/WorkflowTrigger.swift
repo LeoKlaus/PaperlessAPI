@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WorkflowTrigger: Codable {
+struct WorkflowTrigger: Codable, Equatable {
     let id: Int
     let sources: [WorkflowTriggerSource]
     let type: WorkflowTriggerType
