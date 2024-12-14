@@ -53,6 +53,8 @@ enum CustomFieldDataType: RawRepresentable, Codable {
             self = .monetary
         case "documentlink":
             self = .documentlink
+        case "select":
+            self = .select
         default:
             self = .unknown(rawValue)
         }
