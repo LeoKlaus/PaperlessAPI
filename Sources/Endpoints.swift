@@ -46,4 +46,5 @@ enum APIEndpoint: String {
     case socialAccountProviders = "/api/profile/social_account_providers/"
     case totp = "/api/profile/totp/"
     case status = "/api/status/"
+    case trash = "/api/trash/"
 }
