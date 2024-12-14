@@ -8,9 +8,16 @@
 import Foundation
 
 enum APIEndpoint: String {
+    // Authorization
+    case token = "/api/token/"
+    // General usage
     case correspondents = "/api/correspondents/"
     case documentTypes = "/api/document_types/"
     case documents = "/api/documents/"
+    case postDocument = "/api/documents/post_document/"
+    case bulkEditDocuments = "/api/documents/bulk_edit/"
+    case bulkDownloadDocuments = "/api/documents/bulk_download/" // POST a list of document ids to download them as zip
+    case selectionData = "/api/documents/selection_data/" // POST a list of document ids to see infos about their attributes
     case logs = "/api/logs/"
     case tags = "/api/tags/"
     case savedViews = "/api/saved_views/"
@@ -26,6 +33,11 @@ enum APIEndpoint: String {
     case workflows = "/api/workflows/"
     case customFields = "/api/custom_fields/"
     case config = "/api/config/"
+    case search = "/api/search/"
+    case autoComplete = "/api/autocomplete/"
+    case bulkEditObjects = "/api/bulk_edit_objects/"
     // These are not listed in the api page
     case remoteVersion = "/api/remote_version/"
+    case statistics = "/api/statistics/"
+    case uiSettings = "/api/ui_settings/"
 }

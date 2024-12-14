@@ -1,0 +1,25 @@
+
+
+struct DocumentFileTypeCounts: Codable, Equatable {
+    let mimeType: UTType?
+    let mimeTypeDescription: String
+    let mimeTypeCount: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case mimeType = "mime_type"
+        case mimeTypeCount = "mime_type_count"
+    }
+    
+    init(mimeType: String, mimeTypeCount: Int) {
+        self.mimeTypeDescription = mimeType
+        self.mimeTypeCount = mimeTypeCount
+        self.mimeType = UTType(mimeType: mimeType)
+    }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.mimeTypeDescription = try container.decode(String.self, forKey: .mimeType)
+        self.mimeType = UTType(mimeType: self.mimeTypeDescription)
+        self.mimeTypeCount = try container.decode(Int.self, forKey: .mimeTypeCount)
+    }
+}
