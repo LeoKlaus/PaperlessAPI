@@ -7,6 +7,7 @@
 
 import Testing
 import Foundation
+import SwiftUI
 @testable import PaperlessAPI
 
 @Test func decodeTag() async throws {
@@ -35,8 +36,8 @@ import Foundation
     #expect(tag.id == 1)
     #expect(tag.slug == "paid")
     #expect(tag.name == "Paid")
-    #expect(tag.color == "#52D35F")
-    #expect(tag.textColor == "#000000")
+    #expect(tag.color == Color(hex: "#52D35F"))
+    #expect(tag.textColor == Color.black)
     #expect(tag.match == "")
     #expect(tag.matchingAlgorithm == .matchLiteral)
     #expect(tag.isInsensitive)

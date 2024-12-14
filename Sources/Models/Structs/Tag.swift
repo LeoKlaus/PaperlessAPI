@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Tag: PaperlessObject {
     let id: Int
     let slug: String
     let name: String
-    let color: String
-    let textColor: String
+    let color: Color
+    let textColor: Color
     let match: String
     let matchingAlgorithm: MatchingAlgorithm
     let isInsensitive: Bool

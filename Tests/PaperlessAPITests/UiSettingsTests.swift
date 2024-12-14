@@ -7,6 +7,7 @@
 
 import Testing
 import Foundation
+import SwiftUI
 @testable import PaperlessAPI
 
 @Test func decodeUiSettings() async throws {
@@ -276,7 +277,7 @@ import Foundation
     #expect(!uiSettings.settings.darkMode.enabled)
     #expect(uiSettings.settings.darkMode.thumbInverted)
     
-    #expect(uiSettings.settings.theme.color == "#725BFF")
+    #expect(uiSettings.settings.theme.color == Color(hex: "#725BFF"))
     
     #expect(!uiSettings.settings.documentDetails.nativePdfViewer)
     

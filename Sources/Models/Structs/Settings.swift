@@ -5,6 +5,8 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
+import SwiftUI
+
 struct Settings: Codable {
     let updateChecking: UpdateCheckingSettings
     let tourComplete: Bool
@@ -100,7 +102,7 @@ struct DarkModeSettings: Codable {
 }
 
 struct ThemeSettings: Codable {
-    let color: String
+    let color: Color
 }
 
 struct DocumentDetailSettings: Codable {
