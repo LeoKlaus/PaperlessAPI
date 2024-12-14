@@ -41,4 +41,9 @@ enum APIEndpoint: String {
     case statistics = "/api/statistics/"
     case uiSettings = "/api/ui_settings/"
     case profile = "/api/profile/"
+    case generateAuthToken = "/api/profile/generate_auth_token/"
+    case disconnectSocialAccount = "/api/profile/disconnect_social_account/"
+    case socialAccountProviders = "/api/profile/social_account_providers/"
+    case totp = "/api/profile/totp/"
+    case status = "/api/status/"
 }
