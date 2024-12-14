@@ -7,20 +7,20 @@
 
 import Foundation
 
-struct User: Codable {
+struct User: Codable, Equatable {
     let id: Int
     let username: String
-    let email: String
-    let password: String
-    let firstName: String
-    let lastName: String
-    let dateJoined: Date
+    let email: String?
+    let password: String?
+    let firstName: String?
+    let lastName: String?
+    let dateJoined: Date?
     let isStaff: Bool
-    let isActive: Bool
+    let isActive: Bool?
     let isSuperuser: Bool
     let groups: [Int]
-    let userPermissions: [Permission]
-    let inheritedPermissions: [Permission]
+    let userPermissions: [Permission]?
+    let inheritedPermissions: [Permission]?
     
     enum CodingKeys: String, CodingKey {
         case id

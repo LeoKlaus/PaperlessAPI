@@ -267,19 +267,19 @@ import Foundation
     #expect(user.firstName == "Demo")
     #expect(user.lastName == "User")
     #expect(user.isStaff)
-    #expect(user.isActive)
+    #expect(user.isActive ?? false)
     #expect(user.isSuperuser)
     #expect(user.groups.isEmpty)
-    #expect(user.userPermissions.count == 72)
-    user.userPermissions.forEach { permission in
+    #expect(user.userPermissions?.count == 72)
+    #expect(user.inheritedPermissions?.count == 152)
+    user.userPermissions?.forEach { permission in
         if case .unknown = permission {
             Issue.record("Couldn't decode permission: \(permission.rawValue)")
         }
     }
-    user.inheritedPermissions.forEach { permission in
+    user.inheritedPermissions?.forEach { permission in
         if case .unknown = permission {
             Issue.record("Couldn't decode permission: \(permission.rawValue)")
         }
     }
-    #expect(user.inheritedPermissions.count == 152)
 }
