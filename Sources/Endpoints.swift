@@ -26,4 +26,6 @@ enum APIEndpoint: String {
     case workflows = "/api/workflows/"
     case customFields = "/api/custom_fields/"
     case config = "/api/config/"
+    // These are not listed in the api page
+    case remoteVersion = "/api/remote_version/"
 }
