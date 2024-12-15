@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PaginatedList<T: PaperlessObject>: Codable {
+public struct PaginatedList<T: ListableObject>: Codable {
     public let count: Int
     public let next: URL?
     public let previous: URL?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Document: PaperlessObject {
+public struct Document: ListableObject {
     public let id: Int
     public let correspondent: Int?
     public let documentType: Int?

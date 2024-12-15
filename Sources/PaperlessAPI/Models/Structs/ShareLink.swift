@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ShareLink: PaperlessObject {
+public struct ShareLink: ListableObject {
     public let id: Int
     let created: Date
     let expiration: Date?

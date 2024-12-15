@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MailAccount: PaperlessObject {
+public struct MailAccount: ListableObject {
     public let id: Int
     public let name: String
     public let imapServer: String

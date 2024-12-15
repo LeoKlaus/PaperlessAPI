@@ -12,17 +12,17 @@ extension ApiHandler {
         return try await self.getObjects(endpoint: .correspondents, limit: limit, page: page, fullPermissions: fullPermissions, parameters: parameters)
     }
     
-    public func getCorrespondent(id: Int) async throws -> Correspondent? {
+    public func getCorrespondent(id: Int) async throws -> Correspondent {
         return try await self.sendRequest(method: .get, endpoint: .correspondent(id))
     }
     
-    public func createCorrespondent(_ correspondent: Correspondent) async throws -> Correspondent? {
+    public func createCorrespondent(_ correspondent: Correspondent) async throws -> Correspondent {
         let JSONEncoder = JSONEncoder()
         let body = try JSONEncoder.encode(correspondent)
         return try await self.sendRequest(method: .post, endpoint: .correspondents, body: body)
     }
     
-    public func updateCorrespondent(_ correspondent: Correspondent) async throws -> Correspondent? {
+    public func updateCorrespondent(_ correspondent: Correspondent) async throws -> Correspondent {
         let JSONEncoder = JSONEncoder()
         let body = try JSONEncoder.encode(correspondent)
         return try await self.sendRequest(method: .patch, endpoint: .correspondent(correspondent.id), body: body)

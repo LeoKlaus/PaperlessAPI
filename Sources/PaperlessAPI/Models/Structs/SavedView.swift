@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SavedView: PaperlessObject {
+public struct SavedView: ListableObject {
     public let id: Int
     public let name: String
     public let showOnDashboard: Bool

@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public struct WorkflowAction: PaperlessObject {
+public struct WorkflowAction: ListableObject {
     public let id: Int
     let type: WorkflowActionType
     let assignTitle: String?

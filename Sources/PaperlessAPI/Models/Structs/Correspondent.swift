@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Correspondent: PaperlessObject {
+public struct Correspondent: ListableObject {
     public let id: Int
     public let slug: String
     public let name: String

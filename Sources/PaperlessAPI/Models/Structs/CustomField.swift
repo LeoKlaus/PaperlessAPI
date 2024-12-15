@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CustomField: PaperlessObject {
+public struct CustomField: ListableObject {
     public let id: Int
     public let name: String
     public let dataType: CustomFieldDataType

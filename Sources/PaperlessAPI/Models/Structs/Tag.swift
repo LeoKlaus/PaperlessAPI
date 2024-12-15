@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public struct PaperlessTag: PaperlessObject {
+public struct PaperlessTag: ListableObject {
     public let id: Int
     public let slug: String
     public let name: String

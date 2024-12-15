@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MailRule: PaperlessObject {
+public struct MailRule: ListableObject {
     public let id: Int
     public let name: String
     public let account: Int

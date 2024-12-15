@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct StoragePath: PaperlessObject {
+public struct StoragePath: ListableObject {
     public let id: Int
     public let slug: String
     public let name: String

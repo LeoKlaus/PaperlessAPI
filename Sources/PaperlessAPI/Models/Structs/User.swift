@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct User: PaperlessObject, Equatable {
+public struct User: ListableObject, Equatable {
     public let id: Int
     let username: String
     let email: String?

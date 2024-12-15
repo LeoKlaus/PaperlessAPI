@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PaperlessGroup: PaperlessObject {
+public struct PaperlessGroup: ListableObject {
     public let id: Int
     let name: String
     let permissions: [Permission]
