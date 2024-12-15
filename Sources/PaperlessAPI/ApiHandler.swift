@@ -23,7 +23,7 @@ public class ApiHandler {
         self.apiToken = apiToken
     }
     
-    public func sendRequest<T: PaperlessObject>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, parameters: [String:String] = [:]) async throws -> T {
+    public func sendRequest<T: Codable>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, parameters: [String:String] = [:]) async throws -> T {
         
         guard let serverURL, let apiToken else {
             throw ApiError.noCredentials
@@ -74,7 +74,7 @@ public class ApiHandler {
         throw ApiError.invalidResponse(data, response)
     }
     
-    public func sendRequest<T: PaperlessObject>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, limit: Int = 25, page: Int = 1, parameters: [String:String] = [:]) async throws -> [T] {
+    public func sendRequest<T: Codable>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, parameters: [String:String] = [:]) async throws -> [T] {
         
         guard let serverURL, let apiToken else {
             throw ApiError.noCredentials
@@ -104,8 +104,8 @@ public class ApiHandler {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
                     
-                    let object = try decoder.decode(PaginatedList<T>.self, from: data)
-                    return object.results
+                    let object = try decoder.decode([T].self, from: data)
+                    return object
                 } catch {
                     if let responseString = String(data: data, encoding: .utf8) {
                         Self.logger.error("Server response was:\n\(responseString, privacy: .public)")
@@ -123,5 +123,16 @@ public class ApiHandler {
         
         Self.logger.error("Server returned unexpected response:\n\(String(data: data, encoding: .utf8) ?? "")")
         throw ApiError.invalidResponse(data, response)
+    }
+    
+    public func sendRequest<T: PaperlessObject>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, limit: Int = 25, page: Int = 1, parameters: [String:String] = [:]) async throws -> PaginatedList<T> {
+        
+        var parameters = parameters
+        parameters["page_size"] = String(limit)
+        parameters["page"] = String(page)
+        
+        let response: PaginatedList<T> = try await self.sendRequest(method: method, endpoint: endpoint, body: body, parameters: parameters)
+        
+        return response
     }
 }
