@@ -24,7 +24,7 @@ import Foundation
     
     
     let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .paperlessDateFormat
+    decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
     let shareLink = try decoder.decode(ShareLink.self, from: json)
     
     #expect(shareLink.id == 24)

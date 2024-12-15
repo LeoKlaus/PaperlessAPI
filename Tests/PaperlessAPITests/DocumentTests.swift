@@ -54,7 +54,7 @@ import Foundation
     
     
     let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .paperlessDateFormat
+    decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
     
     let document = try decoder.decode(Document.self, from: json)
     

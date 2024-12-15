@@ -47,6 +47,7 @@ enum APIEndpoint: RawRepresentable {
     case totp
     case status
     case trash
+    
     case custom(String)
     
     typealias RawValue = String

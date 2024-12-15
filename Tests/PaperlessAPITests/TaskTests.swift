@@ -28,7 +28,7 @@ import Foundation
     
     
     let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .paperlessDateFormat
+    decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
     let task = try decoder.decode(PaperlessAPI.Task.self, from: json)
     
     #expect(task.id == 340)

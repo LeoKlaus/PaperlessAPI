@@ -42,5 +42,5 @@ extension JSONDecoder.DateDecodingStrategy {
     /// - yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX
     /// - yyyy-MM-dd'T'HH:mm:ssXXXXX
     /// - yyyy-MM-dd)
-    static let paperlessDateFormat = Self.iso8601WithOptionalFractionalSecondsAndYMD
+    static let paperlessDateDecodingStrategy = Self.iso8601WithOptionalFractionalSecondsAndYMD
 }

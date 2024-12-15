@@ -47,7 +47,7 @@ import Foundation
     
     
     let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .paperlessDateFormat
+    decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
     let status = try decoder.decode(Status.self, from: json)
     
     #expect(status.pngxVersion == "2.11.6")

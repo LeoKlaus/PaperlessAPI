@@ -1,0 +1,70 @@
+//
+//  APIHandler.swift
+//  PaperlessAPI
+//
+//  Created by Leo Wehrfritz on 15.12.24.
+//
+
+import Foundation
+import OSLog
+
+class APIHandler {
+    
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: APIHandler.self)
+    )
+    
+    var serverURL: URL?
+    var apiToken: String?
+    
+    func sendRequest<T: PaperlessObject>(method: HTTPMethod, endpoint: APIEndpoint, body: Data? = nil, parameters: [String:String] = [:]) async throws -> T {
+        
+        guard let serverURL, let apiToken else {
+            throw APIError.noCredentials
+        }
+        
+        var url = serverURL.appendingPathComponent(endpoint.rawValue)
+        
+        for parameter in parameters {
+            url.append(queryItems: [URLQueryItem(name: parameter.key, value: parameter.value)])
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.httpBody = body
+        request.addValue("Token \(apiToken)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let urlSession = URLSession.shared
+        
+        APIHandler.logger.debug("Sending \(method.rawValue) request to \(url.absoluteString)")
+        let (data, response) = try await urlSession.data(for: request)
+        
+        if let httpResponse = response as? HTTPURLResponse {
+            if 200...299 ~= httpResponse.statusCode {
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
+                    
+                    let object = try decoder.decode(T.self, from: data)
+                    return object
+                } catch {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        APIHandler.logger.error("Server response was:\n\(responseString, privacy: .public)")
+                    }
+                    throw error
+                }
+            } else if 403 == httpResponse.statusCode {
+                APIHandler.logger.error("Server returned 403:\n\(String(data: data, encoding: .utf8) ?? "")")
+                throw APIError.forbidden
+            } else {
+                APIHandler.logger.error("Server returned unexpected status code \(httpResponse.statusCode) and response:\n\(String(data: data, encoding: .utf8) ?? "")\nQueried endpoint: \(endpoint.rawValue, privacy: .public)")
+                throw APIError.unexpectedHTTPStatus(data, httpResponse.statusCode)
+            }
+        }
+        
+        APIHandler.logger.error("Server returned unexpected response:\n\(String(data: data, encoding: .utf8) ?? "")")
+        throw APIError.invalidResponse(data, response)
+    }
+}

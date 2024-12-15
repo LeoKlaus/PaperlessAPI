@@ -257,7 +257,7 @@ import Foundation
     
     
     let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .paperlessDateFormat
+    decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
     let user = try decoder.decode(User.self, from: json)
     
     #expect(user.id == 3)
@@ -266,6 +266,7 @@ import Foundation
     #expect(user.email == "demo@paperparrot.me")
     #expect(user.firstName == "Demo")
     #expect(user.lastName == "User")
+    #expect(user.dateJoined == Date(timeIntervalSince1970: 1676883994.69))
     #expect(user.isStaff)
     #expect(user.isActive ?? false)
     #expect(user.isSuperuser)

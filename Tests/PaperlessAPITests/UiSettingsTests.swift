@@ -256,7 +256,6 @@ import SwiftUI
     
     
     let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .paperlessDateFormat
     let uiSettings = try decoder.decode(UiSettings.self, from: json)
     
     #expect(uiSettings.user == User(id: 3, username: "root", email: nil, password: nil, firstName: nil, lastName: nil, dateJoined: nil, isStaff: true, isActive: nil, isSuperuser: true, groups: [], userPermissions: nil, inheritedPermissions: nil))
