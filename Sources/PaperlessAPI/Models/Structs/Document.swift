@@ -9,26 +9,27 @@ import Foundation
 
 public struct Document: PaperlessObject {
     public let id: Int
-    let correspondent: Int?
-    let documentType: Int?
-    let storagePath: Int?
-    let title: String?
-    let content: String?
-    let tags: [Int]
-    let created: Date
-    let createdDate: Date
-    let modified: Date
-    let added: Date
-    let deletedAt: Date?
-    let archiveSerialNumber: Int?
-    let originalFileName: String
-    let archivedFileName: String
-    let owner: Int?
-    let userCanChange: Bool?
-    let isSharedByRequester: Bool?
-    let notes: [Note]?
-    let customFields: [CustomFieldContent]?
-    let pageCount: Int?
+    public let correspondent: Int?
+    public let documentType: Int?
+    public let storagePath: Int?
+    public let title: String?
+    public let content: String?
+    public let tags: [Int]
+    public let created: Date
+    public let createdDate: Date
+    public let modified: Date
+    public let added: Date
+    public let deletedAt: Date?
+    public let archiveSerialNumber: Int?
+    public let originalFileName: String
+    public let archivedFileName: String
+    public let owner: Int?
+    public let userCanChange: Bool?
+    public let isSharedByRequester: Bool?
+    public let notes: [Note]?
+    public let customFields: [CustomFieldContent]?
+    public let pageCount: Int?
+    public let permissions: ObjectPermissions?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -52,5 +53,6 @@ public struct Document: PaperlessObject {
         case notes
         case customFields = "custom_fields"
         case pageCount = "page_count"
+        case permissions
     }
 }

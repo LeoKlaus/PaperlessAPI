@@ -84,4 +84,83 @@ import Foundation
     ])
 }
 
-
+@Test func decodeDocumentWithPermissions() async throws {
+    
+    let json = """
+{
+      "id": 217,
+      "correspondent": null,
+      "document_type": null,
+      "storage_path": 3,
+      "title": "Flyer",
+      "content": "221 Queen Street, Melbourne VIC 3000",
+      "tags": [
+        32
+      ],
+      "created": "2024-06-05T00:00:00+02:00",
+      "created_date": "2024-06-05",
+      "modified": "2024-12-12T15:09:08.026429+01:00",
+      "added": "2024-06-05T10:38:31.890362+02:00",
+      "deleted_at": null,
+      "archive_serial_number": 2,
+      "original_file_name": "flyer.pdf",
+      "archived_file_name": "2024-06-05 flyer.pdf",
+      "owner": 2,
+      "permissions": {
+        "view": {
+          "users": [1],
+          "groups": [2]
+        },
+        "change": {
+          "users": [3],
+          "groups": [4]
+        }
+      },
+      "notes": [],
+      "custom_fields": [
+        {
+          "value": 2,
+          "field": 27
+        },
+        {
+          "value": "TRY-1.5",
+          "field": 15
+        }
+      ]
+    }
+""".data(using: .utf8)!
+    
+    
+    let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
+    
+    let document = try decoder.decode(Document.self, from: json)
+    
+    #expect(document.id == 217)
+    #expect(document.correspondent == nil)
+    #expect(document.documentType == nil)
+    #expect(document.storagePath == 3)
+    #expect(document.title == "Flyer")
+    #expect(document.content == "221 Queen Street, Melbourne VIC 3000")
+    #expect(document.tags == [32])
+    #expect(document.created == Date(timeIntervalSince1970: 1717538400))
+    #expect(document.createdDate == Date(timeIntervalSince1970: 1717538400))
+    #expect(document.modified == Date(timeIntervalSince1970: 1734012548.026))
+    #expect(document.added == Date(timeIntervalSince1970: 1717576711.89))
+    #expect(document.deletedAt == nil)
+    #expect(document.archiveSerialNumber == 2)
+    #expect(document.originalFileName == "flyer.pdf")
+    #expect(document.archivedFileName == "2024-06-05 flyer.pdf")
+    #expect(document.owner == 2)
+    #expect(document.userCanChange == nil)
+    #expect(document.isSharedByRequester == nil)
+    #expect(document.permissions == ObjectPermissions(
+        view: ObjectPermission(users: [1], groups: [2]),
+        change: ObjectPermission(users: [3], groups: [4]))
+    )
+    #expect(document.notes?.isEmpty ?? false)
+    #expect(document.customFields == [
+        CustomFieldContent(value: .number(2), field: 27),
+        CustomFieldContent(value: .text("TRY-1.5"), field: 15)
+    ])
+}
