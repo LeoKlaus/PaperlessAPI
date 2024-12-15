@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Group: PaperlessObject {
-    let id: Int
+public struct Group: PaperlessObject {
+    public let id: Int
     let name: String
     let permissions: [Permission]
 }

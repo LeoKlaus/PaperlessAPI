@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ApiError: Error {
+public enum ApiError: Error {
     case noCredentials
     case forbidden
     case invalidResponse(Data, URLResponse)

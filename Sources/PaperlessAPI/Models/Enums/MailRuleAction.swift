@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum MailRuleAction: RawRepresentable, Codable, Equatable {
+public enum MailRuleAction: RawRepresentable, Codable, Equatable {
     case delete, move, markAsRead, flag, tag
     case unknown(Int)
     
-    typealias RawValue = Int
-    init?(rawValue: Int) {
+    public typealias RawValue = Int
+    public init?(rawValue: Int) {
         switch rawValue {
         case 1: self = .delete
         case 2: self = .move
@@ -23,7 +23,7 @@ enum MailRuleAction: RawRepresentable, Codable, Equatable {
         }
     }
     
-    var rawValue: Int {
+    public var rawValue: Int {
         switch self {
         case .delete: return 1
         case .move: return 2

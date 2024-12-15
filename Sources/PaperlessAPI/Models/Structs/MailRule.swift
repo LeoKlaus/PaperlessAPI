@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct MailRule: PaperlessObject {
-    let id: Int
+public struct MailRule: PaperlessObject {
+    public let id: Int
     let name: String
     let account: Int
     let folder: String

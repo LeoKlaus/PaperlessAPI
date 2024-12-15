@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct WorkflowTrigger: PaperlessObject, Equatable {
-    let id: Int
+public struct WorkflowTrigger: PaperlessObject, Equatable {
+    public let id: Int
     let sources: [WorkflowTriggerSource]
     let type: WorkflowTriggerType
     let filterPath: String?

@@ -6,7 +6,7 @@
 //
 
 // Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src/documents/models.py#L48
-enum MatchingAlgorithm: RawRepresentable, Codable, Equatable {
+public enum MatchingAlgorithm: RawRepresentable, Codable, Equatable {
     case matchNone      //0
     case matchAny       //1
     case matchAll       //2
@@ -16,8 +16,8 @@ enum MatchingAlgorithm: RawRepresentable, Codable, Equatable {
     case matchAuto      //6
     case unknown(Int)
     
-    typealias RawValue = Int
-    var rawValue: Int {
+    public typealias RawValue = Int
+    public var rawValue: Int {
         switch self {
         case .matchNone:
             return 0
@@ -38,7 +38,7 @@ enum MatchingAlgorithm: RawRepresentable, Codable, Equatable {
         }
     }
     
-    init(rawValue: Int) {
+    public init(rawValue: Int) {
         switch rawValue {
         case 0:
             self = .matchNone

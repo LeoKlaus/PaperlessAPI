@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-enum WorkflowTriggerType: RawRepresentable, Codable, Equatable {
+public enum WorkflowTriggerType: RawRepresentable, Codable, Equatable {
     case consumptionStarted, documentAdded, documentUpdated
     case unknown(Int)
     
-    typealias RawValue = Int
-    init?(rawValue: Int) {
+    public typealias RawValue = Int
+    public init?(rawValue: Int) {
         switch rawValue {
         case 1: self = .consumptionStarted
         case 2: self = .documentAdded
@@ -19,7 +19,7 @@ enum WorkflowTriggerType: RawRepresentable, Codable, Equatable {
         }
     }
     
-    var rawValue: Int {
+    public var rawValue: Int {
         switch self {
         case .consumptionStarted: return 1
         case .documentAdded: return 2

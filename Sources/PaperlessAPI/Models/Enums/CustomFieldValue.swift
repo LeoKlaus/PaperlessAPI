@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum CustomFieldValue: Codable, Equatable {
+public enum CustomFieldValue: Codable, Equatable {
     case boolean(Bool)
     case number(Float)
     case text(String)
     case docLink([Int])
     
-    func value() -> Any? {
+    public func value() -> Any? {
         switch self {
         case .text(let string):
             return string
@@ -26,7 +26,7 @@ enum CustomFieldValue: Codable, Equatable {
         }
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         if let string = try? decoder.singleValueContainer().decode(String.self) {
             self = .text(string)
             return

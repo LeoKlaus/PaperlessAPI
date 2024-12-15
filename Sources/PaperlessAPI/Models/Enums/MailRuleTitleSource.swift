@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum MailRuleTitleSource: RawRepresentable, Codable {
+public enum MailRuleTitleSource: RawRepresentable, Codable {
     case subject, attachment, doNotAssign
     case unknown(Int)
     
-    typealias RawValue = Int
-    init?(rawValue: Int) {
+    public typealias RawValue = Int
+    public init?(rawValue: Int) {
         switch rawValue {
         case 1: self = .subject
         case 2: self = .attachment
@@ -21,7 +21,7 @@ enum MailRuleTitleSource: RawRepresentable, Codable {
         }
     }
     
-    var rawValue: Int {
+    public var rawValue: Int {
         switch self {
         case .subject: return 1
         case .attachment: return 2

@@ -7,11 +7,12 @@
 
 import Foundation
 
-enum MailEncryptionPolicy: RawRepresentable, Codable {
+public enum MailEncryptionPolicy: RawRepresentable, Codable {
     case none, ssl, starttls
     case unknown(Int)
     
-    init(rawValue: Int) {
+    public typealias RawValue = Int
+    public init(rawValue: Int) {
         switch rawValue {
         case 1: self = .none
         case 2: self = .ssl
@@ -20,7 +21,7 @@ enum MailEncryptionPolicy: RawRepresentable, Codable {
         }
     }
     
-    var rawValue: Int {
+    public var rawValue: Int {
         switch self {
         case .none: return 1
         case .ssl: return 2

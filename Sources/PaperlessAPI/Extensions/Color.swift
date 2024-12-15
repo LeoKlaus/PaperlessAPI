@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Color {
+public extension Color {
     init(hex: String) {
         
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -37,7 +37,7 @@ extension Color {
         )
     }
     
-    public func toHex() -> String {
+    func toHex() -> String {
         let components = self.cgColor?.components
         let r: CGFloat = components?[0] ?? 0.0
         let g: CGFloat = components?[1] ?? 0.0

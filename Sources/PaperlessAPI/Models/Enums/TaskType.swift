@@ -6,12 +6,12 @@
 //
 
 // Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src/documents/serialisers.py#L1621
-enum TaskType: RawRepresentable, Codable {
+public enum TaskType: RawRepresentable, Codable {
     case file
     case unknown(String)
     
-    typealias RawValue = String
-    var rawValue: String {
+    public typealias RawValue = String
+    public var rawValue: String {
         switch self {
         case .file:
             return "file"
@@ -20,7 +20,7 @@ enum TaskType: RawRepresentable, Codable {
         }
     }
     
-    init(rawValue: String) {
+    public init(rawValue: String) {
         switch rawValue {
         case "file":
             self = .file

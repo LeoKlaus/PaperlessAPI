@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum MailRuleConsumptionScope: RawRepresentable, Codable {
+public enum MailRuleConsumptionScope: RawRepresentable, Codable {
     case attachments, message, messageAndAttachments
     case unknown(Int)
     
-    typealias RawValue = Int
-    init(rawValue: Int) {
+    public typealias RawValue = Int
+    public init(rawValue: Int) {
         switch rawValue {
         case 1: self = .attachments
         case 2: self = .message
@@ -21,7 +21,7 @@ enum MailRuleConsumptionScope: RawRepresentable, Codable {
         }
     }
     
-    var rawValue: Int {
+    public var rawValue: Int {
         switch self {
         case .attachments: return 1
         case .message: return 2

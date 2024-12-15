@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct SavedView: PaperlessObject {
-    let id: Int
+public struct SavedView: PaperlessObject {
+    public let id: Int
     let name: String
     let showOnDashboard: Bool
     let showInSidebar: Bool

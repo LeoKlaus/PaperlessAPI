@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-enum ConfigOutputType: RawRepresentable, Codable, Equatable {
+public enum ConfigOutputType: RawRepresentable, Codable, Equatable {
     case pdf, pdfa, pdfa1, pdfa2, pdfa3
     case unknown(String)
     
-    typealias RawValue = String
-    init?(rawValue: String) {
+    public typealias RawValue = String
+    public init?(rawValue: String) {
         switch rawValue {
         case "pdf": self = .pdf
         case "pdfa": self = .pdfa
@@ -21,7 +21,7 @@ enum ConfigOutputType: RawRepresentable, Codable, Equatable {
         }
     }
     
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .pdf: return "pdf"
         case .pdfa: return "pdfa"

@@ -6,7 +6,7 @@
 //
 
 // Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src/documents/models.py#L480
-enum RuleType: RawRepresentable, Codable, Equatable {
+public enum RuleType: RawRepresentable, Codable, Equatable {
     case titleContains              //0
     case contentContains            //1
     case asnIs                      //2
@@ -52,8 +52,8 @@ enum RuleType: RawRepresentable, Codable, Equatable {
     case customFieldsQuery          //42
     case unknown(Int)
     
-    typealias RawValue = Int
-    var rawValue: Int {
+    public typealias RawValue = Int
+    public var rawValue: Int {
         switch self {
         case .titleContains:
             return(0)
@@ -146,7 +146,7 @@ enum RuleType: RawRepresentable, Codable, Equatable {
         }
     }
     
-    init(rawValue: Int) {
+    public init(rawValue: Int) {
         switch rawValue {
         case 0:
             self = .titleContains

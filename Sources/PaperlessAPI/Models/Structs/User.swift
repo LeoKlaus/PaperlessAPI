@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct User: PaperlessObject, Equatable {
-    let id: Int
+public struct User: PaperlessObject, Equatable {
+    public let id: Int
     let username: String
     let email: String?
     let password: String?

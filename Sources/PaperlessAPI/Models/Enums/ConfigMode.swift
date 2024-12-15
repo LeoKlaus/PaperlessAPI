@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-enum ConfigMode: RawRepresentable, Codable, Equatable {
+public enum ConfigMode: RawRepresentable, Codable, Equatable {
     case skip, redo, force, skipNoArchive
     case unknown(String)
     
-    typealias RawValue = String
-    init(rawValue: String) {
+    public typealias RawValue = String
+    public init(rawValue: String) {
         switch rawValue {
         case "skip": self = .skip
         case "redo": self = .redo
@@ -20,7 +20,7 @@ enum ConfigMode: RawRepresentable, Codable, Equatable {
         }
     }
     
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .skip: return "skip"
         case .redo: return "redo"

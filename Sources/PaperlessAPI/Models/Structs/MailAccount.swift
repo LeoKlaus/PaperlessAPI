@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct MailAccount: PaperlessObject {
-    let id: Int
+public struct MailAccount: PaperlessObject {
+    public let id: Int
     let name: String
     let imapServer: String
     let imapPort: Int?

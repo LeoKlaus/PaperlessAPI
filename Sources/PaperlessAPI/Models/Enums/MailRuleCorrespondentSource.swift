@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum MailRuleCorrespondentSource: RawRepresentable, Codable {
+public enum MailRuleCorrespondentSource: RawRepresentable, Codable {
     case doNotAssign, mailAddress, name, selected
     case unknown(Int)
     
-    typealias RawValue = Int
-    init(rawValue: Int) {
+    public typealias RawValue = Int
+    public init(rawValue: Int) {
         switch rawValue {
         case 1: self = .doNotAssign
         case 2: self = .mailAddress
@@ -22,7 +22,7 @@ enum MailRuleCorrespondentSource: RawRepresentable, Codable {
         }
     }
     
-    var rawValue: Int {
+    public var rawValue: Int {
         switch self {
         case .doNotAssign: return 1
         case .mailAddress: return 2

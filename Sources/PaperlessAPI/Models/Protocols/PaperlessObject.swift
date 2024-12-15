@@ -5,6 +5,6 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-protocol PaperlessObject: Codable {
+public protocol PaperlessObject: Codable {
     var id: Int { get }
 }

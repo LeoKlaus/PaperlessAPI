@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-enum ShareLinkFileVersion: RawRepresentable, Codable {
+public enum ShareLinkFileVersion: RawRepresentable, Codable {
     case archive, original
     case unknown(String)
     
-    typealias RawValue = String
-    init(rawValue: String) {
+    public typealias RawValue = String
+    public init(rawValue: String) {
         switch rawValue {
         case "archive": self = .archive
         case "original": self = .original
@@ -18,7 +18,7 @@ enum ShareLinkFileVersion: RawRepresentable, Codable {
         }
     }
     
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .archive: return "archive"
         case .original: return "original"

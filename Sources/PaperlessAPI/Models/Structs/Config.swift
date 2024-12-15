@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Config: Codable {
+public struct Config: Codable {
     let id: Int
     let userArgs: String?
     let outputType: ConfigOutputType?

@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-enum WorkflowActionType: RawRepresentable, Codable {
+public enum WorkflowActionType: RawRepresentable, Codable {
     case assignment, removal
     case unknown(Int)
     
-    typealias RawValue = Int
-    init(rawValue: Int) {
+    public typealias RawValue = Int
+    public init(rawValue: Int) {
         switch rawValue {
         case 1: self = .assignment
         case 2: self = .removal
@@ -18,7 +18,7 @@ enum WorkflowActionType: RawRepresentable, Codable {
         }
     }
     
-    var rawValue: Int {
+    public var rawValue: Int {
         switch self {
         case .assignment: return 1
         case .removal: return 2

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Settings: Codable {
+public struct Settings: Codable {
     let updateChecking: UpdateCheckingSettings
     let tourComplete: Bool
     let bulkEdit: BulkEditSettings

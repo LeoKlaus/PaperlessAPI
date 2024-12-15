@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 13.12.24.
 //
 
-enum PermissionType: RawRepresentable, Codable {
+public enum PermissionType: RawRepresentable, Codable {
     case add, change, delete, view
     case unknown(String)
     
-    typealias RawValue = String
-    var rawValue: String {
+    public typealias RawValue = String
+    public var rawValue: String {
         switch self {
         case .add:
             return "add"
@@ -25,7 +25,7 @@ enum PermissionType: RawRepresentable, Codable {
         }
     }
     
-    init(rawValue: String) {
+    public init(rawValue: String) {
         switch rawValue {
         case "add":
             self = .add

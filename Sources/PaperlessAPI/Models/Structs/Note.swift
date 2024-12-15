@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Note: Codable, Equatable {
+public struct Note: Codable, Equatable {
     let id: Int
     let note: String?
     let created: Date?

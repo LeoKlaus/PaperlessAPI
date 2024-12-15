@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 13.12.24.
 //
 
-enum DisplayMode: RawRepresentable, Codable, Equatable {
+public enum DisplayMode: RawRepresentable, Codable, Equatable {
     case smallCards, largeCards, table
     case unknown(String)
     
-    typealias RawValue = String
-    var rawValue: String {
+    public typealias RawValue = String
+    public var rawValue: String {
         switch self {
         case .smallCards:
             return "smallCards"
@@ -23,7 +23,7 @@ enum DisplayMode: RawRepresentable, Codable, Equatable {
         }
     }
     
-    init(rawValue: String) {
+    public init(rawValue: String) {
         switch rawValue {
         case "smallCards":
             self = .smallCards

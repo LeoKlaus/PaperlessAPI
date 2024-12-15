@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ApiEndpoint: RawRepresentable {
+public enum ApiEndpoint: RawRepresentable {
     // Authorization
     case token
     // General usage
@@ -50,8 +50,8 @@ enum ApiEndpoint: RawRepresentable {
     
     case custom(String)
     
-    typealias RawValue = String
-    init?(rawValue: String) {
+    public typealias RawValue = String
+    public init?(rawValue: String) {
         switch rawValue {
         case "/api/token/": self = .token
         case "/api/correspondents/": self = .correspondents
@@ -93,7 +93,7 @@ enum ApiEndpoint: RawRepresentable {
         }
     }
     
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .token: return "/api/token/"
         case .correspondents: return "/api/correspondents/"

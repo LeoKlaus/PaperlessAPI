@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Document: PaperlessObject {
-    let id: Int
+public struct Document: PaperlessObject {
+    public let id: Int
     let correspondent: Int?
     let documentType: Int?
     let storagePath: Int?

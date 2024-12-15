@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-enum ConfigUnpaperClean: RawRepresentable, Codable, Equatable {
+public enum ConfigUnpaperClean: RawRepresentable, Codable, Equatable {
     case clean, cleanFinal, none
     case unknown(String)
     
-    typealias RawValue = String
-    init(rawValue: String) {
+    public typealias RawValue = String
+    public init(rawValue: String) {
         switch rawValue {
         case "clean": self = .clean
         case "clean-final": self = .cleanFinal
@@ -19,7 +19,7 @@ enum ConfigUnpaperClean: RawRepresentable, Codable, Equatable {
         }
     }
     
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .clean: return "clean"
         case .cleanFinal: return "clean-final"

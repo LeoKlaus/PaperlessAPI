@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct CustomField: PaperlessObject {
-    var id: Int
+public struct CustomField: PaperlessObject {
+    public var id: Int
     var name: String
     var dataType: CustomFieldDataType
     var extraData: CustomFieldExtraData?

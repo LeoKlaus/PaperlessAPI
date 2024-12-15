@@ -5,8 +5,8 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-struct WorkflowAction: PaperlessObject {
-    let id: Int
+public struct WorkflowAction: PaperlessObject {
+    public let id: Int
     let type: WorkflowActionType
     let assignTitle: String?
     let assignTags: [Int]

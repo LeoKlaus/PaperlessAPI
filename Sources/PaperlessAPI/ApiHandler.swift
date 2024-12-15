@@ -8,17 +8,17 @@
 import Foundation
 import OSLog
 
-class ApiHandler {
+public class ApiHandler {
     
     private static let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
         category: String(describing: ApiHandler.self)
     )
     
-    var serverURL: URL?
-    var apiToken: String?
+    public var serverURL: URL?
+    public var apiToken: String?
     
-    func sendRequest<T: PaperlessObject>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, parameters: [String:String] = [:]) async throws -> T {
+    public func sendRequest<T: PaperlessObject>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, parameters: [String:String] = [:]) async throws -> T {
         
         guard let serverURL, let apiToken else {
             throw ApiError.noCredentials

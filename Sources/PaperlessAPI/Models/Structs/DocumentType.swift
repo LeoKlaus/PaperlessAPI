@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct DocumentType: PaperlessObject {
-    let id: Int
+public struct DocumentType: PaperlessObject {
+    public let id: Int
     let slug: String
     let name: String
     let match: String

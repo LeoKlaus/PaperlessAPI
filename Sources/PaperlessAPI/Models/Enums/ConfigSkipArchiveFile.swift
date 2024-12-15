@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-enum ConfigSkipArchiveFile: RawRepresentable, Codable, Equatable {
+public enum ConfigSkipArchiveFile: RawRepresentable, Codable, Equatable {
     case never, withText, always
     case unknown(String)
     
-    typealias RawValue = String
-    init(rawValue: RawValue) {
+    public typealias RawValue = String
+    public init(rawValue: RawValue) {
         switch rawValue {
         case "never": self = .never
         case "with_text": self = .withText
@@ -19,7 +19,7 @@ enum ConfigSkipArchiveFile: RawRepresentable, Codable, Equatable {
         }
     }
     
-    var rawValue: RawValue {
+    public var rawValue: RawValue {
         switch self {
         case .never: return "never"
         case .withText: return "with_text"

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PaginatedList: Codable {
+public protocol PaginatedList: Codable {
     var count: Int { get }
     var next: URL? { get }
     var previous: URL? { get }

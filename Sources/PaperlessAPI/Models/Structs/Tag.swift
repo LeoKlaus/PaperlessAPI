@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct Tag: PaperlessObject {
-    let id: Int
+public struct Tag: PaperlessObject {
+    public let id: Int
     let slug: String
     let name: String
     let color: Color

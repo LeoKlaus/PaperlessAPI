@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum MailRuleAttachmentType: RawRepresentable, Codable {
+public enum MailRuleAttachmentType: RawRepresentable, Codable {
     case attachments, allFiles
     case unknown(Int)
     
-    typealias RawValue = Int
-    init(rawValue: Int) {
+    public typealias RawValue = Int
+    public init(rawValue: Int) {
         switch rawValue {
         case 1: self = .attachments
         case 2: self = .allFiles
@@ -20,7 +20,7 @@ enum MailRuleAttachmentType: RawRepresentable, Codable {
         }
     }
     
-    var rawValue: Int {
+    public var rawValue: Int {
         switch self {
         case .attachments: return 1
         case .allFiles: return 2

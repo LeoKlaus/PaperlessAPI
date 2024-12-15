@@ -8,12 +8,12 @@
 import Foundation
 
 // These are from Celery
-enum TaskStatus: RawRepresentable, Codable {
+public enum TaskStatus: RawRepresentable, Codable {
     case pending, started, success, failure, retry, revoked
     case unknown(String)
     
-    typealias RawValue = String
-    var rawValue: String {
+    public typealias RawValue = String
+    public var rawValue: String {
         switch self {
         case .pending:
             return "PENDING"
@@ -32,7 +32,7 @@ enum TaskStatus: RawRepresentable, Codable {
         }
     }
     
-    init(rawValue: String) {
+    public init(rawValue: String) {
         switch rawValue {
         case "PENDING":
             self = .pending

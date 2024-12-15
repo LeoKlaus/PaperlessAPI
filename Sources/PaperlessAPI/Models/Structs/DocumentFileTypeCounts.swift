@@ -7,7 +7,7 @@
 
 import UniformTypeIdentifiers
 
-struct DocumentFileTypeCounts: Codable, Equatable {
+public struct DocumentFileTypeCounts: Codable, Equatable {
     let mimeType: UTType?
     let mimeTypeDescription: String
     let mimeTypeCount: Int
@@ -23,7 +23,7 @@ struct DocumentFileTypeCounts: Codable, Equatable {
         self.mimeType = UTType(mimeType: mimeType)
     }
     
-    init(from decoder: any Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.mimeTypeDescription = try container.decode(String.self, forKey: .mimeType)
         self.mimeType = UTType(mimeType: self.mimeTypeDescription)

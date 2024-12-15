@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-enum ConfigColorConversionStrategy: RawRepresentable, Codable, Equatable {
+public enum ConfigColorConversionStrategy: RawRepresentable, Codable, Equatable {
     case leaveColorUnchanged, rgb, useDeviceIndependentColor, gray, cmyk
     case unknown(String)
     
-    typealias RawValue = String
-    init(rawValue: String) {
+    public typealias RawValue = String
+    public init(rawValue: String) {
         switch rawValue {
         case "LeaveColorUnchanged": self = .leaveColorUnchanged
         case "RGB": self = .rgb
@@ -21,7 +21,7 @@ enum ConfigColorConversionStrategy: RawRepresentable, Codable, Equatable {
         }
     }
     
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .leaveColorUnchanged: return "LeaveColorUnchanged"
         case .rgb: return "RGB"

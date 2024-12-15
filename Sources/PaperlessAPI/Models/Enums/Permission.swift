@@ -6,7 +6,7 @@
 //
 
 // Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src-ui/src/app/services/permissions.service.spec.ts#L111
-enum Permission: RawRepresentable, Codable, Equatable {
+public enum Permission: RawRepresentable, Codable, Equatable {
     case applicationConfiguration(PermissionType)
     case chordCounter(PermissionType)
     case comment(PermissionType)
@@ -56,8 +56,8 @@ enum Permission: RawRepresentable, Codable, Equatable {
     case workflowTrigger(PermissionType)
     case unknown(String)
     
-    typealias RawValue = String
-    var rawValue: String {
+    public typealias RawValue = String
+    public var rawValue: String {
         switch self {
         case .applicationConfiguration(let type):
             return "\(type)_applicationconfiguration"
@@ -158,7 +158,7 @@ enum Permission: RawRepresentable, Codable, Equatable {
         }
     }
     
-    init(rawValue: String) {
+    public init(rawValue: String) {
         /*
          As only inherited permissions, which are read only, use the identifier
          syntax including the group (i.e. "documents.add_correspondent"),

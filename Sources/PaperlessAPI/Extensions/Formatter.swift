@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Formatter {
+public extension Formatter {
     
     static let iso8601withFractionalSeconds: DateFormatter = {
         let formatter = DateFormatter()

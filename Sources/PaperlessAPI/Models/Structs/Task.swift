@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Task: Codable {
+public struct Task: Codable {
     let id: Int
     let taskId: UUID
     let taskFileName: String

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension JSONDecoder.DateDecodingStrategy {
+public extension JSONDecoder.DateDecodingStrategy {
     
     static let iso8601withFractionalSeconds = custom {
         let container = try $0.singleValueContainer()

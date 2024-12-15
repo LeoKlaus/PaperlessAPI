@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ShareLink: PaperlessObject {
-    let id: Int
+public struct ShareLink: PaperlessObject {
+    public let id: Int
     let created: Date
     let expiration: Date?
     let slug: String

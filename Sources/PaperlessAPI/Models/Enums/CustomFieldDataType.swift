@@ -5,12 +5,12 @@
 //  Created by Leo Wehrfritz on 13.12.24.
 //
 
-enum CustomFieldDataType: RawRepresentable, Codable {
+public enum CustomFieldDataType: RawRepresentable, Codable {
     case string, url, date, boolean, integer, float, monetary, documentlink, select
     case unknown(String)
     
-    typealias RawValue = String
-    var rawValue: String {
+    public typealias RawValue = String
+    public var rawValue: String {
         switch self {
         case .string:
             return "string"
@@ -35,7 +35,7 @@ enum CustomFieldDataType: RawRepresentable, Codable {
         }
     }
     
-    init?(rawValue: String) {
+    public init?(rawValue: String) {
         switch rawValue {
         case "string":
             self = .string
