@@ -18,7 +18,8 @@ public enum ApiEndpoint: RawRepresentable {
     case bulkEditDocuments
     case bulkDownloadDocuments // POST a list of document ids to download them as zip
     case selectionData // POST a list of document ids to see infos about their attributes
-    case logs
+    case mailLogs
+    case paperlessLogs
     case tags
     case savedViews
     case storagePaths
@@ -61,7 +62,8 @@ public enum ApiEndpoint: RawRepresentable {
         case "/api/documents/bulk_edit/": self = .bulkEditDocuments
         case "/api/documents/bulk_download/": self = .bulkDownloadDocuments
         case "/api/documents/selection_data/": self = .selectionData
-        case "/api/logs/": self = .logs
+        case "/api/logs/mail/": self = .mailLogs
+        case "/api/logs/paperless/": self = .paperlessLogs
         case "/api/tags/": self = .tags
         case "/api/saved_views/": self = .savedViews
         case "/api/storage_paths/": self = .storagePaths
@@ -103,7 +105,8 @@ public enum ApiEndpoint: RawRepresentable {
         case .bulkEditDocuments: return "/api/documents/bulk_edit/"
         case .bulkDownloadDocuments: return "/api/documents/bulk_download/"
         case .selectionData: return "/api/documents/selection_data/"
-        case .logs: return "/api/logs/"
+        case .mailLogs: return "/api/logs/mail/"
+        case .paperlessLogs: return "/api/logs/paperless/"
         case .tags: return "/api/tags/"
         case .bulkEditObjects: return "/api/bulk_edit_objects/"
         case .savedViews: return "/api/saved_views/"
