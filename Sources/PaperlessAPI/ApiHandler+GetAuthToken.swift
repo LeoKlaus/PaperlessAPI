@@ -28,8 +28,8 @@ public extension ApiHandler {
         if let httpResponse = response as? HTTPURLResponse {
             if 200...299 ~= httpResponse.statusCode {
                 let decoder = JSONDecoder()
-                let token = try decoder.decode(String.self, from: data)
-                return token
+                let token = try decoder.decode(TokenResponse.self, from: data)
+                return token.token
             } else if 403 == httpResponse.statusCode {
                 throw ApiError.forbidden
             } else {
