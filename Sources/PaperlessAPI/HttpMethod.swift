@@ -1,11 +1,11 @@
 //
-//  HTTPMethod.swift
+//  HttpMethod.swift
 //  PaperlessAPI
 //
 //  Created by Leo Wehrfritz on 15.12.24.
 //
 
-enum HTTPMethod: String {
+enum HttpMethod: String {
     case get = "GET"
     case post = "POST"
     case put = "PUT"

@@ -1,5 +1,5 @@
 //
-//  APIHandler.swift
+//  ApiHandler.swift
 //  PaperlessAPI
 //
 //  Created by Leo Wehrfritz on 15.12.24.
@@ -8,20 +8,20 @@
 import Foundation
 import OSLog
 
-class APIHandler {
+class ApiHandler {
     
     private static let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
-        category: String(describing: APIHandler.self)
+        category: String(describing: ApiHandler.self)
     )
     
     var serverURL: URL?
     var apiToken: String?
     
-    func sendRequest<T: PaperlessObject>(method: HTTPMethod, endpoint: APIEndpoint, body: Data? = nil, parameters: [String:String] = [:]) async throws -> T {
+    func sendRequest<T: PaperlessObject>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, parameters: [String:String] = [:]) async throws -> T {
         
         guard let serverURL, let apiToken else {
-            throw APIError.noCredentials
+            throw ApiError.noCredentials
         }
         
         var url = serverURL.appendingPathComponent(endpoint.rawValue)
@@ -38,7 +38,7 @@ class APIHandler {
         
         let urlSession = URLSession.shared
         
-        APIHandler.logger.debug("Sending \(method.rawValue) request to \(url.absoluteString)")
+        Self.logger.debug("Sending \(method.rawValue) request to \(url.absoluteString)")
         let (data, response) = try await urlSession.data(for: request)
         
         if let httpResponse = response as? HTTPURLResponse {
@@ -51,20 +51,20 @@ class APIHandler {
                     return object
                 } catch {
                     if let responseString = String(data: data, encoding: .utf8) {
-                        APIHandler.logger.error("Server response was:\n\(responseString, privacy: .public)")
+                        Self.logger.error("Server response was:\n\(responseString, privacy: .public)")
                     }
                     throw error
                 }
             } else if 403 == httpResponse.statusCode {
-                APIHandler.logger.error("Server returned 403:\n\(String(data: data, encoding: .utf8) ?? "")")
-                throw APIError.forbidden
+                Self.logger.error("Server returned 403:\n\(String(data: data, encoding: .utf8) ?? "")")
+                throw ApiError.forbidden
             } else {
-                APIHandler.logger.error("Server returned unexpected status code \(httpResponse.statusCode) and response:\n\(String(data: data, encoding: .utf8) ?? "")\nQueried endpoint: \(endpoint.rawValue, privacy: .public)")
-                throw APIError.unexpectedHTTPStatus(data, httpResponse.statusCode)
+                Self.logger.error("Server returned unexpected status code \(httpResponse.statusCode) and response:\n\(String(data: data, encoding: .utf8) ?? "")\nQueried endpoint: \(endpoint.rawValue, privacy: .public)")
+                throw ApiError.unexpectedHTTPStatus(data, httpResponse.statusCode)
             }
         }
         
-        APIHandler.logger.error("Server returned unexpected response:\n\(String(data: data, encoding: .utf8) ?? "")")
-        throw APIError.invalidResponse(data, response)
+        Self.logger.error("Server returned unexpected response:\n\(String(data: data, encoding: .utf8) ?? "")")
+        throw ApiError.invalidResponse(data, response)
     }
 }
