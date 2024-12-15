@@ -20,7 +20,8 @@ public extension ApiHandler {
         
         request.httpMethod = "POST"
         request.httpBody = try JSONEncoder().encode(body)
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
