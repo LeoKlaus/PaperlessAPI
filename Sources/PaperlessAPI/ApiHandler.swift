@@ -49,18 +49,11 @@ public class ApiHandler {
         
         if let httpResponse = response as? HTTPURLResponse {
             if 200...299 ~= httpResponse.statusCode {
-                do {
-                    let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
-                    
-                    let object = try decoder.decode(T.self, from: data)
-                    return object
-                } catch {
-                    if let responseString = String(data: data, encoding: .utf8) {
-                        Self.logger.error("Server response was:\n\(responseString, privacy: .public)")
-                    }
-                    throw error
-                }
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
+                
+                let object = try decoder.decode(T.self, from: data)
+                return object
             } else if 403 == httpResponse.statusCode {
                 Self.logger.error("Server returned 403:\n\(String(data: data, encoding: .utf8) ?? "")")
                 throw ApiError.forbidden

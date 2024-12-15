@@ -11,6 +11,6 @@ public struct PaginatedList<T: PaperlessObject>: Codable {
     public let count: Int
     public let next: URL?
     public let previous: URL?
-    public let all: [Int]
+    public let all: [Int]?
     public let results: [T]
 }
