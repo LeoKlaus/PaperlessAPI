@@ -39,7 +39,7 @@ public class ApiHandler {
         request.httpMethod = method.rawValue
         request.httpBody = body
         request.addValue("Token \(apiToken)", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json; Version=4", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let urlSession = URLSession.shared
