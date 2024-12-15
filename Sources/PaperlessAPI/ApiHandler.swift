@@ -18,6 +18,11 @@ public class ApiHandler {
     public var serverURL: URL?
     public var apiToken: String?
     
+    public init(serverURL: URL? = nil, apiToken: String? = nil) {
+        self.serverURL = serverURL
+        self.apiToken = apiToken
+    }
+    
     public func sendRequest<T: PaperlessObject>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, parameters: [String:String] = [:]) async throws -> T {
         
         guard let serverURL, let apiToken else {
