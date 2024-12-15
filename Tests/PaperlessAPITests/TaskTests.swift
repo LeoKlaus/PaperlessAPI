@@ -29,7 +29,7 @@ import Foundation
     
     let decoder = JSONDecoder()
     decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
-    let task = try decoder.decode(PaperlessAPI.Task.self, from: json)
+    let task = try decoder.decode(PaperlessTask.self, from: json)
     
     #expect(task.id == 340)
     #expect(task.taskId == UUID(uuidString: "697a1e14-16e9-4963-9641-e298cc49cdf5")!)

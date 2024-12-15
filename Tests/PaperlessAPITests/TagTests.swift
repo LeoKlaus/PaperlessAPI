@@ -31,7 +31,7 @@ import SwiftUI
     
     
     let decoder = JSONDecoder()
-    let tag = try decoder.decode(PaperlessAPI.Tag.self, from: json)
+    let tag = try decoder.decode(PaperlessTag.self, from: json)
     
     #expect(tag.id == 1)
     #expect(tag.slug == "paid")

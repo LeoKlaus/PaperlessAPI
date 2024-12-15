@@ -52,7 +52,7 @@ import Foundation
     
     
     let decoder = JSONDecoder()
-    let group = try decoder.decode(Group.self, from: json)
+    let group = try decoder.decode(PaperlessGroup.self, from: json)
     
     #expect(group.id == 2)
     #expect(group.name == "User")

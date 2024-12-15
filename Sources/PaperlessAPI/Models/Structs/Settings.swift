@@ -53,7 +53,7 @@ public struct Settings: Codable {
     }
 }
 
-struct UpdateCheckingSettings: Codable {
+public struct UpdateCheckingSettings: Codable {
     let enabled: Bool
     let backendSetting: String
     
@@ -63,7 +63,7 @@ struct UpdateCheckingSettings: Codable {
     }
 }
 
-struct BulkEditSettings: Codable {
+public struct BulkEditSettings: Codable {
     let applyOnClose: Bool
     let confirmationDialogs: Bool
     
@@ -73,7 +73,7 @@ struct BulkEditSettings: Codable {
     }
 }
 
-struct DarkModeSettings: Codable {
+public struct DarkModeSettings: Codable {
     let useSystem: Bool
     let enabled: Bool
     let thumbInverted: Bool
@@ -84,7 +84,7 @@ struct DarkModeSettings: Codable {
         case thumbInverted = "thumb_inverted"
     }
     
-    init(from decoder: any Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.useSystem = try container.decode(Bool.self, forKey: .useSystem)
         let enabledStr = try container.decode(String.self, forKey: .enabled)
@@ -93,7 +93,7 @@ struct DarkModeSettings: Codable {
         self.thumbInverted = thumbInvertedStr == "true" ? true : false
     }
     
-    func encode(to encoder: any Encoder) throws {
+    public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(useSystem, forKey: .useSystem)
         try container.encode(enabled ? "true" : "false", forKey: .enabled)
@@ -101,11 +101,11 @@ struct DarkModeSettings: Codable {
     }
 }
 
-struct ThemeSettings: Codable {
+public struct ThemeSettings: Codable {
     let color: Color
 }
 
-struct DocumentDetailSettings: Codable {
+public struct DocumentDetailSettings: Codable {
     let nativePdfViewer: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -113,7 +113,7 @@ struct DocumentDetailSettings: Codable {
     }
 }
 
-struct DateDisplaySettings: Codable {
+public struct DateDisplaySettings: Codable {
     let dateLocale: String
     let dateFormat: String
     
@@ -123,7 +123,7 @@ struct DateDisplaySettings: Codable {
     }
 }
 
-struct NotificationSettings: Codable {
+public struct NotificationSettings: Codable {
     let consumerNewDocuments: Bool
     let consumerSuccess: Bool
     let consumerFailed: Bool
@@ -137,7 +137,7 @@ struct NotificationSettings: Codable {
     }
 }
 
-struct SavedViewSettings: Codable {
+public struct SavedViewSettings: Codable {
     let warnOnUnsavedChange: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -145,7 +145,7 @@ struct SavedViewSettings: Codable {
     }
 }
 
-struct PermissionSettings: Codable {
+public struct PermissionSettings: Codable {
     let defaultOwner: Int?
     let defaultViewUsers: [Int]
     let defaultViewGroups: [Int]
@@ -161,7 +161,7 @@ struct PermissionSettings: Codable {
     }
 }
 
-struct DocumentEditingSettings: Codable {
+public struct DocumentEditingSettings: Codable {
     let removeInboxTags: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -169,7 +169,7 @@ struct DocumentEditingSettings: Codable {
     }
 }
 
-struct SearchSettings: Codable {
+public struct SearchSettings: Codable {
     let dbOnly: Bool
     
     enum CodingKeys: String, CodingKey {
