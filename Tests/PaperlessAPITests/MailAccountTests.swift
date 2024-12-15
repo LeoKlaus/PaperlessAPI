@@ -43,3 +43,50 @@ import Foundation
     #expect(mailAccount.owner == 3)
     #expect(mailAccount.userCanChange == true)
 }
+
+@Test func decodeMailAccountWithPermissions() async throws {
+    
+    let json = """
+{
+      "id": 1,
+      "name": "Test",
+      "imap_server": "bla.test",
+      "imap_port": 587,
+      "imap_security": 3,
+      "username": "test",
+      "password": "*",
+      "character_set": "UTF-8",
+      "is_token": false,
+      "owner": 3,
+      "permissions": {
+        "view": {
+          "users": [],
+          "groups": []
+        },
+        "change": {
+          "users": [],
+          "groups": []
+        }
+      }
+}
+""".data(using: .utf8)!
+    
+    
+    let decoder = JSONDecoder()
+    let mailAccount = try decoder.decode(MailAccount.self, from: json)
+    
+    #expect(mailAccount.id == 1)
+    #expect(mailAccount.name == "Test")
+    #expect(mailAccount.imapServer == "bla.test")
+    #expect(mailAccount.imapPort == 587)
+    #expect(mailAccount.imapSecurity == .starttls)
+    #expect(mailAccount.username == "test")
+    #expect(mailAccount.password == "*")
+    #expect(mailAccount.characterSet == "UTF-8")
+    #expect(mailAccount.isToken == false)
+    #expect(mailAccount.owner == 3)
+    #expect(mailAccount.permissions?.view.users == [])
+    #expect(mailAccount.permissions?.view.groups == [])
+    #expect(mailAccount.permissions?.change.users == [])
+    #expect(mailAccount.permissions?.change.groups == [])
+}

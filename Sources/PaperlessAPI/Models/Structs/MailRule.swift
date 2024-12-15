@@ -9,29 +9,30 @@ import Foundation
 
 public struct MailRule: PaperlessObject {
     public let id: Int
-    let name: String
-    let account: Int
-    let folder: String
-    let filterFrom: String?
-    let filterTo: String?
-    let filterSubject: String?
-    let filterBody: String?
-    let filterAttachmentFilenameInclude: String?
-    let filterAttachmentFilenameExclude: String?
-    let maximumAge: Int
-    let action: MailRuleAction
-    let actionParameter: String?
-    let assignTitleFrom: MailRuleTitleSource
-    let assignTags: [Int]
-    let assignCorrespondentFrom: MailRuleCorrespondentSource
-    let assignCorrespondent: Int?
-    let assignDocumentType: Int?
-    let assignOwnerFromRule: Bool
-    let order: Int
-    let attachmentType: MailRuleAttachmentType
-    let consumptionScope: MailRuleConsumptionScope
-    let owner: Int
-    let userCanChange: Bool
+    public let name: String
+    public let account: Int
+    public let folder: String
+    public let filterFrom: String?
+    public let filterTo: String?
+    public let filterSubject: String?
+    public let filterBody: String?
+    public let filterAttachmentFilenameInclude: String?
+    public let filterAttachmentFilenameExclude: String?
+    public let maximumAge: Int
+    public let action: MailRuleAction
+    public let actionParameter: String?
+    public let assignTitleFrom: MailRuleTitleSource
+    public let assignTags: [Int]
+    public let assignCorrespondentFrom: MailRuleCorrespondentSource
+    public let assignCorrespondent: Int?
+    public let assignDocumentType: Int?
+    public let assignOwnerFromRule: Bool
+    public let order: Int
+    public let attachmentType: MailRuleAttachmentType
+    public let consumptionScope: MailRuleConsumptionScope
+    public let owner: Int
+    public let userCanChange: Bool?
+    public let permissions: ObjectPermissions?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -58,5 +59,6 @@ public struct MailRule: PaperlessObject {
         case consumptionScope = "consumption_scope"
         case owner
         case userCanChange = "user_can_change"
+        case permissions
     }
 }

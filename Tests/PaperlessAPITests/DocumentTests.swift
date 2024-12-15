@@ -158,7 +158,7 @@ import Foundation
         view: ObjectPermission(users: [1], groups: [2]),
         change: ObjectPermission(users: [3], groups: [4]))
     )
-    #expect(document.notes?.isEmpty ?? false)
+    #expect(document.notes == [])
     #expect(document.customFields == [
         CustomFieldContent(value: .number(2), field: 27),
         CustomFieldContent(value: .text("TRY-1.5"), field: 15)

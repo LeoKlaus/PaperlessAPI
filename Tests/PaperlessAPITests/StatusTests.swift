@@ -60,7 +60,7 @@ import Foundation
     #expect(status.database.status == "OK")
     #expect(status.database.error == nil)
     #expect(status.database.migrationStatus.latestMigration == "paperless_mail.0011_remove_mailrule_assign_tag_squashed_0024_alter_mailrule_name_and_more")
-    #expect(status.database.migrationStatus.unappliedMigrations.isEmpty)
+    #expect(status.database.migrationStatus.unappliedMigrations == [])
     #expect(status.tasks.redisUrl == "redis://broker:6379")
     #expect(status.tasks.redisStatus == "OK")
     #expect(status.tasks.redisError == nil)

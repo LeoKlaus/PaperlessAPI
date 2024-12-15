@@ -8,10 +8,10 @@
 import Foundation
 
 public struct CustomField: PaperlessObject {
-    public var id: Int
-    var name: String
-    var dataType: CustomFieldDataType
-    var extraData: CustomFieldExtraData?
+    public let id: Int
+    public let name: String
+    public let dataType: CustomFieldDataType
+    public let extraData: CustomFieldExtraData?
     
     enum CodingKeys: String, CodingKey {
         case id

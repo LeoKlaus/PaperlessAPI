@@ -9,15 +9,16 @@ import Foundation
 
 public struct StoragePath: PaperlessObject {
     public let id: Int
-    let slug: String
-    let name: String
-    let path: String
-    let match: String
-    let matchingAlgorithm: MatchingAlgorithm
-    let isInsensitive: Bool
-    let documentCount: Int?
-    let owner: Int?
-    let userCanChange: Bool?
+    public let slug: String
+    public let name: String
+    public let path: String
+    public let match: String
+    public let matchingAlgorithm: MatchingAlgorithm
+    public let isInsensitive: Bool
+    public let documentCount: Int?
+    public let owner: Int?
+    public let userCanChange: Bool?
+    public let permissions: ObjectPermissions?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -30,5 +31,6 @@ public struct StoragePath: PaperlessObject {
         case documentCount = "document_count"
         case owner
         case userCanChange = "user_can_change"
+        case permissions
     }
 }

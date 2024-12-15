@@ -9,17 +9,18 @@ import Foundation
 
 public struct SavedView: PaperlessObject {
     public let id: Int
-    let name: String
-    let showOnDashboard: Bool
-    let showInSidebar: Bool
-    let sortField: String
-    let sortReverse: Bool
-    let filterRules: [FilterRule]
-    let pageSize: Int?
-    let displayMode: DisplayMode?
-    let displayFields: [String]?
-    let owner: Int?
-    let userCanChange: Bool?
+    public let name: String
+    public let showOnDashboard: Bool
+    public let showInSidebar: Bool
+    public let sortField: String
+    public let sortReverse: Bool
+    public let filterRules: [FilterRule]
+    public let pageSize: Int?
+    public let displayMode: DisplayMode?
+    public let displayFields: [String]?
+    public let owner: Int?
+    public let userCanChange: Bool?
+    public let permissions: ObjectPermissions?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -34,5 +35,6 @@ public struct SavedView: PaperlessObject {
         case displayFields = "display_fields"
         case owner
         case userCanChange = "user_can_change"
+        case permissions
     }
 }

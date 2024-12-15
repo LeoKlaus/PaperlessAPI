@@ -270,7 +270,7 @@ import Foundation
     #expect(user.isStaff)
     #expect(user.isActive ?? false)
     #expect(user.isSuperuser)
-    #expect(user.groups.isEmpty)
+    #expect(user.groups == [])
     #expect(user.userPermissions?.count == 72)
     #expect(user.inheritedPermissions?.count == 152)
     user.userPermissions?.forEach { permission in

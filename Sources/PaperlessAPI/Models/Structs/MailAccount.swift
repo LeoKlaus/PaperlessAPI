@@ -9,16 +9,17 @@ import Foundation
 
 public struct MailAccount: PaperlessObject {
     public let id: Int
-    let name: String
-    let imapServer: String
-    let imapPort: Int?
-    let imapSecurity: MailEncryptionPolicy
-    let username: String
-    let password: String
-    let characterSet: String
-    let isToken: Bool
-    let owner: Int
-    let userCanChange: Bool
+    public let name: String
+    public let imapServer: String
+    public let imapPort: Int?
+    public let imapSecurity: MailEncryptionPolicy
+    public let username: String
+    public let password: String
+    public let characterSet: String
+    public let isToken: Bool
+    public let owner: Int
+    public let userCanChange: Bool?
+    public let permissions: ObjectPermissions?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -32,5 +33,6 @@ public struct MailAccount: PaperlessObject {
         case isToken = "is_token"
         case owner
         case userCanChange = "user_can_change"
+        case permissions
     }
 }
