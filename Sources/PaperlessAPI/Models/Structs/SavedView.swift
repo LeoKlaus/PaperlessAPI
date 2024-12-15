@@ -17,7 +17,7 @@ public struct SavedView: PaperlessObject {
     public let filterRules: [FilterRule]
     public let pageSize: Int?
     public let displayMode: DisplayMode?
-    public let displayFields: [String]?
+    public let displayFields: [SavedViewDisplayFields]?
     public let owner: Int?
     public let userCanChange: Bool?
     public let permissions: ObjectPermissions?

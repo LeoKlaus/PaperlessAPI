@@ -7,19 +7,19 @@
 
 import Foundation
 
-enum SavedViewDisplayFields: RawRepresentable, Codable {
+public enum SavedViewDisplayFields: RawRepresentable, Codable, Equatable {
     case title, created, tag, correspondent, documentType, storagePath, note, owner, shared, asn, added
     case customField(Int)
     case unknown(String)
     
-    //private static let customFieldRegex = /(custom_field_)(\d)+/
-    
-    typealias RawValue = String
-    init?(rawValue: String) {
+    public typealias RawValue = String
+    public init?(rawValue: String) {
         
-        /*if let match = customFieldRegex.firstMatch(in: rawValue), let customFieldId = Int(match.2) {
+        let customFieldRegex = /custom_field_(\d+)/
+        if let match = try? customFieldRegex.firstMatch(in: rawValue), let customFieldId = Int(match.1) {
             self = .customField(customFieldId)
-        }*/
+            return
+        }
         
         switch rawValue {
         case "title": self = .title
@@ -34,7 +34,7 @@ enum SavedViewDisplayFields: RawRepresentable, Codable {
         }
     }
     
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .title: return "title"
         case .created: return "created"

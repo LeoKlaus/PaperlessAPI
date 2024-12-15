@@ -35,7 +35,8 @@ import Foundation
         "title",
         "created",
         "tag",
-        "correspondent"
+        "correspondent",
+        "custom_field_27"
     ],
     "owner": 3,
     "user_can_change": true
@@ -60,10 +61,11 @@ import Foundation
     #expect(savedView.pageSize == 5)
     #expect(savedView.displayMode == .smallCards)
     #expect(savedView.displayFields == [
-        "title",
-        "created",
-        "tag",
-        "correspondent"
+        .title,
+        .created,
+        .tag,
+        .correspondent,
+        .customField(27)
     ])
     #expect(savedView.owner == 3)
     #expect(savedView.userCanChange ?? false)
