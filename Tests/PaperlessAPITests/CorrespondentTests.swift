@@ -20,6 +20,7 @@ import Foundation
     "matching_algorithm": 1,
     "is_insensitive": true,
     "document_count": 2,
+    "last_correspondence": "2023-02-01T00:00:00+01:00",
     "owner": 3,
     "user_can_change": true
 }
@@ -27,6 +28,7 @@ import Foundation
     
     
     let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
     let correspondent = try decoder.decode(Correspondent.self, from: json)
     
     #expect(correspondent.id == 4)
@@ -36,6 +38,7 @@ import Foundation
     #expect(correspondent.matchingAlgorithm == .matchAny)
     #expect(correspondent.isInsensitive)
     #expect(correspondent.documentCount == 2)
+    #expect(correspondent.lastCorrespondence == Date(timeIntervalSince1970: 1675206000.0))
     #expect(correspondent.owner == 3)
     #expect(correspondent.userCanChange ?? false)
 }
@@ -68,6 +71,7 @@ import Foundation
     
     
     let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
     let correspondent = try decoder.decode(Correspondent.self, from: json)
     
     #expect(correspondent.id == 2)
@@ -77,6 +81,7 @@ import Foundation
     #expect(correspondent.matchingAlgorithm == .matchAny)
     #expect(correspondent.isInsensitive)
     #expect(correspondent.documentCount == 5)
+    #expect(correspondent.lastCorrespondence == Date(timeIntervalSince1970: 1675206000.0))
     #expect(correspondent.owner == nil)
     #expect(correspondent.permissions?.view.users == [1])
     #expect(correspondent.permissions?.view.groups == [2])

@@ -8,9 +8,19 @@
 public struct ObjectPermissions: Codable, Equatable {
     public let view: ObjectPermission
     public let change: ObjectPermission
+    
+    public init(view: ObjectPermission, change: ObjectPermission) {
+        self.view = view
+        self.change = change
+    }
 }
 
 public struct ObjectPermission: Codable, Equatable {
     public let users: [Int]
     public let groups: [Int]
+    
+    public init(users: [Int], groups: [Int]) {
+        self.users = users
+        self.groups = groups
+    }
 }

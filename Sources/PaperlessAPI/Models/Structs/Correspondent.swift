@@ -15,9 +15,24 @@ public struct Correspondent: PaperlessObject {
     public let matchingAlgorithm: MatchingAlgorithm
     public let isInsensitive: Bool
     public let documentCount: Int?
+    public let lastCorrespondence: Date?
     public let owner: Int?
     public let userCanChange: Bool?
     public let permissions: ObjectPermissions?
+    
+    public init (id: Int = 0, name: String, match: String, matchingAlgorithm: MatchingAlgorithm, isInsensitive: Bool, owner: Int?, permissions: ObjectPermissions?) {
+        self.id = id
+        self.slug = ""
+        self.name = name
+        self.match = match
+        self.matchingAlgorithm = matchingAlgorithm
+        self.isInsensitive = isInsensitive
+        self.documentCount = nil
+        self.lastCorrespondence = nil
+        self.owner = owner
+        self.userCanChange = nil
+        self.permissions = permissions
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -27,8 +42,37 @@ public struct Correspondent: PaperlessObject {
         case matchingAlgorithm = "matching_algorithm"
         case isInsensitive = "is_insensitive"
         case documentCount = "document_count"
+        case lastCorrespondence = "last_correspondence"
         case owner
         case userCanChange = "user_can_change"
         case permissions
+        case setPermissions = "set_permissions"
+    }
+    
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        slug = try container.decode(String.self, forKey: .slug)
+        name = try container.decode(String.self, forKey: .name)
+        match = try container.decode(String.self, forKey: .match)
+        matchingAlgorithm = try container.decode(MatchingAlgorithm.self, forKey: .matchingAlgorithm)
+        isInsensitive = try container.decode(Bool.self, forKey: .isInsensitive)
+        documentCount = try container.decodeIfPresent(Int.self, forKey: .documentCount)
+        lastCorrespondence = try container.decodeIfPresent(Date.self, forKey: .lastCorrespondence)
+        owner = try container.decodeIfPresent(Int.self, forKey: .owner)
+        userCanChange = try container.decodeIfPresent(Bool.self, forKey: .userCanChange)
+        permissions = try container.decodeIfPresent(ObjectPermissions.self, forKey: .permissions)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(match, forKey: .match)
+        try container.encode(matchingAlgorithm, forKey: .matchingAlgorithm)
+        try container.encode(isInsensitive, forKey: .isInsensitive)
+        try container.encode(owner, forKey: .owner)
+        if let permissions {
+            try container.encode(permissions, forKey: .setPermissions)
+        }
     }
 }
