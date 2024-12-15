@@ -8,9 +8,9 @@
 import Foundation
 
 public struct PaginatedList<T: PaperlessObject>: Codable {
-    let count: Int
-    let next: URL?
-    let previous: URL?
-    let all: [Int]
-    let results: [T]
+    public let count: Int
+    public let next: URL?
+    public let previous: URL?
+    public let all: [Int]
+    public let results: [T]
 }
