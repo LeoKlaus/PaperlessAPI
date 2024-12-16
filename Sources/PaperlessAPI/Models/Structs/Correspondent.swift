@@ -7,7 +7,14 @@
 
 import Foundation
 
-public struct Correspondent: ListableObject {
+public struct Correspondent: ListableObject, ModifiableObject {
+    
+    public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
+        return .correspondent(id)
+    }
+    
+    public static var pluralEndpoint: ApiEndpoint = .correspondents
+    
     public let id: Int
     public let slug: String
     public let name: String

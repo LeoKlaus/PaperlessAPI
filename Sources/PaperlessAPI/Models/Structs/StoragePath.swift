@@ -7,7 +7,14 @@
 
 import Foundation
 
-public struct StoragePath: ListableObject {
+public struct StoragePath: ListableObject, ModifiableObject {
+    
+    public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
+        .storagePath(id)
+    }
+    
+    public static var pluralEndpoint: ApiEndpoint = .storagePaths
+    
     public let id: Int
     public let slug: String
     public let name: String

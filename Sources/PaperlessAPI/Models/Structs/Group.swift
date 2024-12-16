@@ -7,7 +7,13 @@
 
 import Foundation
 
-public struct PaperlessGroup: ListableObject {
+public struct PaperlessGroup: ListableObject, ModifiableObject {
+    public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
+        .group(id)
+    }
+    
+    public static var pluralEndpoint: ApiEndpoint = .groups
+    
     public let id: Int
     let name: String
     let permissions: [Permission]

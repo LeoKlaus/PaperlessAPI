@@ -8,7 +8,14 @@
 import Foundation
 import SwiftUI
 
-public struct PaperlessTag: ListableObject {
+public struct PaperlessTag: ListableObject, ModifiableObject {
+    
+    public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
+        .tag(id)
+    }
+    
+    public static var pluralEndpoint: ApiEndpoint = .tags
+    
     public let id: Int
     public let slug: String
     public let name: String

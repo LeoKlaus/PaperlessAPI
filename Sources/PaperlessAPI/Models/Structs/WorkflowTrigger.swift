@@ -7,7 +7,14 @@
 
 import Foundation
 
-public struct WorkflowTrigger: ListableObject, Equatable {
+public struct WorkflowTrigger: ListableObject, ModifiableObject, Equatable {
+    
+    public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
+        .workflowTrigger(id)
+    }
+    
+    public static var pluralEndpoint: ApiEndpoint = .workflowTriggers
+    
     public let id: Int
     let sources: [WorkflowTriggerSource]
     let type: WorkflowTriggerType

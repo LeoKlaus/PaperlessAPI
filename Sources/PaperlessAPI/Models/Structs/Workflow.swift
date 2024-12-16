@@ -5,7 +5,14 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public struct Workflow: ListableObject {
+public struct Workflow: ListableObject, ModifiableObject {
+    
+    public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
+        .workflow(id)
+    }
+    
+    public static var pluralEndpoint: ApiEndpoint = .workflows
+    
     public let id: Int
     let name: String
     let order: Int

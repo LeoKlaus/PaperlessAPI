@@ -7,7 +7,14 @@
 
 import Foundation
 
-public struct DocumentType: ListableObject {
+public struct DocumentType: ListableObject, ModifiableObject {
+    
+    public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
+        .documentType(id)
+    }
+    
+    public static var pluralEndpoint: ApiEndpoint = .documentTypes
+    
     public let id: Int
     public let slug: String
     public let name: String

@@ -7,7 +7,14 @@
 
 import Foundation
 
-public struct SavedView: ListableObject {
+public struct SavedView: ListableObject, ModifiableObject {
+    
+    public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
+        .savedView(id)
+    }
+    
+    public static var pluralEndpoint: ApiEndpoint = .savedViews
+    
     public let id: Int
     public let name: String
     public let showOnDashboard: Bool

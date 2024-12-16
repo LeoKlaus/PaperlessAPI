@@ -7,7 +7,14 @@
 
 import Foundation
 
-public struct User: ListableObject, Equatable {
+public struct User: ListableObject, ModifiableObject, Equatable {
+    
+    public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
+        .user(id)
+    }
+    
+    public static var pluralEndpoint: ApiEndpoint = .users
+    
     public let id: Int
     let username: String
     let email: String?
