@@ -8,26 +8,26 @@
 import SwiftUI
 
 public struct Settings: Codable {
-    let updateChecking: UpdateCheckingSettings
-    let tourComplete: Bool
-    let bulkEdit: BulkEditSettings
-    let documentListSize: Int
-    let slimSidebar: Bool
-    let darkMode: DarkModeSettings
-    let theme: ThemeSettings
-    let documentDetails: DocumentDetailSettings
-    let dateDisplay: DateDisplaySettings
-    let notifications: NotificationSettings
-    let notesEnabled: Bool
-    let savedViews: SavedViewSettings
-    let language: String
-    let appTitle: String
-    let appLogo: String
-    let permissions: PermissionSettings
-    let documentEditing: DocumentEditingSettings
-    let auditlogEnabled: Bool
-    let search: SearchSettings
-    let trashDelay: Int
+    public let updateChecking: UpdateCheckingSettings
+    public let tourComplete: Bool
+    public let bulkEdit: BulkEditSettings
+    public let documentListSize: Int
+    public let slimSidebar: Bool
+    public let darkMode: DarkModeSettings
+    public let theme: ThemeSettings
+    public let documentDetails: DocumentDetailSettings
+    public let dateDisplay: DateDisplaySettings
+    public let notifications: NotificationSettings
+    public let notesEnabled: Bool
+    public let savedViews: SavedViewSettings
+    public let language: String
+    public let appTitle: String
+    public let appLogo: String
+    public let permissions: PermissionSettings
+    public let documentEditing: DocumentEditingSettings
+    public let auditlogEnabled: Bool
+    public let search: SearchSettings
+    public let trashDelay: Int
     
     enum CodingKeys: String, CodingKey {
         case updateChecking = "update_checking"
@@ -54,8 +54,8 @@ public struct Settings: Codable {
 }
 
 public struct UpdateCheckingSettings: Codable {
-    let enabled: Bool
-    let backendSetting: String
+    public let enabled: Bool
+    public let backendSetting: String
     
     enum CodingKeys: String, CodingKey {
         case enabled
@@ -64,8 +64,8 @@ public struct UpdateCheckingSettings: Codable {
 }
 
 public struct BulkEditSettings: Codable {
-    let applyOnClose: Bool
-    let confirmationDialogs: Bool
+    public let applyOnClose: Bool
+    public let confirmationDialogs: Bool
     
     enum CodingKeys: String, CodingKey {
         case applyOnClose = "apply_on_close"
@@ -74,9 +74,9 @@ public struct BulkEditSettings: Codable {
 }
 
 public struct DarkModeSettings: Codable {
-    let useSystem: Bool
-    let enabled: Bool
-    let thumbInverted: Bool
+    public let useSystem: Bool
+    public let enabled: Bool
+    public let thumbInverted: Bool
     
     enum CodingKeys: String, CodingKey {
         case useSystem = "use_system"
@@ -102,11 +102,11 @@ public struct DarkModeSettings: Codable {
 }
 
 public struct ThemeSettings: Codable {
-    let color: Color
+    public let color: Color
 }
 
 public struct DocumentDetailSettings: Codable {
-    let nativePdfViewer: Bool
+    public let nativePdfViewer: Bool
     
     enum CodingKeys: String, CodingKey {
         case nativePdfViewer = "native_pdf_viewer"
@@ -114,8 +114,8 @@ public struct DocumentDetailSettings: Codable {
 }
 
 public struct DateDisplaySettings: Codable {
-    let dateLocale: String
-    let dateFormat: String
+    public let dateLocale: String
+    public let dateFormat: String
     
     enum CodingKeys: String, CodingKey {
         case dateLocale = "date_locale"
@@ -124,10 +124,10 @@ public struct DateDisplaySettings: Codable {
 }
 
 public struct NotificationSettings: Codable {
-    let consumerNewDocuments: Bool
-    let consumerSuccess: Bool
-    let consumerFailed: Bool
-    let consumerSuppressOnDashboard: Bool
+    public let consumerNewDocuments: Bool
+    public let consumerSuccess: Bool
+    public let consumerFailed: Bool
+    public let consumerSuppressOnDashboard: Bool
     
     enum CodingKeys: String, CodingKey {
         case consumerNewDocuments = "consumer_new_documents"
@@ -138,7 +138,7 @@ public struct NotificationSettings: Codable {
 }
 
 public struct SavedViewSettings: Codable {
-    let warnOnUnsavedChange: Bool
+    public let warnOnUnsavedChange: Bool
     
     enum CodingKeys: String, CodingKey {
         case warnOnUnsavedChange = "warn_on_unsaved_change"
@@ -146,11 +146,11 @@ public struct SavedViewSettings: Codable {
 }
 
 public struct PermissionSettings: Codable {
-    let defaultOwner: Int?
-    let defaultViewUsers: [Int]
-    let defaultViewGroups: [Int]
-    let defaultEditUsers: [Int]
-    let defaultEditGroups: [Int]
+    public let defaultOwner: Int?
+    public let defaultViewUsers: [Int]
+    public let defaultViewGroups: [Int]
+    public let defaultEditUsers: [Int]
+    public let defaultEditGroups: [Int]
     
     enum CodingKeys: String, CodingKey {
         case defaultOwner = "default_owner"
@@ -162,7 +162,7 @@ public struct PermissionSettings: Codable {
 }
 
 public struct DocumentEditingSettings: Codable {
-    let removeInboxTags: Bool
+    public let removeInboxTags: Bool
     
     enum CodingKeys: String, CodingKey {
         case removeInboxTags = "remove_inbox_tags"
@@ -170,7 +170,7 @@ public struct DocumentEditingSettings: Codable {
 }
 
 public struct SearchSettings: Codable {
-    let dbOnly: Bool
+    public let dbOnly: Bool
     
     enum CodingKeys: String, CodingKey {
         case dbOnly = "db_only"

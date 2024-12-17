@@ -22,6 +22,8 @@ public extension ApiHandler {
             if 200...299 ~= httpResponse.statusCode {
                 let decoder = JSONDecoder()
                 return try decoder.decode(RemoteVersion.self, from: data)
+            } else if 401 == httpResponse.statusCode {
+                throw ApiError.noCredentials
             } else if 403 == httpResponse.statusCode {
                 throw ApiError.forbidden
             } else {

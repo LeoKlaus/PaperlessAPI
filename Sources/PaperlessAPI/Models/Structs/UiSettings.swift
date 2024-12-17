@@ -6,7 +6,7 @@
 //
 
 public struct UiSettings: Codable {
-    let user: User
-    let settings: Settings
-    let permissions: [Permission]
+    public let user: User
+    public let settings: Settings
+    public let permissions: [Permission]
 }

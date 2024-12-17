@@ -14,35 +14,35 @@ public struct WorkflowAction: ListableObject, ModifiableObject {
     public static var pluralEndpoint: ApiEndpoint = .workflowActions
     
     public let id: Int
-    let type: WorkflowActionType
-    let assignTitle: String?
-    let assignTags: [Int]
-    let assignCorrespondent: Int?
-    let assignDocumentType: Int?
-    let assignStoragePath: Int?
-    let assignOwner: Int?
-    let assignViewUsers: [Int]
-    let assignViewGroups: [Int]
-    let assignChangeUsers: [Int]
-    let assignChangeGroups: [Int]
-    let assignCustomFields: [Int]
-    let removeAllTags: Bool
-    let removeTags: [Int]
-    let removeAllCorrespondents: Bool
-    let removeCorrespondents: [Int]
-    let removeAllDocumentTypes: Bool
-    let removeDocumentTypes: [Int]
-    let removeAllStoragePaths: Bool
-    let removeStoragePaths: [Int]
-    let removeCustomFields: [Int]
-    let removeAllCustomFields: Bool
-    let removeAllOwners: Bool
-    let removeOwners: [Int]
-    let removeAllPermissions: Bool
-    let removeViewUsers: [Int]
-    let removeViewGroups: [Int]
-    let removeChangeUsers: [Int]
-    let removeChangeGroups: [Int]
+    public let type: WorkflowActionType
+    public let assignTitle: String?
+    public let assignTags: [Int]
+    public let assignCorrespondent: Int?
+    public let assignDocumentType: Int?
+    public let assignStoragePath: Int?
+    public let assignOwner: Int?
+    public let assignViewUsers: [Int]
+    public let assignViewGroups: [Int]
+    public let assignChangeUsers: [Int]
+    public let assignChangeGroups: [Int]
+    public let assignCustomFields: [Int]
+    public let removeAllTags: Bool
+    public let removeTags: [Int]
+    public let removeAllCorrespondents: Bool
+    public let removeCorrespondents: [Int]
+    public let removeAllDocumentTypes: Bool
+    public let removeDocumentTypes: [Int]
+    public let removeAllStoragePaths: Bool
+    public let removeStoragePaths: [Int]
+    public let removeCustomFields: [Int]
+    public let removeAllCustomFields: Bool
+    public let removeAllOwners: Bool
+    public let removeOwners: [Int]
+    public let removeAllPermissions: Bool
+    public let removeViewUsers: [Int]
+    public let removeViewGroups: [Int]
+    public let removeChangeUsers: [Int]
+    public let removeChangeGroups: [Int]
     
     enum CodingKeys: String, CodingKey {
         case id

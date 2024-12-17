@@ -6,13 +6,13 @@
 //
 
 public struct Profile: Codable {
-    let email: String
-    let password: String
-    let firstName: String
-    let lastName: String
-    let authToken: String
-    let socialAccounts: [SocialAccount]
-    let hasUsablePassword: Bool
+    public let email: String
+    public let password: String
+    public let firstName: String
+    public let lastName: String
+    public let authToken: String
+    public let socialAccounts: [SocialAccount]
+    public let hasUsablePassword: Bool
     
     enum CodingKeys: String, CodingKey {
         case email

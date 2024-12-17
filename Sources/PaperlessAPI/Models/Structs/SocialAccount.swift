@@ -6,7 +6,7 @@
 //
 
 public struct SocialAccount: Codable, Equatable {
-    let id: Int
-    let provider: String
-    let name: String
+    public let id: Int
+    public let provider: String
+    public let name: String
 }

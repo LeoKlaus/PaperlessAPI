@@ -8,9 +8,9 @@
 import Foundation
 
 public struct Note: Codable, Equatable {
-    let id: Int
-    let note: String?
-    let created: Date?
-    let document: Int
-    let user: Int?
+    public let id: Int
+    public let note: String?
+    public let created: Date?
+    public let document: Int
+    public let user: Int?
 }

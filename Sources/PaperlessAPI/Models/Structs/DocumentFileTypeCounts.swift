@@ -8,9 +8,9 @@
 import UniformTypeIdentifiers
 
 public struct DocumentFileTypeCounts: Codable, Equatable {
-    let mimeType: UTType?
-    let mimeTypeDescription: String
-    let mimeTypeCount: Int
+    public let mimeType: UTType?
+    public let mimeTypeDescription: String
+    public let mimeTypeCount: Int
     
     enum CodingKeys: String, CodingKey {
         case mimeType = "mime_type"

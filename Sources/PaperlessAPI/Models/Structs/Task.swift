@@ -8,16 +8,16 @@
 import Foundation
 
 public struct PaperlessTask: Codable {
-    let id: Int
-    let taskId: UUID
-    let taskFileName: String
-    let dateCreated: Date
-    let dateDone: Date?
-    let type: TaskType
-    let status: TaskStatus
-    let result: String?
-    let acknowledged: Bool
-    let relatedDocument: String?
+    public let id: Int
+    public let taskId: UUID
+    public let taskFileName: String
+    public let dateCreated: Date
+    public let dateDone: Date?
+    public let type: TaskType
+    public let status: TaskStatus
+    public let result: String?
+    public let acknowledged: Bool
+    public let relatedDocument: String?
     
     enum CodingKeys: String, CodingKey {
         case id

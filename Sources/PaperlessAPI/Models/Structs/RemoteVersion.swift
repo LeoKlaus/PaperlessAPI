@@ -6,8 +6,8 @@
 //
 
 public struct RemoteVersion: Codable {
-    let version: String
-    let updateAvailable: Bool
+    public let version: String
+    public let updateAvailable: Bool
     
     enum CodingKeys: String, CodingKey {
         case version

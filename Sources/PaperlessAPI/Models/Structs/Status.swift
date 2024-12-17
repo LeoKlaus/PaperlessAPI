@@ -8,12 +8,12 @@
 import Foundation
 
 public struct Status: Codable {
-    let pngxVersion: String
-    let serverOs: String
-    let installType: String
-    let storage: StatusStorage
-    let database: StatusDatabase
-    let tasks: StatusTasks
+    public let pngxVersion: String
+    public let serverOs: String
+    public let installType: String
+    public let storage: StatusStorage
+    public let database: StatusDatabase
+    public let tasks: StatusTasks
     
     enum CodingKeys: String, CodingKey {
         case pngxVersion = "pngx_version"
@@ -26,16 +26,16 @@ public struct Status: Codable {
 }
 
 public struct StatusStorage: Codable {
-    let total: Int
-    let available: Int
+    public let total: Int
+    public let available: Int
 }
 
 public struct StatusDatabase: Codable {
-    let type: String
-    let url: String
-    let status: String
-    let error: String?
-    let migrationStatus: StatusDatabaseMigrationStatus
+    public let type: String
+    public let url: String
+    public let status: String
+    public let error: String?
+    public let migrationStatus: StatusDatabaseMigrationStatus
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -47,8 +47,8 @@ public struct StatusDatabase: Codable {
 }
 
 public struct StatusDatabaseMigrationStatus: Codable {
-    let latestMigration: String
-    let unappliedMigrations: [String]
+    public let latestMigration: String
+    public let unappliedMigrations: [String]
     
     enum CodingKeys: String, CodingKey {
         case latestMigration = "latest_migration"
@@ -57,16 +57,16 @@ public struct StatusDatabaseMigrationStatus: Codable {
 }
 
 public struct StatusTasks: Codable {
-    let redisUrl: String
-    let redisStatus: String
-    let redisError: String?
-    let celeryStatus: String
-    let indexStatus: String
-    let indexLastModified: Date
-    let indexError: String?
-    let classifierStatus: String
-    let classifierLastTrained: Date
-    let classifierError: String?
+    public let redisUrl: String
+    public let redisStatus: String
+    public let redisError: String?
+    public let celeryStatus: String
+    public let indexStatus: String
+    public let indexLastModified: Date
+    public let indexError: String?
+    public let classifierStatus: String
+    public let classifierLastTrained: Date
+    public let classifierError: String?
     
     enum CodingKeys: String, CodingKey {
         case redisUrl = "redis_url"

@@ -6,6 +6,6 @@
 //
 
 public struct CustomFieldContent: Codable, Equatable {
-    let value: CustomFieldValue
-    let field: Int
+    public let value: CustomFieldValue
+    public let field: Int
 }

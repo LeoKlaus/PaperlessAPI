@@ -15,6 +15,6 @@ public struct PaperlessGroup: ListableObject, ModifiableObject {
     public static var pluralEndpoint: ApiEndpoint = .groups
     
     public let id: Int
-    let name: String
-    let permissions: [Permission]
+    public let name: String
+    public let permissions: [Permission]
 }

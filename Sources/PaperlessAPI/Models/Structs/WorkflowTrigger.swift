@@ -16,17 +16,17 @@ public struct WorkflowTrigger: ListableObject, ModifiableObject, Equatable {
     public static var pluralEndpoint: ApiEndpoint = .workflowTriggers
     
     public let id: Int
-    let sources: [WorkflowTriggerSource]
-    let type: WorkflowTriggerType
-    let filterPath: String?
-    let filterFilename: String?
-    let filterMailrule: MailRuleAction?
-    let matchingAlgorithm: MatchingAlgorithm
-    let match: String
-    let isInsensitive: Bool
-    let filterHasTags: [Int]
-    let filterHasCorrespondent: Int?
-    let filterHasDocumentType: Int?
+    public let sources: [WorkflowTriggerSource]
+    public let type: WorkflowTriggerType
+    public let filterPath: String?
+    public let filterFilename: String?
+    public let filterMailrule: MailRuleAction?
+    public let matchingAlgorithm: MatchingAlgorithm
+    public let match: String
+    public let isInsensitive: Bool
+    public let filterHasTags: [Int]
+    public let filterHasCorrespondent: Int?
+    public let filterHasDocumentType: Int?
     
     enum CodingKeys: String, CodingKey {
         case id

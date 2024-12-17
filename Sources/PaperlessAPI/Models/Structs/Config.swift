@@ -8,22 +8,22 @@
 import Foundation
 
 public struct Config: Codable {
-    let id: Int
-    let userArgs: String?
-    let outputType: ConfigOutputType?
-    let pages: Int?
-    let language: String?
-    let mode: ConfigMode?
-    let skipArchiveFile: ConfigSkipArchiveFile?
-    let imageDpi: Int?
-    let unpaperClean: ConfigUnpaperClean?
-    let deskew: Bool?
-    let rotatePages: Bool?
-    let rotatePagesThreshold: Int?
-    let maxImagePixels: Int?
-    let colorConversionStrategy: ConfigColorConversionStrategy?
-    let appTitle: String?
-    let appLogo: URL?
+    public let id: Int
+    public let userArgs: String?
+    public let outputType: ConfigOutputType?
+    public let pages: Int?
+    public let language: String?
+    public let mode: ConfigMode?
+    public let skipArchiveFile: ConfigSkipArchiveFile?
+    public let imageDpi: Int?
+    public let unpaperClean: ConfigUnpaperClean?
+    public let deskew: Bool?
+    public let rotatePages: Bool?
+    public let rotatePagesThreshold: Int?
+    public let maxImagePixels: Int?
+    public let colorConversionStrategy: ConfigColorConversionStrategy?
+    public let appTitle: String?
+    public let appLogo: URL?
     
     enum CodingKeys: String, CodingKey {
         case id

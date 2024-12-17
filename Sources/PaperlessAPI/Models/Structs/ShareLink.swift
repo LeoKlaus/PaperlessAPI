@@ -16,11 +16,11 @@ public struct ShareLink: ListableObject, ModifiableObject {
     public static var pluralEndpoint: ApiEndpoint = .shareLinks
     
     public let id: Int
-    let created: Date
-    let expiration: Date?
-    let slug: String
-    let document: Int
-    let fileVersion: ShareLinkFileVersion
+    public let created: Date
+    public let expiration: Date?
+    public let slug: String
+    public let document: Int
+    public let fileVersion: ShareLinkFileVersion
     
     enum CodingKeys: String, CodingKey {
         case id

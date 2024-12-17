@@ -6,8 +6,8 @@
 //
 
 public struct FilterRule: Codable, Equatable {
-    let ruleType: RuleType
-    let value: String
+    public let ruleType: RuleType
+    public let value: String
     
     enum CodingKeys: String, CodingKey {
         case ruleType = "rule_type"

@@ -6,8 +6,8 @@
 //
 
 public struct CustomFieldExtraData: Codable {
-    let selectOptions: [String?]?
-    let defaultCurrency: String?
+    public let selectOptions: [String?]?
+    public let defaultCurrency: String?
     
     enum CodingKeys: String, CodingKey {
         case selectOptions = "select_options"

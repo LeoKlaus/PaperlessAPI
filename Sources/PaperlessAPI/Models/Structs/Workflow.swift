@@ -14,9 +14,9 @@ public struct Workflow: ListableObject, ModifiableObject {
     public static var pluralEndpoint: ApiEndpoint = .workflows
     
     public let id: Int
-    let name: String
-    let order: Int
-    let enabled: Bool
-    let triggers: [WorkflowTrigger]
-    let actions: [WorkflowAction]
+    public let name: String
+    public let order: Int
+    public let enabled: Bool
+    public let triggers: [WorkflowTrigger]
+    public let actions: [WorkflowAction]
 }

@@ -6,17 +6,17 @@
 //
 
 public struct Statistics: Codable {
-    let documentsTotal: Int
-    let documentsInbox: Int
-    let inboxTag: Int
-    let inboxTags: [Int]
-    let documentFileTypeCounts: [DocumentFileTypeCounts]
-    let characterCount: Int
-    let tagCount: Int
-    let correspondentCount: Int
-    let documentTypeCount: Int
-    let storagePathCount: Int
-    let currentAsn: Int
+    public let documentsTotal: Int
+    public let documentsInbox: Int
+    public let inboxTag: Int
+    public let inboxTags: [Int]
+    public let documentFileTypeCounts: [DocumentFileTypeCounts]
+    public let characterCount: Int
+    public let tagCount: Int
+    public let correspondentCount: Int
+    public let documentTypeCount: Int
+    public let storagePathCount: Int
+    public let currentAsn: Int
     
     enum CodingKeys: String, CodingKey {
         case documentsTotal = "documents_total"

@@ -6,5 +6,5 @@
 //
 
 public struct TokenResponse: Codable {
-    let token: String
+    public let token: String
 }

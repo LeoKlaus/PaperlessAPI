@@ -16,18 +16,18 @@ public struct User: ListableObject, ModifiableObject, Equatable {
     public static var pluralEndpoint: ApiEndpoint = .users
     
     public let id: Int
-    let username: String
-    let email: String?
-    let password: String?
-    let firstName: String?
-    let lastName: String?
-    let dateJoined: Date?
-    let isStaff: Bool
-    let isActive: Bool?
-    let isSuperuser: Bool
-    let groups: [Int]
-    let userPermissions: [Permission]?
-    let inheritedPermissions: [Permission]?
+    public let username: String
+    public let email: String?
+    public let password: String?
+    public let firstName: String?
+    public let lastName: String?
+    public let dateJoined: Date?
+    public let isStaff: Bool
+    public let isActive: Bool?
+    public let isSuperuser: Bool
+    public let groups: [Int]
+    public let userPermissions: [Permission]?
+    public let inheritedPermissions: [Permission]?
     
     enum CodingKeys: String, CodingKey {
         case id
