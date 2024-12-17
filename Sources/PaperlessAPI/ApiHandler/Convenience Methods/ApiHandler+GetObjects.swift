@@ -5,8 +5,8 @@
 //  Created by Leo Wehrfritz on 15.12.24.
 //
 
-extension ApiHandler {
-    public func getObjects<T: ListableObject>(endpoint: ApiEndpoint, limit: Int = 25, page: Int = 1, fullPermissions: Bool = false, parameters: [String:String] = [:]) async throws -> [T] {
+public extension ApiHandler {
+    func getObjects<T: ListableObject>(endpoint: ApiEndpoint, limit: Int = 25, page: Int = 1, fullPermissions: Bool = false, parameters: [String:String] = [:]) async throws -> [T] {
         
         var parameters = parameters
         parameters["page_size"] = String(limit)

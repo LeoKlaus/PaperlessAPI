@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension ApiHandler {
+public extension ApiHandler {
     static func getRemoteVersion(serverURL: URL) async throws -> RemoteVersion {
         let url = serverURL.appendingPathComponent(ApiEndpoint.remoteVersion.rawValue)
         
