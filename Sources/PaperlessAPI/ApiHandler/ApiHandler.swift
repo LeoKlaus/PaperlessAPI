@@ -23,7 +23,7 @@ public class ApiHandler {
         self.apiToken = apiToken
     }
     
-    public func sendRequest<T: Codable>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, parameters: [String:String] = [:]) async throws -> T {
+    public func sendRequest<T: Codable>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:]) async throws -> T {
         
         guard let serverURL, let apiToken else {
             throw ApiError.noCredentials
@@ -41,6 +41,10 @@ public class ApiHandler {
         request.addValue("Token \(apiToken)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json; Version=4", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        for header in headers {
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
         
         let urlSession = URLSession.shared
         
@@ -70,7 +74,7 @@ public class ApiHandler {
         throw ApiError.invalidResponse(data, response)
     }
     
-    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, parameters: [String:String] = [:]) async throws {
+    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, headers: [String:String] = [:], parameters: [String:String] = [:]) async throws {
         
         guard let serverURL, let apiToken else {
             throw ApiError.noCredentials
@@ -87,6 +91,10 @@ public class ApiHandler {
         request.addValue("Token \(apiToken)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json; Version=4", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        for header in headers {
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
         
         let urlSession = URLSession.shared
         

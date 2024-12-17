@@ -8,13 +8,17 @@
 import Foundation
 
 public extension ApiHandler {
-    static func getRemoteVersion(serverURL: URL) async throws -> RemoteVersion {
+    static func getRemoteVersion(serverURL: URL, headers: [String: String] = [:]) async throws -> RemoteVersion {
         let url = serverURL.appendingPathComponent(ApiEndpoint.remoteVersion.rawValue)
         
         var request = URLRequest(url: url)
         
         request.httpMethod = HttpMethod.get.rawValue
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        for header in headers {
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
         
         let (data, response) = try await URLSession.shared.data(for: request)
         

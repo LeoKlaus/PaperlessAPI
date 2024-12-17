@@ -6,7 +6,7 @@
 //
 
 public extension ApiHandler {
-    func getObjects<T: ListableObject>(endpoint: ApiEndpoint, limit: Int = 25, page: Int = 1, fullPermissions: Bool = false, parameters: [String:String] = [:]) async throws -> [T] {
+    func getObjects<T: ListableObject>(endpoint: ApiEndpoint, limit: Int = 25, page: Int = 1, fullPermissions: Bool = false, headers: [String:String] = [:], parameters: [String:String] = [:]) async throws -> [T] {
         
         var parameters = parameters
         parameters["page_size"] = String(limit)
@@ -15,7 +15,7 @@ public extension ApiHandler {
             parameters["full_perms"] = "true"
         }
         
-        let response: PaginatedList<T> = try await self.sendRequest(method: .get, endpoint: endpoint, body: nil, parameters: parameters)
+        let response: PaginatedList<T> = try await self.sendRequest(method: .get, endpoint: endpoint, body: nil, headers: headers, parameters: parameters)
         
         return response.results
     }
