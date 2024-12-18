@@ -83,4 +83,8 @@ public extension ApiHandler {
     func getConfig(headers: [String:String] = [:], parameters: [String:String] = [:]) async throws -> [Config] {
         return try await self.sendRequest(method: .get, endpoint: .config, headers: headers, parameters: parameters)
     }
+    
+    func getProfile(headers: [String:String] = [:], parameters: [String:String] = [:]) async throws -> Profile {
+        return try await self.sendRequest(method: .get, endpoint: .profile, headers: headers, parameters: parameters)
+    }
 }

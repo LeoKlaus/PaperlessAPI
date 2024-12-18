@@ -260,54 +260,54 @@ import SwiftUI
     
     #expect(uiSettings.user == User(id: 3, username: "root", email: nil, password: nil, firstName: nil, lastName: nil, dateJoined: nil, isStaff: true, isActive: nil, isSuperuser: true, groups: [], userPermissions: nil, inheritedPermissions: nil))
     
-    #expect(uiSettings.settings.updateChecking.enabled)
+    #expect(uiSettings.settings.updateChecking.enabled ?? false)
     #expect(uiSettings.settings.updateChecking.backendSetting == "default")
     
     #expect(uiSettings.settings.tourComplete)
     
-    #expect(!uiSettings.settings.bulkEdit.applyOnClose)
-    #expect(uiSettings.settings.bulkEdit.confirmationDialogs)
+    #expect(!(uiSettings.settings.bulkEdit?.applyOnClose ?? true))
+    #expect(uiSettings.settings.bulkEdit?.confirmationDialogs ?? false)
     
     #expect(uiSettings.settings.documentListSize == 50)
     
-    #expect(!uiSettings.settings.slimSidebar)
+    #expect(!(uiSettings.settings.slimSidebar ?? true))
     
-    #expect(uiSettings.settings.darkMode.useSystem)
-    #expect(!uiSettings.settings.darkMode.enabled)
-    #expect(uiSettings.settings.darkMode.thumbInverted)
+    #expect(uiSettings.settings.darkMode?.useSystem ?? false)
+    #expect(!(uiSettings.settings.darkMode?.enabled ?? true))
+    #expect(uiSettings.settings.darkMode?.thumbInverted ?? false)
     
-    #expect(uiSettings.settings.theme.color == Color(hex: "#725BFF"))
+    #expect(uiSettings.settings.theme?.color == "#725BFF")
     
-    #expect(!uiSettings.settings.documentDetails.nativePdfViewer)
+    #expect(!(uiSettings.settings.documentDetails?.nativePdfViewer ?? true))
     
-    #expect(uiSettings.settings.dateDisplay.dateLocale == "")
-    #expect(uiSettings.settings.dateDisplay.dateFormat == "mediumDate")
+    #expect(uiSettings.settings.dateDisplay?.dateLocale == "")
+    #expect(uiSettings.settings.dateDisplay?.dateFormat == "mediumDate")
     
-    #expect(uiSettings.settings.notifications.consumerNewDocuments)
-    #expect(uiSettings.settings.notifications.consumerSuccess)
-    #expect(uiSettings.settings.notifications.consumerFailed)
-    #expect(uiSettings.settings.notifications.consumerSuppressOnDashboard)
+    #expect(uiSettings.settings.notifications?.consumerNewDocuments ?? false)
+    #expect(uiSettings.settings.notifications?.consumerSuccess ?? false)
+    #expect(uiSettings.settings.notifications?.consumerFailed ?? false)
+    #expect(uiSettings.settings.notifications?.consumerSuppressOnDashboard ?? false)
     
-    #expect(uiSettings.settings.notesEnabled)
+    #expect(uiSettings.settings.notesEnabled ?? false)
     
-    #expect(uiSettings.settings.savedViews.warnOnUnsavedChange)
+    #expect(uiSettings.settings.savedViews?.warnOnUnsavedChange ?? false)
     
     #expect(uiSettings.settings.language == "")
     
     #expect(uiSettings.settings.appTitle == "Paperparrot Demo")
     #expect(uiSettings.settings.appLogo == "/logo/logo.svg")
     
-    #expect(uiSettings.settings.permissions.defaultOwner == nil)
-    #expect(uiSettings.settings.permissions.defaultViewUsers == [1])
-    #expect(uiSettings.settings.permissions.defaultViewGroups == [2])
-    #expect(uiSettings.settings.permissions.defaultEditUsers == [3])
-    #expect(uiSettings.settings.permissions.defaultEditGroups == [4])
+    #expect(uiSettings.settings.permissions?.defaultOwner == nil)
+    #expect(uiSettings.settings.permissions?.defaultViewUsers == [1])
+    #expect(uiSettings.settings.permissions?.defaultViewGroups == [2])
+    #expect(uiSettings.settings.permissions?.defaultEditUsers == [3])
+    #expect(uiSettings.settings.permissions?.defaultEditGroups == [4])
     
-    #expect(!uiSettings.settings.documentEditing.removeInboxTags)
+    #expect(!(uiSettings.settings.documentEditing?.removeInboxTags ?? true))
     
     #expect(uiSettings.settings.auditlogEnabled)
     
-    #expect(!uiSettings.settings.search.dbOnly)
+    #expect(!(uiSettings.settings.search?.dbOnly ?? true))
     
     #expect(uiSettings.settings.trashDelay == 30)
     

@@ -10,23 +10,23 @@ import SwiftUI
 public struct Settings: Codable {
     public let updateChecking: UpdateCheckingSettings
     public let tourComplete: Bool
-    public let bulkEdit: BulkEditSettings
-    public let documentListSize: Int
-    public let slimSidebar: Bool
-    public let darkMode: DarkModeSettings
-    public let theme: ThemeSettings
-    public let documentDetails: DocumentDetailSettings
-    public let dateDisplay: DateDisplaySettings
-    public let notifications: NotificationSettings
-    public let notesEnabled: Bool
-    public let savedViews: SavedViewSettings
-    public let language: String
+    public let bulkEdit: BulkEditSettings?
+    public let documentListSize: Int?
+    public let slimSidebar: Bool?
+    public let darkMode: DarkModeSettings?
+    public let theme: ThemeSettings?
+    public let documentDetails: DocumentDetailSettings?
+    public let dateDisplay: DateDisplaySettings?
+    public let notifications: NotificationSettings?
+    public let notesEnabled: Bool?
+    public let savedViews: SavedViewSettings?
+    public let language: String?
     public let appTitle: String
     public let appLogo: String
-    public let permissions: PermissionSettings
-    public let documentEditing: DocumentEditingSettings
+    public let permissions: PermissionSettings?
+    public let documentEditing: DocumentEditingSettings?
     public let auditlogEnabled: Bool
-    public let search: SearchSettings
+    public let search: SearchSettings?
     public let trashDelay: Int
     
     enum CodingKeys: String, CodingKey {
@@ -54,7 +54,7 @@ public struct Settings: Codable {
 }
 
 public struct UpdateCheckingSettings: Codable {
-    public let enabled: Bool
+    public let enabled: Bool?
     public let backendSetting: String
     
     enum CodingKeys: String, CodingKey {
@@ -102,7 +102,7 @@ public struct DarkModeSettings: Codable {
 }
 
 public struct ThemeSettings: Codable {
-    public let color: Color
+    public let color: String
 }
 
 public struct DocumentDetailSettings: Codable {
