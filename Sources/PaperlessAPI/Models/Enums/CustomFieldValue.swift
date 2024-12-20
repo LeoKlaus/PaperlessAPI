@@ -48,8 +48,4 @@ public enum CustomFieldValue: Codable, Equatable {
         
         throw CustomFieldError.missingValue
     }
-    
-    enum CustomFieldError: Error {
-        case missingValue
-    }
 }
