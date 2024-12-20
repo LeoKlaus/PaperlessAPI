@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Document: ListableObject, ModifiableObject {
+public struct Document: ListableObject, ModifiableObject, Identifiable {
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .document(id)
     }
