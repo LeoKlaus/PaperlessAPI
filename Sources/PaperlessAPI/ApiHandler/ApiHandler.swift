@@ -10,24 +10,26 @@ import OSLog
 
 public class ApiHandler {
     
-    private static let logger = Logger(
+    public static let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
         category: String(describing: ApiHandler.self)
     )
     
-    public var serverURL: URL?
-    public var apiToken: String?
+    public var serverURL: URL
+    private var apiToken: String
+    private var session: URLSession?
     
-    public init(serverURL: URL? = nil, apiToken: String? = nil) {
+    public init(serverURL: URL, apiToken: String, session: URLSession? = nil) {
         self.serverURL = serverURL
+        self.apiToken = apiToken
+        self.session = session
+    }
+    
+    public func setApiToken(_ apiToken: String) {
         self.apiToken = apiToken
     }
     
     public func sendRequest<T: Codable>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:]) async throws -> T {
-        
-        guard let serverURL, let apiToken else {
-            throw ApiError.noCredentials
-        }
         
         var url = serverURL.appendingPathComponent(endpoint.rawValue)
         
@@ -46,7 +48,7 @@ public class ApiHandler {
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
-        let urlSession = URLSession.shared
+        let urlSession = self.session ?? URLSession.shared
         
         Self.logger.debug("Sending \(method.rawValue) request to \(url.absoluteString)")
         let (data, response) = try await urlSession.data(for: request)
@@ -76,10 +78,6 @@ public class ApiHandler {
     
     public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, headers: [String:String] = [:], parameters: [String:String] = [:]) async throws {
         
-        guard let serverURL, let apiToken else {
-            throw ApiError.noCredentials
-        }
-        
         var url = serverURL.appendingPathComponent(endpoint.rawValue)
         
         for parameter in parameters {
@@ -96,7 +94,7 @@ public class ApiHandler {
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
-        let urlSession = URLSession.shared
+        let urlSession = self.session ?? URLSession.shared
         
         Self.logger.debug("Sending \(method.rawValue) request to \(url.absoluteString)")
         let (data, response) = try await urlSession.data(for: request)

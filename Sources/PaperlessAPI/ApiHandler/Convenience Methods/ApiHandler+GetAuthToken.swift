@@ -8,7 +8,7 @@
 import Foundation
 
 public extension ApiHandler {
-    static func getAuthToken(for serverURL: URL, user: String, password: String, headers: [String: String] = [:]) async throws -> String {
+    static func getAuthToken(for serverURL: URL, user: String, password: String, headers: [String: String] = [:], session: URLSession = .shared) async throws -> String {
         let url = serverURL.appendingPathComponent(ApiEndpoint.token.rawValue)
         
         let body = [
@@ -27,7 +27,7 @@ public extension ApiHandler {
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await session.data(for: request)
         
         if let httpResponse = response as? HTTPURLResponse {
             if 200...299 ~= httpResponse.statusCode {

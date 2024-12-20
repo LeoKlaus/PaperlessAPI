@@ -8,7 +8,7 @@
 import Foundation
 
 public extension ApiHandler {
-    static func getRemoteVersion(serverURL: URL, headers: [String: String] = [:]) async throws -> RemoteVersion {
+    static func getRemoteVersion(serverURL: URL, headers: [String: String] = [:], session: URLSession = URLSession.shared) async throws -> RemoteVersion {
         let url = serverURL.appendingPathComponent(ApiEndpoint.remoteVersion.rawValue)
         
         var request = URLRequest(url: url)
@@ -20,7 +20,7 @@ public extension ApiHandler {
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await session.data(for: request)
         
         if let httpResponse = response as? HTTPURLResponse {
             if 200...299 ~= httpResponse.statusCode {
