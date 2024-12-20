@@ -21,8 +21,8 @@ public struct Settings: Codable {
     public let notesEnabled: Bool?
     public let savedViews: SavedViewSettings?
     public let language: String?
-    public let appTitle: String
-    public let appLogo: String
+    public let appTitle: String?
+    public let appLogo: String?
     public let permissions: PermissionSettings?
     public let documentEditing: DocumentEditingSettings?
     public let auditlogEnabled: Bool
