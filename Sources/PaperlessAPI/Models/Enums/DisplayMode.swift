@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 13.12.24.
 //
 
-public enum DisplayMode: RawRepresentable, Codable, Equatable {
+public enum DisplayMode: RawRepresentable, Codable, Hashable {
     case smallCards, largeCards, table
     case unknown(String)
     

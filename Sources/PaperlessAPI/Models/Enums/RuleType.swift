@@ -6,7 +6,7 @@
 //
 
 // Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src/documents/models.py#L480
-public enum RuleType: RawRepresentable, Codable, Equatable {
+public enum RuleType: RawRepresentable, Codable, Equatable, Hashable {
     case titleContains              //0
     case contentContains            //1
     case asnIs                      //2

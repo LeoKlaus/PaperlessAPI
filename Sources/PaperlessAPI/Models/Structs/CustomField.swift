@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CustomField: ListableObject, ModifiableObject {
+public struct CustomField: ListableObject, ModifiableObject, Hashable {
     
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .customField(id)
@@ -25,5 +25,12 @@ public struct CustomField: ListableObject, ModifiableObject {
         case name
         case dataType = "data_type"
         case extraData = "extra_data"
+    }
+    
+    public init(id: Int, name: String, dataType: CustomFieldDataType, extraData: CustomFieldExtraData?) {
+        self.id = id
+        self.name = name
+        self.dataType = dataType
+        self.extraData = extraData
     }
 }

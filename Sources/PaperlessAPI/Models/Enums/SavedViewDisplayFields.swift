@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum SavedViewDisplayFields: RawRepresentable, Codable, Equatable {
+public enum SavedViewDisplayField: RawRepresentable, Codable, Hashable {
     case title, created, tag, correspondent, documentType, storagePath, note, owner, shared, asn, added
     case customField(Int)
     case unknown(String)

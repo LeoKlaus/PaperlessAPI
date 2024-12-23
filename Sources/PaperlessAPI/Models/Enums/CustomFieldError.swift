@@ -6,5 +6,5 @@
 //
 
 public enum CustomFieldError: Error {
-    case missingValue
+    case unexpectedValue
 }

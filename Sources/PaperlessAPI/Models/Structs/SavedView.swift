@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SavedView: ListableObject, ModifiableObject {
+public struct SavedView: ListableObject, ModifiableObject, Hashable {
     
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .savedView(id)
@@ -24,7 +24,7 @@ public struct SavedView: ListableObject, ModifiableObject {
     public let filterRules: [FilterRule]
     public let pageSize: Int?
     public let displayMode: DisplayMode?
-    public let displayFields: [SavedViewDisplayFields]?
+    public let displayFields: [SavedViewDisplayField]?
     public let owner: Int?
     public let userCanChange: Bool?
     public let permissions: ObjectPermissions?
@@ -43,5 +43,21 @@ public struct SavedView: ListableObject, ModifiableObject {
         case owner
         case userCanChange = "user_can_change"
         case permissions
+    }
+    
+    public init(id: Int, name: String, showOnDashboard: Bool, showInSidebar: Bool, sortField: String, sortReverse: Bool, filterRules: [FilterRule], pageSize: Int?, displayMode: DisplayMode?, displayFields: [SavedViewDisplayField]?, owner: Int?, userCanChange: Bool?, permissions: ObjectPermissions?) {
+        self.id = id
+        self.name = name
+        self.showOnDashboard = showOnDashboard
+        self.showInSidebar = showInSidebar
+        self.sortField = sortField
+        self.sortReverse = sortReverse
+        self.filterRules = filterRules
+        self.pageSize = pageSize
+        self.displayMode = displayMode
+        self.displayFields = displayFields
+        self.owner = owner
+        self.userCanChange = userCanChange
+        self.permissions = permissions
     }
 }

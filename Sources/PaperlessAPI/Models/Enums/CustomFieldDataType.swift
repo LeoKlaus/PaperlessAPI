@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 13.12.24.
 //
 
-public enum CustomFieldDataType: RawRepresentable, Codable {
+public enum CustomFieldDataType: RawRepresentable, Codable, Hashable {
     case string, url, date, boolean, integer, float, monetary, documentlink, select
     case unknown(String)
     

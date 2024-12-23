@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DocumentType: ListableObject, ModifiableObject {
+public struct DocumentType: ListableObject, ModifiableObject, Hashable {
     
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .documentType(id)
@@ -40,9 +40,9 @@ public struct DocumentType: ListableObject, ModifiableObject {
         case setPermissions = "set_permissions"
     }
     
-    init(id: Int, name: String, match: String, matchingAlgorithm: MatchingAlgorithm, isInsensitive: Bool, documentCount: Int?, owner: Int?, permissions: ObjectPermissions?) {
+    public init(id: Int, slug: String, name: String, match: String, matchingAlgorithm: MatchingAlgorithm, isInsensitive: Bool, documentCount: Int?, owner: Int?, permissions: ObjectPermissions?) {
         self.id = id
-        self.slug = ""
+        self.slug = slug
         self.name = name
         self.match = match
         self.matchingAlgorithm = matchingAlgorithm

@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 13.12.24.
 //
 
-public struct CustomFieldExtraData: Codable {
+public struct CustomFieldExtraData: Codable, Hashable {
     public let selectOptions: [String?]?
     public let defaultCurrency: String?
     

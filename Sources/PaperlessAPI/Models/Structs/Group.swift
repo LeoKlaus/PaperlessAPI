@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PaperlessGroup: ListableObject, ModifiableObject {
+public struct PaperlessGroup: ListableObject, ModifiableObject, Hashable {
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .group(id)
     }
@@ -17,4 +17,10 @@ public struct PaperlessGroup: ListableObject, ModifiableObject {
     public let id: Int
     public let name: String
     public let permissions: [Permission]
+    
+    public init(id: Int, name: String, permissions: [Permission]) {
+        self.id = id
+        self.name = name
+        self.permissions = permissions
+    }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Correspondent: ListableObject, ModifiableObject {
+public struct Correspondent: ListableObject, ModifiableObject, Hashable {
     
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         return .correspondent(id)
@@ -27,9 +27,9 @@ public struct Correspondent: ListableObject, ModifiableObject {
     public let userCanChange: Bool?
     public let permissions: ObjectPermissions?
     
-    public init (id: Int = 0, name: String, match: String, matchingAlgorithm: MatchingAlgorithm, isInsensitive: Bool, owner: Int?, permissions: ObjectPermissions?) {
+    public init (id: Int = 0, slug: String, name: String, match: String, matchingAlgorithm: MatchingAlgorithm, isInsensitive: Bool, documentCount: Int? = nil, lastCorrespondence: Date? = nil, owner: Int?, permissions: ObjectPermissions?) {
         self.id = id
-        self.slug = ""
+        self.slug = slug
         self.name = name
         self.match = match
         self.matchingAlgorithm = matchingAlgorithm

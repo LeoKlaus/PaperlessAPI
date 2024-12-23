@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct User: ListableObject, ModifiableObject, Equatable {
+public struct User: ListableObject, ModifiableObject, Hashable {
     
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .user(id)
@@ -43,5 +43,21 @@ public struct User: ListableObject, ModifiableObject, Equatable {
         case groups
         case userPermissions = "user_permissions"
         case inheritedPermissions = "inherited_permissions"
+    }
+    
+    public init(id: Int, username: String, email: String?, password: String?, firstName: String?, lastName: String?, dateJoined: Date?, isStaff: Bool, isActive: Bool?, isSuperuser: Bool, groups: [Int], userPermissions: [Permission]?, inheritedPermissions: [Permission]?) {
+        self.id = id
+        self.username = username
+        self.email = email
+        self.password = password
+        self.firstName = firstName
+        self.lastName = lastName
+        self.dateJoined = dateJoined
+        self.isStaff = isStaff
+        self.isActive = isActive
+        self.isSuperuser = isSuperuser
+        self.groups = groups
+        self.userPermissions = userPermissions
+        self.inheritedPermissions = inheritedPermissions
     }
 }

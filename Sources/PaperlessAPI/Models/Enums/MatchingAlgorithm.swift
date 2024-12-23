@@ -6,7 +6,7 @@
 //
 
 // Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src/documents/models.py#L48
-public enum MatchingAlgorithm: RawRepresentable, Codable, Equatable {
+public enum MatchingAlgorithm: RawRepresentable, Codable, Equatable, Hashable {
     case matchNone      //0
     case matchAny       //1
     case matchAll       //2

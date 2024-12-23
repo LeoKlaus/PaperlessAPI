@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public struct PaperlessTag: ListableObject, ModifiableObject {
+public struct PaperlessTag: ListableObject, ModifiableObject, Hashable {
     
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .tag(id)
@@ -44,5 +44,21 @@ public struct PaperlessTag: ListableObject, ModifiableObject {
         case owner
         case userCanChange = "user_can_change"
         case permissions
+    }
+    
+    public init(id: Int, slug: String, name: String, color: Color, textColor: Color, match: String, matchingAlgorithm: MatchingAlgorithm, isInsensitive: Bool, isInboxTag: Bool, documentCount: Int?, owner: Int?, userCanChange: Bool?, permissions: ObjectPermissions?) {
+        self.id = id
+        self.slug = slug
+        self.name = name
+        self.color = color
+        self.textColor = textColor
+        self.match = match
+        self.matchingAlgorithm = matchingAlgorithm
+        self.isInsensitive = isInsensitive
+        self.isInboxTag = isInboxTag
+        self.documentCount = documentCount
+        self.owner = owner
+        self.userCanChange = userCanChange
+        self.permissions = permissions
     }
 }

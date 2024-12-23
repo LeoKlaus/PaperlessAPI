@@ -7,11 +7,12 @@
 
 import Foundation
 
-public enum CustomFieldValue: Codable, Equatable {
+public enum CustomFieldValue: Codable, Equatable, Hashable {
     case boolean(Bool)
     case number(Float)
     case text(String)
     case docLink([Int])
+    case `nil`
     
     public func value() -> Any? {
         switch self {
@@ -23,6 +24,8 @@ public enum CustomFieldValue: Codable, Equatable {
             return float
         case .docLink(let docIDs):
             return docIDs
+        case .nil:
+            return nil
         }
     }
     
@@ -36,6 +39,7 @@ public enum CustomFieldValue: Codable, Equatable {
             self = .boolean(bool)
             return
         }
+        
         if let float = try? decoder.singleValueContainer().decode(Float.self) {
             self = .number(float)
             return
@@ -46,6 +50,11 @@ public enum CustomFieldValue: Codable, Equatable {
             return
         }
         
-        throw CustomFieldError.missingValue
+        if let _ = try? decoder.singleValueContainer().decodeNil() {
+            self = .nil
+            return
+        }
+        
+        throw DecodingError.typeMismatch(CustomFieldValue.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Could not decode CustomFieldValue"))
     }
 }

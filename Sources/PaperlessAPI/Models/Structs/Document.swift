@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Document: ListableObject, ModifiableObject, Identifiable {
+public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable {
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .document(id)
     }
@@ -61,5 +61,30 @@ public struct Document: ListableObject, ModifiableObject, Identifiable {
         case customFields = "custom_fields"
         case pageCount = "page_count"
         case permissions
+    }
+    
+    public init(id: Int, correspondent: Int?, documentType: Int?, storagePath: Int?, title: String?, content: String?, tags: [Int], created: Date, createdDate: Date, modified: Date, added: Date, deletedAt: Date?, archiveSerialNumber: Int?, originalFileName: String, archivedFileName: String, owner: Int?, userCanChange: Bool?, isSharedByRequester: Bool?, notes: [Note]?, customFields: [CustomFieldContent]?, pageCount: Int?, permissions: ObjectPermissions?) {
+        self.id = id
+        self.correspondent = correspondent
+        self.documentType = documentType
+        self.storagePath = storagePath
+        self.title = title
+        self.content = content
+        self.tags = tags
+        self.created = created
+        self.createdDate = createdDate
+        self.modified = modified
+        self.added = added
+        self.deletedAt = deletedAt
+        self.archiveSerialNumber = archiveSerialNumber
+        self.originalFileName = originalFileName
+        self.archivedFileName = archivedFileName
+        self.owner = owner
+        self.userCanChange = userCanChange
+        self.isSharedByRequester = isSharedByRequester
+        self.notes = notes
+        self.customFields = customFields
+        self.pageCount = pageCount
+        self.permissions = permissions
     }
 }
