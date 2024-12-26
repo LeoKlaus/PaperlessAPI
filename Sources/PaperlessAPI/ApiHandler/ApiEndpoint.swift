@@ -17,6 +17,8 @@ public enum ApiEndpoint: RawRepresentable {
     case documentType(Int)
     case documents
     case document(Int)
+    case documentThumb(Int)
+    case documentPreview(Int)
     case postDocument
     case bulkEditDocuments
     case bulkDownloadDocuments // POST a list of document ids to download them as zip
@@ -119,6 +121,8 @@ public enum ApiEndpoint: RawRepresentable {
         case .documentType(let id): return "/api/document_types/\(id)/"
         case .documents: return "/api/documents/"
         case .document(let id): return "/api/documents/\(id)/"
+        case .documentThumb(let id): return "/api/documents/\(id)/thumb/"
+        case .documentPreview(let id): return "/api/documents/\(id)/preview/"
         case .postDocument: return "/api/documents/post_document/"
         case .bulkEditDocuments: return "/api/documents/bulk_edit/"
         case .bulkDownloadDocuments: return "/api/documents/bulk_download/"

@@ -29,7 +29,7 @@ public class ApiHandler {
         self.apiToken = apiToken
     }
     
-    public func sendRequest<T: Codable>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:]) async throws -> T {
+    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:]) async throws -> Data {
         
         var url = serverURL.appendingPathComponent(endpoint.rawValue)
         
@@ -55,11 +55,7 @@ public class ApiHandler {
         
         if let httpResponse = response as? HTTPURLResponse {
             if 200...299 ~= httpResponse.statusCode {
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
-                
-                let object = try decoder.decode(T.self, from: data)
-                return object
+                return data
             } else if 403 == httpResponse.statusCode {
                 Self.logger.error("Server returned 403:\n\(String(data: data, encoding: .utf8) ?? "")")
                 throw ApiError.forbidden
@@ -74,6 +70,16 @@ public class ApiHandler {
         
         Self.logger.error("Server returned unexpected response:\n\(String(data: data, encoding: .utf8) ?? "")")
         throw ApiError.invalidResponse(data, response)
+    }
+    
+    public func sendRequest<T>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:]) async throws -> T where T: Decodable {
+        
+        let data: Data = try await self.sendRequest(method: method, endpoint: endpoint, body: body, headers: headers, parameters: parameters)
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
+        
+        return try decoder.decode(T.self, from: data)
     }
     
     public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, headers: [String:String] = [:], parameters: [String:String] = [:]) async throws {

@@ -13,4 +13,9 @@ public struct CustomFieldExtraData: Codable, Hashable {
         case selectOptions = "select_options"
         case defaultCurrency = "default_currency"
     }
+    
+    public init(selectOptions: [String?]?, defaultCurrency: String?) {
+        self.selectOptions = selectOptions
+        self.defaultCurrency = defaultCurrency
+    }
 }

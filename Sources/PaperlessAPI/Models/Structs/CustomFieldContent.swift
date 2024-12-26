@@ -8,4 +8,9 @@
 public struct CustomFieldContent: Codable, Equatable, Hashable {
     public let value: CustomFieldValue
     public let field: Int
+    
+    public init(value: CustomFieldValue, field: Int) {
+        self.value = value
+        self.field = field
+    }
 }
