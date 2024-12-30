@@ -16,6 +16,21 @@ public extension ApiHandler {
         return try await self.sendRequest(method: .get, endpoint: T.singularEndpoint(id), headers: headers, parameters: parameters)
     }
     
+    func uploadDocument(_ document: Document, fileURL: URL, headers: [String:String] = [:]) async throws -> String {
+        
+        let boundary = UUID().uuidString
+        
+        let body = try document.toMultiPartData(boundary: boundary, fileURL: fileURL)
+        
+        let uuidData = try await self.sendRequest(method: .post, endpoint: .postDocument, body: body, multiPartBoundary: boundary, headers: headers)
+        
+        guard let uuidString = String(data: uuidData, encoding: .utf8) else {
+            throw ApiError.invalidResponse(uuidData, nil)
+        }
+        
+        return uuidString
+    }
+    
     func create<T: ModifiableObject>(_ object: T, headers: [String:String] = [:]) async throws -> T {
         let JSONEncoder = JSONEncoder()
         let body = try JSONEncoder.encode(object)

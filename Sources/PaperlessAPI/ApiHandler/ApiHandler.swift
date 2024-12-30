@@ -29,7 +29,7 @@ public class ApiHandler {
         self.apiToken = apiToken
     }
     
-    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:]) async throws -> Data {
+    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, multiPartBoundary: String? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:]) async throws -> Data {
         
         var url = serverURL.appendingPathComponent(endpoint.rawValue)
         
@@ -42,7 +42,12 @@ public class ApiHandler {
         request.httpBody = body
         request.addValue("Token \(apiToken)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json; Version=4", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        if let multiPartBoundary {
+            request.addValue("multipart/form-data; boundary=\(multiPartBoundary)", forHTTPHeaderField: "Content-Type")
+        } else {
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
         
         for header in headers {
             request.addValue(header.value, forHTTPHeaderField: header.key)
@@ -51,6 +56,7 @@ public class ApiHandler {
         let urlSession = self.session ?? URLSession.shared
         
         Self.logger.debug("Sending \(method.rawValue) request to \(url.absoluteString)")
+        
         let (data, response) = try await urlSession.data(for: request)
         
         if let httpResponse = response as? HTTPURLResponse {

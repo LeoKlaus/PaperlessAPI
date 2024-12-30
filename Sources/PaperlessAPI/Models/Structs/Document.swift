@@ -29,7 +29,7 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
     public let deletedAt: Date?
     public let archiveSerialNumber: Int?
     public let originalFileName: String
-    public let archivedFileName: String
+    public let archivedFileName: String?
     public let owner: Int?
     public let userCanChange: Bool?
     public let isSharedByRequester: Bool?
@@ -86,5 +86,60 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
         self.customFields = customFields
         self.pageCount = pageCount
         self.permissions = permissions
+    }
+    
+    public func toMultiPartData(boundary: String, fileURL: URL) throws -> Data {
+        var body = Data()
+        
+        if let title {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"title\"\r\n\r\n")
+            body.append(title)
+            body.append("\r\n")
+        }
+        
+        body.append("--\(boundary)\r\n")
+        body.append("Content-Disposition: form-data; name=\"created\"\r\n\r\n")
+        body.append(created.ISO8601Format())
+        body.append("\r\n")
+        
+        if let correspondent {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"correspondent\"\r\n\r\n")
+            body.append(String(correspondent))
+            body.append("\r\n")
+        }
+        
+        if let documentType {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"document_type\"\r\n\r\n")
+            body.append(String(documentType))
+            body.append("\r\n")
+        }
+        
+        for tag in tags {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"tags\"\r\n\r\n")
+            body.append(String(tag))
+            body.append("\r\n")
+        }
+        
+        if let archiveSerialNumber {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"archive_serial_number\"\r\n\r\n")
+            body.append(String(archiveSerialNumber))
+            body.append("\r\n")
+        }
+        
+        let filename = fileURL.lastPathComponent
+        let data = try Data(contentsOf: fileURL)
+        body.append("--\(boundary)\r\n")
+        body.append("Content-Disposition: form-data; name=\"document\"; filename=\"\(filename)\"\r\n")
+        body.append("Content-Type: \(fileURL.mimeType)\r\n\r\n")
+        body.append(data)
+        body.append("\r\n")
+        
+        body.append("--\(boundary)--\r\n")
+        return body
     }
 }

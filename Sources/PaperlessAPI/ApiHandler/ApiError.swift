@@ -11,6 +11,7 @@ public enum ApiError: Error {
     case noCredentials
     case forbidden
     case notFound
-    case invalidResponse(Data, URLResponse)
+    case invalidResponse(Data, URLResponse?)
     case unexpectedHTTPStatus(Data, Int)
+    case couldntSerializeDocument
 }
