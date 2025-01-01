@@ -73,3 +73,27 @@ import Foundation
     #expect(value.value == .docLink([1,2,3]))
 }
 
+@Test func decodeCustomFieldValueMonetary() async throws {
+    let json = """
+{
+    "value": "EUR6.2",
+    "field": 15
+}
+"""
+    
+    let decoder = JSONDecoder()
+    let value = try decoder.decode(CustomFieldContent.self, from: json.data(using: .utf8)!)
+    
+    #expect(value.value == .monetary(6.2, "EUR"))
+}
+
+@Test func encodeCustomFieldValueMonetary() async throws {
+    let encoder = JSONEncoder()
+    let fieldValue = CustomFieldContent(value: .monetary(6.20, "EUR"), field: 15)
+    let value = try encoder.encode(fieldValue)
+    
+    let valueDict = try JSONSerialization.jsonObject(with: value, options: []) as? [String: Any]
+    
+    #expect(valueDict?["value"] as? String == "EUR6.2")
+    #expect(valueDict?["field"] as? Int == 15)
+}

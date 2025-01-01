@@ -11,6 +11,7 @@ public enum CustomFieldValue: Codable, Equatable, Hashable {
     case boolean(Bool)
     case number(Float)
     case text(String)
+    case monetary(Float, String)
     case docLink([Int])
     case `nil`
     
@@ -24,13 +25,44 @@ public enum CustomFieldValue: Codable, Equatable, Hashable {
             return float
         case .docLink(let docIDs):
             return docIDs
+        case .monetary(let float, let currency):
+            return (float, currency)
         case .nil:
             return nil
         }
     }
     
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .text(let string):
+            try container.encode(string)
+        case .boolean(let bool):
+            try container.encode(bool)
+        case .number(let float):
+            try container.encode(float)
+        case .docLink(let docIDs):
+            try container.encode(docIDs)
+        case .monetary(let float, let currency):
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 2
+            formatter.decimalSeparator = "."
+            guard let str = formatter.string(for: float) else {
+                throw EncodingError.invalidValue(float, EncodingError.Context(codingPath: [], debugDescription: "Could not encode monetary value"))
+            }
+            try container.encode(currency + str)
+        case .nil:
+            try container.encodeNil()
+        }
+    }
+    
     public init(from decoder: Decoder) throws {
         if let string = try? decoder.singleValueContainer().decode(String.self) {
+            let regex = /([^-\d]*)(-?[\d.]*)/
+            if let match = string.matches(of: regex).first, let float = Float(match.2) {
+                self = .monetary(float, String(match.1))
+                return
+            }
             self = .text(string)
             return
         }

@@ -161,6 +161,6 @@ import Foundation
     #expect(document.notes == [])
     #expect(document.customFields == [
         CustomFieldContent(value: .number(2), field: 27),
-        CustomFieldContent(value: .text("TRY-1.5"), field: 15)
+        CustomFieldContent(value: .monetary(-1.5, "TRY"), field: 15)
     ])
 }
