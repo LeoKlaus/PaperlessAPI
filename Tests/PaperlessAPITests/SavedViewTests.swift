@@ -63,7 +63,7 @@ import Foundation
     #expect(savedView.displayFields == [
         .title,
         .created,
-        .tag,
+        .tags,
         .correspondent,
         .customField(27)
     ])

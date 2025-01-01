@@ -7,10 +7,14 @@
 
 import Foundation
 
-public enum SavedViewDisplayField: RawRepresentable, Codable, Hashable {
-    case title, created, tag, correspondent, documentType, storagePath, note, owner, shared, asn, added
+public enum SavedViewDisplayField: RawRepresentable, Codable, Hashable, Identifiable {
+    case title, created, tags, correspondent, documentType, storagePath, notes, owner, shared, asn, added, pageCount
     case customField(Int)
     case unknown(String)
+    
+    public var id: String {
+        rawValue
+    }
     
     public typealias RawValue = String
     public init?(rawValue: String) {
@@ -24,12 +28,13 @@ public enum SavedViewDisplayField: RawRepresentable, Codable, Hashable {
         switch rawValue {
         case "title": self = .title
         case "created": self = .created
-        case "tag": self = .tag
+        case "tag": self = .tags
         case "correspondent": self = .correspondent
         case "documenttype": self = .documentType
         case "storagepath": self = .storagePath
-        case "note": self = .note
+        case "note": self = .notes
         case "owner": self = .owner
+        case "pagecount": self = .pageCount
         default: self = .unknown(rawValue)
         }
     }
@@ -38,15 +43,16 @@ public enum SavedViewDisplayField: RawRepresentable, Codable, Hashable {
         switch self {
         case .title: return "title"
         case .created: return "created"
-        case .tag: return "tag"
+        case .tags: return "tag"
         case .correspondent: return "correspondent"
         case .documentType: return "documenttype"
         case .storagePath: return "storagepath"
-        case .note: return "note"
+        case .notes: return "note"
         case .owner: return "owner"
         case .shared: return "shared"
         case .asn: return "asn"
         case .added: return "added"
+        case .pageCount: return "pagecount"
         case .customField(let value): return "custom_field_(\(value))"
         case .unknown(let value): return value
         }
