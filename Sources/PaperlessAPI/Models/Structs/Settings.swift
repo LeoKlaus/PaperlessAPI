@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct Settings: Codable {
     public let updateChecking: UpdateCheckingSettings
-    public let tourComplete: Bool
+    public let tourComplete: Bool?
     public let bulkEdit: BulkEditSettings?
     public let documentListSize: Int?
     public let slimSidebar: Bool?

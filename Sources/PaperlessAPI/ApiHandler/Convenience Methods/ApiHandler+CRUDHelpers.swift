@@ -6,15 +6,9 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
 
 public extension ApiHandler {
-    func get<T: ModifiableObject>(limit: Int = 25, page: Int = 1, fullPermissions: Bool = false, headers: [String:String] = [:], parameters: [String:String] = [:]) async throws -> [T] {
-        return try await self.getObjects(endpoint: T.pluralEndpoint, limit: limit, page: page, fullPermissions: fullPermissions, headers: headers, parameters: parameters)
-    }
-    
-    func get<T: ModifiableObject>(id: Int, headers: [String:String] = [:], parameters: [String:String] = [:]) async throws -> T {
-        return try await self.sendRequest(method: .get, endpoint: T.singularEndpoint(id), headers: headers, parameters: parameters)
-    }
     
     func uploadDocument(_ document: Document, fileURL: URL, headers: [String:String] = [:]) async throws -> String {
         
@@ -29,6 +23,14 @@ public extension ApiHandler {
         }
         
         return uuidString
+    }
+    
+    func get<T: ModifiableObject>(limit: Int = 25, page: Int = 1, fullPermissions: Bool = false, headers: [String:String] = [:], parameters: [String:String] = [:]) async throws -> [T] {
+        return try await self.getObjects(endpoint: T.pluralEndpoint, limit: limit, page: page, fullPermissions: fullPermissions, headers: headers, parameters: parameters)
+    }
+    
+    func get<T: ModifiableObject>(id: Int, headers: [String:String] = [:], parameters: [String:String] = [:]) async throws -> T {
+        return try await self.sendRequest(method: .get, endpoint: T.singularEndpoint(id), headers: headers, parameters: parameters)
     }
     
     func create<T: ModifiableObject>(_ object: T, headers: [String:String] = [:]) async throws -> T {

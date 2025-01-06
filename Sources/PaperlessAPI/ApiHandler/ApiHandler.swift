@@ -129,4 +129,48 @@ public class ApiHandler {
         Self.logger.error("Server returned unexpected response:\n\(String(data: data, encoding: .utf8) ?? "")")
         throw ApiError.invalidResponse(data, response)
     }
+    
+    public func getDocumentPreview(id: Int, headers: [String:String] = [:], downloadOriginal: Bool = false) async throws -> (String?, Data) {
+        
+        var url = serverURL.appendingPathComponent(ApiEndpoint.documentPreview(id).rawValue)
+        
+        if downloadOriginal {
+            url.append(queryItems:
+                        [.init(name: "original", value: "true")]
+            )
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HttpMethod.get.rawValue
+        request.addValue("Token \(apiToken)", forHTTPHeaderField: "Authorization")
+        request.addValue("*/*", forHTTPHeaderField: "Accept")
+        
+        for header in headers {
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
+        
+        let urlSession = self.session ?? URLSession.shared
+        
+        Self.logger.debug("Sending \(HttpMethod.get.rawValue) request to \(url.absoluteString)")
+        
+        let (data, response) = try await urlSession.data(for: request)
+        
+        if let httpResponse = response as? HTTPURLResponse {
+            if 200...299 ~= httpResponse.statusCode {
+                return (response.mimeType, data)
+            } else if 403 == httpResponse.statusCode {
+                Self.logger.error("Server returned 403:\n\(String(data: data, encoding: .utf8) ?? "")")
+                throw ApiError.forbidden
+            } else if 404 == httpResponse.statusCode {
+                Self.logger.error("Server returned 404:\n\(String(data: data, encoding: .utf8) ?? "")")
+                throw ApiError.notFound
+            } else {
+                Self.logger.error("Server returned unexpected status code \(httpResponse.statusCode) and response:\n\(String(data: data, encoding: .utf8) ?? "")\nQueried endpoint: \(HttpMethod.get.rawValue, privacy: .public)")
+                throw ApiError.unexpectedHTTPStatus(data, httpResponse.statusCode)
+            }
+        }
+        
+        Self.logger.error("Server returned unexpected response:\n\(String(data: data, encoding: .utf8) ?? "")")
+        throw ApiError.invalidResponse(data, response)
+    }
 }

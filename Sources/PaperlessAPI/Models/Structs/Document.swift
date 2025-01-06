@@ -28,7 +28,7 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
     public let added: Date
     public let deletedAt: Date?
     public let archiveSerialNumber: Int?
-    public let originalFileName: String
+    public let originalFileName: String?
     public let archivedFileName: String?
     public let owner: Int?
     public let userCanChange: Bool?
