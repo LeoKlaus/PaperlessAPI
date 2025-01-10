@@ -16,27 +16,27 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
     
     
     public let id: Int
-    public let correspondent: Int?
-    public let documentType: Int?
-    public let storagePath: Int?
-    public let title: String?
-    public let content: String?
-    public let tags: [Int]
-    public let created: Date
-    public let createdDate: Date
-    public let modified: Date
+    public var correspondent: Int?
+    public var documentType: Int?
+    public var storagePath: Int?
+    public var title: String
+    public var content: String?
+    public var tags: [Int]
+    public var created: Date
+    public var createdDate: Date
+    public var modified: Date
     public let added: Date
     public let deletedAt: Date?
-    public let archiveSerialNumber: Int?
+    public var archiveSerialNumber: Int?
     public let originalFileName: String?
     public let archivedFileName: String?
-    public let owner: Int?
+    public var owner: Int?
     public let userCanChange: Bool?
     public let isSharedByRequester: Bool?
-    public let notes: [Note]?
-    public let customFields: [CustomFieldContent]?
-    public let pageCount: Int?
-    public let permissions: ObjectPermissions?
+    public var notes: [Note]?
+    public var customFields: [CustomFieldContent]?
+    public var pageCount: Int?
+    public var permissions: ObjectPermissions?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -68,7 +68,7 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
         self.correspondent = correspondent
         self.documentType = documentType
         self.storagePath = storagePath
-        self.title = title
+        self.title = title ?? ""
         self.content = content
         self.tags = tags
         self.created = created
@@ -91,12 +91,10 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
     public func toMultiPartData(boundary: String, fileURL: URL) throws -> Data {
         var body = Data()
         
-        if let title {
-            body.append("--\(boundary)\r\n")
-            body.append("Content-Disposition: form-data; name=\"title\"\r\n\r\n")
-            body.append(title)
-            body.append("\r\n")
-        }
+        body.append("--\(boundary)\r\n")
+        body.append("Content-Disposition: form-data; name=\"title\"\r\n\r\n")
+        body.append(title)
+        body.append("\r\n")
         
         body.append("--\(boundary)\r\n")
         body.append("Content-Disposition: form-data; name=\"created\"\r\n\r\n")
