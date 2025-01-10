@@ -1,3 +1,11 @@
+//
+//  Suggestions.swift
+//  PaperlessAPI
+//
+//  Created by Leo Wehrfritz on 10.01.25.
+//
+
+
 import Foundation
 
 struct Suggestions: Decodable {
@@ -8,11 +16,11 @@ struct Suggestions: Decodable {
     var storagePaths: [Int]
     var dates: [Date]
     
-    enum CodingKeys {
+    enum CodingKeys: String, CodingKey {
         case correspondents
         case tags
-        case document_types
-        case storage_paths
+        case documentTypes = "document_types"
+        case storagePaths = "storage_paths"
         case dates
     }
     

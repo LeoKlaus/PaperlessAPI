@@ -263,7 +263,7 @@ import SwiftUI
     #expect(uiSettings.settings.updateChecking.enabled ?? false)
     #expect(uiSettings.settings.updateChecking.backendSetting == "default")
     
-    #expect(uiSettings.settings.tourComplete)
+    #expect(uiSettings.settings.tourComplete ?? false)
     
     #expect(!(uiSettings.settings.bulkEdit?.applyOnClose ?? true))
     #expect(uiSettings.settings.bulkEdit?.confirmationDialogs ?? false)
