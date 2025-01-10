@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct Suggestions: Decodable {
+public struct Suggestions: Decodable {
     
-    var correspondents: [Int]
-    var tags: [Int]
-    var documentTypes: [Int]
-    var storagePaths: [Int]
-    var dates: [Date]
+    public var correspondents: [Int]
+    public var tags: [Int]
+    public var documentTypes: [Int]
+    public var storagePaths: [Int]
+    public var dates: [Date]
     
     enum CodingKeys: String, CodingKey {
         case correspondents
@@ -24,7 +24,7 @@ struct Suggestions: Decodable {
         case dates
     }
     
-    init(correspondents: [Int] = [], tags: [Int] = [], documentTypes: [Int] = [], storagePaths: [Int] = [], dates: [Date] = []) {
+    public init(correspondents: [Int] = [], tags: [Int] = [], documentTypes: [Int] = [], storagePaths: [Int] = [], dates: [Date] = []) {
         self.correspondents = correspondents
         self.tags = tags
         self.documentTypes = documentTypes
