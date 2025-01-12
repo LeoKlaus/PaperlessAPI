@@ -63,6 +63,20 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
         case permissions
     }
     
+    enum EncodingKeys: String, CodingKey {
+        case correspondent
+        case documentType = "document_type"
+        case storagePath = "storage_path"
+        case title
+        case content
+        case tags
+        case created
+        case setPermissions = "set_permissions"
+        case archiveSerialNumber = "archive_serial_number"
+        case owner
+        case customFields = "custom_fields"
+    }
+    
     public init(id: Int, correspondent: Int?, documentType: Int?, storagePath: Int?, title: String?, content: String?, tags: [Int], created: Date, createdDate: Date, modified: Date, added: Date, deletedAt: Date?, archiveSerialNumber: Int?, originalFileName: String, archivedFileName: String, owner: Int?, userCanChange: Bool?, isSharedByRequester: Bool?, notes: [Note]?, customFields: [CustomFieldContent]?, pageCount: Int?, permissions: ObjectPermissions?) {
         self.id = id
         self.correspondent = correspondent
@@ -88,6 +102,25 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
         self.permissions = permissions
     }
     
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: EncodingKeys.self)
+        try container.encode(correspondent, forKey: .correspondent)
+        try container.encode(documentType, forKey: .documentType)
+        try container.encode(storagePath, forKey: .storagePath)
+        try container.encode(title, forKey: .title)
+        try container.encode(correspondent, forKey: .correspondent)
+        try container.encode(content, forKey: .content)
+        try container.encode(tags, forKey: .tags)
+        try container.encode(created, forKey: .created)
+        // Not used as of now
+        //try container.encode(deletedAt, forKey: .deletedAt)
+        try container.encode(archiveSerialNumber, forKey: .archiveSerialNumber)
+        try container.encode(owner, forKey: .owner)
+        try container.encode(permissions, forKey: .setPermissions)
+        try container.encode(customFields, forKey: .customFields)
+    }
+    
+    /// Generates a multi-part-form body for use with the /api/documents/post_document/ endpoint
     public func toMultiPartData(boundary: String, fileURL: URL) throws -> Data {
         var body = Data()
         
