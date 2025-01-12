@@ -76,7 +76,7 @@ import Foundation
 @Test func decodeCustomFieldValueMonetary() async throws {
     let json = """
 {
-    "value": "EUR6.2",
+    "value": "EUR6.20",
     "field": 15
 }
 """
@@ -94,6 +94,6 @@ import Foundation
     
     let valueDict = try JSONSerialization.jsonObject(with: value, options: []) as? [String: Any]
     
-    #expect(valueDict?["value"] as? String == "EUR6.2")
+    #expect(valueDict?["value"] as? String == "EUR6.20")
     #expect(valueDict?["field"] as? Int == 15)
 }

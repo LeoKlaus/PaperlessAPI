@@ -123,7 +123,7 @@ import Foundation
           "field": 27
         },
         {
-          "value": "TRY-1.5",
+          "value": "TRY-1.50",
           "field": 15
         }
       ]
