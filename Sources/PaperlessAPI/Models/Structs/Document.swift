@@ -162,6 +162,23 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
             body.append("\r\n")
         }
         
+        if let storagePath {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"storage_path\"\r\n\r\n")
+            body.append(String(storagePath))
+            body.append("\r\n")
+        }
+        
+        // At the moment, only fields can be passed, values are ignored, see https://github.com/paperless-ngx/paperless-ngx/discussions/7932
+        if let customFields {
+            for customField in customFields {
+                body.append("--\(boundary)\r\n")
+                body.append("Content-Disposition: form-data; name=\"custom_fields\"\r\n\r\n")
+                body.append(try JSONEncoder().encode(customField.field))
+                body.append("\r\n")
+            }
+        }
+        
         let filename = fileURL.lastPathComponent
         let data = try Data(contentsOf: fileURL)
         body.append("--\(boundary)\r\n")
