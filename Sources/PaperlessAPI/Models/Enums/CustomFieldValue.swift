@@ -45,6 +45,7 @@ public enum CustomFieldValue: Codable, Equatable, Hashable {
             try container.encode(docIDs)
         case .monetary(let float, let currency):
             let formatter = NumberFormatter()
+            formatter.minimumFractionDigits = 2
             formatter.maximumFractionDigits = 2
             formatter.decimalSeparator = "."
             guard let str = formatter.string(for: float) else {
@@ -58,7 +59,7 @@ public enum CustomFieldValue: Codable, Equatable, Hashable {
     
     public init(from decoder: Decoder) throws {
         if let string = try? decoder.singleValueContainer().decode(String.self) {
-            let regex = /([^-\d]*)(-?[\d.]*)/
+            let regex = /^([^-\d]*)(-?[\d]*\.[\d][\d])$/
             if let match = string.matches(of: regex).first, let float = Float(match.2) {
                 self = .monetary(float, String(match.1))
                 return
