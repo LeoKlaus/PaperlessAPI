@@ -19,7 +19,7 @@ public struct SavedView: ListableObject, ModifiableObject, Hashable {
     public let name: String
     public let showOnDashboard: Bool
     public let showInSidebar: Bool
-    public let sortField: String
+    public let sortField: SavedViewSortField
     public let sortReverse: Bool
     public let filterRules: [FilterRule]
     public let pageSize: Int?
@@ -45,7 +45,7 @@ public struct SavedView: ListableObject, ModifiableObject, Hashable {
         case permissions
     }
     
-    public init(id: Int, name: String, showOnDashboard: Bool, showInSidebar: Bool, sortField: String, sortReverse: Bool, filterRules: [FilterRule], pageSize: Int?, displayMode: DisplayMode?, displayFields: [SavedViewDisplayField]?, owner: Int?, userCanChange: Bool?, permissions: ObjectPermissions?) {
+    public init(id: Int, name: String, showOnDashboard: Bool, showInSidebar: Bool, sortField: SavedViewSortField, sortReverse: Bool, filterRules: [FilterRule], pageSize: Int?, displayMode: DisplayMode?, displayFields: [SavedViewDisplayField]?, owner: Int?, userCanChange: Bool?, permissions: ObjectPermissions?) {
         self.id = id
         self.name = name
         self.showOnDashboard = showOnDashboard

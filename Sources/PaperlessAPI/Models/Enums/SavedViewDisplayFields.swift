@@ -34,6 +34,9 @@ public enum SavedViewDisplayField: RawRepresentable, Codable, Hashable, Identifi
         case "storagepath": self = .storagePath
         case "note": self = .notes
         case "owner": self = .owner
+        case "shared": self = .shared
+        case "asn": self = .asn
+        case "added": self = .added
         case "pagecount": self = .pageCount
         default: self = .unknown(rawValue)
         }

@@ -52,7 +52,7 @@ import Foundation
     #expect(savedView.name == "New")
     #expect(!(savedView.showOnDashboard))
     #expect(!(savedView.showInSidebar))
-    #expect(savedView.sortField == "created")
+    #expect(savedView.sortField == .created)
     #expect(savedView.sortReverse)
     #expect(savedView.filterRules == [
         FilterRule(ruleType: .hasTag, value: "9"),
