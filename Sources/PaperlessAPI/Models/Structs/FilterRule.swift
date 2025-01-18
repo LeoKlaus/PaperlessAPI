@@ -14,7 +14,7 @@ public struct FilterRule: Codable, Equatable, Hashable {
         case value
     }
     
-    public init(ruleType: RuleType, value: String) {
+    public init(ruleType: RuleType, value: String?) {
         self.ruleType = ruleType
         self.value = value
     }
