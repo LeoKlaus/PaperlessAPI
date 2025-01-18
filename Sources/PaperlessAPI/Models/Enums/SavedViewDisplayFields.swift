@@ -56,7 +56,7 @@ public enum SavedViewDisplayField: RawRepresentable, Codable, Hashable, Identifi
         case .asn: return "asn"
         case .added: return "added"
         case .pageCount: return "pagecount"
-        case .customField(let value): return "custom_field_(\(value))"
+        case .customField(let value): return "custom_field_\(value)"
         case .unknown(let value): return value
         }
     }
