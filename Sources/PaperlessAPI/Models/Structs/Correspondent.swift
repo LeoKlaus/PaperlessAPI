@@ -15,7 +15,7 @@ public struct Correspondent: ListableObject, ModifiableObject, Hashable {
     
     public static var pluralEndpoint: ApiEndpoint = .correspondents
     
-    public let id: Int
+    public var id: Int
     public let slug: String
     public let name: String
     public let match: String

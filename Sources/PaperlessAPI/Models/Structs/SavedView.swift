@@ -15,14 +15,14 @@ public struct SavedView: ListableObject, ModifiableObject, Hashable {
     
     public static var pluralEndpoint: ApiEndpoint = .savedViews
     
-    public let id: Int
-    public let name: String
-    public let showOnDashboard: Bool
-    public let showInSidebar: Bool
+    public var id: Int
+    public var name: String
+    public var showOnDashboard: Bool
+    public var showInSidebar: Bool
     public let sortField: SavedViewSortField
     public let sortReverse: Bool
     public let filterRules: [FilterRule]
-    public let pageSize: Int?
+    public var pageSize: Int?
     public let displayMode: DisplayMode?
     public let displayFields: [SavedViewDisplayField]?
     public let owner: Int?

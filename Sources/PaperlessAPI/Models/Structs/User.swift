@@ -15,7 +15,7 @@ public struct User: ListableObject, ModifiableObject, Hashable {
     
     public static var pluralEndpoint: ApiEndpoint = .users
     
-    public let id: Int
+    public var id: Int
     public let username: String
     public let email: String?
     public let password: String?

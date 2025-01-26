@@ -30,8 +30,8 @@ public enum RuleType: RawRepresentable, Codable, Equatable, Hashable {
     case fulltextQuery              //20
     case moreLikeThis               //21
     case hasTagsIn                  //22
-    case AsnGreaterThan             //23
-    case AsnLessThan                //24
+    case asnGreaterThan             //23
+    case asnLessThan                //24
     case storagePathIs              //25
     case hasCorrespondentIn         //26
     case doesNotHaveCorrespondentIn //27
@@ -101,9 +101,9 @@ public enum RuleType: RawRepresentable, Codable, Equatable, Hashable {
             return(21)
         case .hasTagsIn:
             return(22)
-        case .AsnGreaterThan:
+        case .asnGreaterThan:
             return(23)
-        case .AsnLessThan:
+        case .asnLessThan:
             return(24)
         case .storagePathIs:
             return(25)
@@ -195,9 +195,9 @@ public enum RuleType: RawRepresentable, Codable, Equatable, Hashable {
         case 22:
             self = .hasTagsIn
         case 23:
-            self = .AsnGreaterThan
+            self = .asnGreaterThan
         case 24:
-            self = .AsnLessThan
+            self = .asnLessThan
         case 25:
             self = .storagePathIs
         case 26:

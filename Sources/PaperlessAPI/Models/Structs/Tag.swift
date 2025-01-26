@@ -16,7 +16,7 @@ public struct PaperlessTag: ListableObject, ModifiableObject, Identifiable, Hash
     
     public static var pluralEndpoint: ApiEndpoint = .tags
     
-    public let id: Int
+    public var id: Int
     public let slug: String
     public let name: String
     public let color: Color

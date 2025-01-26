@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Note: Codable, Equatable, Hashable {
-    public let id: Int
+    public var id: Int
     public let note: String?
     public let created: Date?
     public let document: Int

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
 
 public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable {
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
@@ -15,7 +16,7 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
     public static var pluralEndpoint: ApiEndpoint = .documents
     
     
-    public let id: Int
+    public var id: Int
     public var correspondent: Int?
     public var documentType: Int?
     public var storagePath: Int?
@@ -184,6 +185,75 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
         body.append("--\(boundary)\r\n")
         body.append("Content-Disposition: form-data; name=\"document\"; filename=\"\(filename)\"\r\n")
         body.append("Content-Type: \(fileURL.mimeType)\r\n\r\n")
+        body.append(data)
+        body.append("\r\n")
+        
+        body.append("--\(boundary)--\r\n")
+        return body
+    }
+    
+    /// Generates a multi-part-form body for use with the /api/documents/post_document/ endpoint
+    public func toMultiPartData(boundary: String, fileName: String, data: Data, mimeType: UTType) throws -> Data {
+        var body = Data()
+        
+        body.append("--\(boundary)\r\n")
+        body.append("Content-Disposition: form-data; name=\"title\"\r\n\r\n")
+        body.append(title)
+        body.append("\r\n")
+        
+        body.append("--\(boundary)\r\n")
+        body.append("Content-Disposition: form-data; name=\"created\"\r\n\r\n")
+        body.append(created.ISO8601Format())
+        body.append("\r\n")
+        
+        if let correspondent {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"correspondent\"\r\n\r\n")
+            body.append(String(correspondent))
+            body.append("\r\n")
+        }
+        
+        if let documentType {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"document_type\"\r\n\r\n")
+            body.append(String(documentType))
+            body.append("\r\n")
+        }
+        
+        for tag in tags {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"tags\"\r\n\r\n")
+            body.append(String(tag))
+            body.append("\r\n")
+        }
+        
+        if let archiveSerialNumber {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"archive_serial_number\"\r\n\r\n")
+            body.append(String(archiveSerialNumber))
+            body.append("\r\n")
+        }
+        
+        if let storagePath {
+            body.append("--\(boundary)\r\n")
+            body.append("Content-Disposition: form-data; name=\"storage_path\"\r\n\r\n")
+            body.append(String(storagePath))
+            body.append("\r\n")
+        }
+        
+        // At the moment, only fields can be passed, values are ignored, see https://github.com/paperless-ngx/paperless-ngx/discussions/7932
+        if let customFields {
+            for customField in customFields {
+                body.append("--\(boundary)\r\n")
+                body.append("Content-Disposition: form-data; name=\"custom_fields\"\r\n\r\n")
+                body.append(try JSONEncoder().encode(customField.field))
+                body.append("\r\n")
+            }
+        }
+        
+        body.append("--\(boundary)\r\n")
+        body.append("Content-Disposition: form-data; name=\"document\"; filename=\"\(fileName)\"\r\n")
+        body.append("Content-Type: \(mimeType)\r\n\r\n")
         body.append(data)
         body.append("\r\n")
         
