@@ -33,6 +33,7 @@ public enum ApiEndpoint: RawRepresentable {
     case storagePath(Int)
     case tasks
     case task(Int)
+    case acknowledgeTasks
     case users
     case user(Int)
     case groups
@@ -86,6 +87,7 @@ public enum ApiEndpoint: RawRepresentable {
         case "/api/saved_views/": self = .savedViews
         case "/api/storage_paths/": self = .storagePaths
         case "/api/tasks/": self = .tasks
+        case "/api/tasks/acknowledge/": self = .acknowledgeTasks
         case "/api/users/": self = .users
         case "/api/groups/": self = .groups
         case "/api/mail_accounts/": self = .mailAccounts
@@ -139,6 +141,7 @@ public enum ApiEndpoint: RawRepresentable {
         case .storagePath(let id): return "/api/storage_paths/\(id)/"
         case .tasks: return "/api/tasks/"
         case .task(let id): return "/api/tasks/\(id)/"
+        case .acknowledgeTasks: return "/api/tasks/acknowledge/"
         case .users: return "/api/users/"
         case .user(let id): return "/api/users/\(id)/"
         case .groups: return "/api/groups/"
