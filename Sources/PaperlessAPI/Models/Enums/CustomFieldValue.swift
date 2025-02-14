@@ -15,7 +15,7 @@ public enum CustomFieldValue: Codable, Equatable, Hashable {
     case docLink([Int])
     case `nil`
     
-    public func value() -> Any? {
+    public func value(forBulkEdit: Bool = false) -> Any? {
         switch self {
         case .text(let string):
             return string
@@ -26,6 +26,13 @@ public enum CustomFieldValue: Codable, Equatable, Hashable {
         case .docLink(let docIDs):
             return docIDs
         case .monetary(let float, let currency):
+            if forBulkEdit {
+                let formatter = NumberFormatter()
+                formatter.minimumFractionDigits = 2
+                formatter.maximumFractionDigits = 2
+                formatter.decimalSeparator = "."
+                return currency + (formatter.string(for: float) ?? "0")
+            }
             return (float, currency)
         case .nil:
             return nil
