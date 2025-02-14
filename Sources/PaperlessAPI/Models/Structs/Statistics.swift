@@ -31,4 +31,18 @@ public struct Statistics: Codable {
         case storagePathCount = "storage_path_count"
         case currentAsn = "current_asn"
     }
+    
+    public init(documentsTotal: Int, documentsInbox: Int, inboxTag: Int, inboxTags: [Int], documentFileTypeCounts: [DocumentFileTypeCounts], characterCount: Int, tagCount: Int, correspondentCount: Int, documentTypeCount: Int, storagePathCount: Int, currentAsn: Int) {
+        self.documentsTotal = documentsTotal
+        self.documentsInbox = documentsInbox
+        self.inboxTag = inboxTag
+        self.inboxTags = inboxTags
+        self.documentFileTypeCounts = documentFileTypeCounts
+        self.characterCount = characterCount
+        self.tagCount = tagCount
+        self.correspondentCount = correspondentCount
+        self.documentTypeCount = documentTypeCount
+        self.storagePathCount = storagePathCount
+        self.currentAsn = currentAsn
+    }
 }

@@ -17,7 +17,7 @@ public struct DocumentFileTypeCounts: Codable, Equatable {
         case mimeTypeCount = "mime_type_count"
     }
     
-    init(mimeType: String, mimeTypeCount: Int) {
+    public init(mimeType: String, mimeTypeCount: Int) {
         self.mimeTypeDescription = mimeType
         self.mimeTypeCount = mimeTypeCount
         self.mimeType = UTType(mimeType: mimeType)
