@@ -20,6 +20,10 @@ public extension ApiHandler {
         return try await self.getObjects(endpoint: .documents, limit: limit, page: page, fullPermissions: fullPermissions, headers: headers, parameters: parameters)
     }
     
+    func getDocument(id: Int, fullPermissions: Bool = false, headers: [String:String] = [:], parameters: [String:String] = [:]) async throws -> Document {
+        return try await self.sendRequest(method: .get, endpoint: .document(id), headers: headers, parameters: parameters)
+    }
+    
     func getMailLogs(headers: [String:String] = [:], parameters: [String:String] = [:]) async throws -> [String] {
         return try await self.sendRequest(method: .get, endpoint: .logs(.mail), headers: headers, parameters: parameters)
     }
