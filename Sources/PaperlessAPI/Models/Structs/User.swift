@@ -26,8 +26,8 @@ public struct User: ListableObject, ModifiableObject, Hashable {
     public let isActive: Bool?
     public let isSuperuser: Bool
     public let groups: [Int]
-    public let userPermissions: [Permission]?
-    public let inheritedPermissions: [Permission]?
+    public let userPermissions: [PaperlessPermission]?
+    public let inheritedPermissions: [PaperlessPermission]?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -45,7 +45,7 @@ public struct User: ListableObject, ModifiableObject, Hashable {
         case inheritedPermissions = "inherited_permissions"
     }
     
-    public init(id: Int, username: String, email: String?, password: String?, firstName: String?, lastName: String?, dateJoined: Date?, isStaff: Bool, isActive: Bool?, isSuperuser: Bool, groups: [Int], userPermissions: [Permission]?, inheritedPermissions: [Permission]?) {
+    public init(id: Int, username: String, email: String?, password: String?, firstName: String?, lastName: String?, dateJoined: Date?, isStaff: Bool, isActive: Bool?, isSuperuser: Bool, groups: [Int], userPermissions: [PaperlessPermission]?, inheritedPermissions: [PaperlessPermission]?) {
         self.id = id
         self.username = username
         self.email = email

@@ -8,5 +8,5 @@
 public struct UiSettings: Codable {
     public let user: User
     public let settings: Settings
-    public let permissions: [Permission]
+    public let permissions: [PaperlessPermission]
 }

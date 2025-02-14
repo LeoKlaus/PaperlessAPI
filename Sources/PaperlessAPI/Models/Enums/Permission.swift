@@ -6,7 +6,7 @@
 //
 
 // Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src-ui/src/app/services/permissions.service.spec.ts#L111
-public enum Permission: RawRepresentable, Codable, Equatable, Hashable {
+public enum PaperlessPermission: RawRepresentable, Codable, Equatable, Hashable, Sendable {
     case applicationConfiguration(PermissionType)
     case chordCounter(PermissionType)
     case comment(PermissionType)
