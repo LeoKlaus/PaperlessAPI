@@ -18,7 +18,7 @@ public extension ApiHandler {
         
         let uuidData = try await self.sendRequest(method: .post, endpoint: .postDocument, body: body, multiPartBoundary: boundary, headers: headers)
         
-        guard let uuidString = String(data: uuidData, encoding: .utf8) else {
+        guard let uuidString = String(data: uuidData, encoding: .utf8)?.replacing("\"", with: "") else {
             throw ApiError.invalidResponse(uuidData, nil)
         }
         
