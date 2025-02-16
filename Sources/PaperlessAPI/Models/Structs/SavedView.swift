@@ -19,15 +19,15 @@ public struct SavedView: ListableObject, ModifiableObject, Hashable {
     public var name: String
     public var showOnDashboard: Bool
     public var showInSidebar: Bool
-    public let sortField: SavedViewSortField
-    public let sortReverse: Bool
+    public var sortField: SavedViewSortField
+    public var sortReverse: Bool
     public let filterRules: [FilterRule]
     public var pageSize: Int?
-    public let displayMode: DisplayMode?
-    public let displayFields: [SavedViewDisplayField]?
-    public let owner: Int?
+    public var displayMode: DisplayMode?
+    public var displayFields: [SavedViewDisplayField]?
+    public var owner: Int?
     public let userCanChange: Bool?
-    public let permissions: ObjectPermissions?
+    public var permissions: ObjectPermissions?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -59,5 +59,34 @@ public struct SavedView: ListableObject, ModifiableObject, Hashable {
         self.owner = owner
         self.userCanChange = userCanChange
         self.permissions = permissions
+    }
+    
+    enum EncodingKeys: String, CodingKey {
+        case name
+        case showOnDashboard = "show_on_dashboard"
+        case showInSidebar = "show_in_sidebar"
+        case sortField = "sort_field"
+        case sortReverse = "sort_reverse"
+        case filterRules = "filter_rules"
+        case pageSize = "page_size"
+        case displayMode = "display_mode"
+        case displayFields = "display_fields"
+        case owner
+        case setPermissions = "set_permissions"
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: EncodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(showOnDashboard, forKey: .showOnDashboard)
+        try container.encode(showInSidebar, forKey: .showInSidebar)
+        try container.encode(sortField, forKey: .sortField)
+        try container.encode(sortReverse, forKey: .sortReverse)
+        try container.encode(filterRules, forKey: .filterRules)
+        try container.encode(pageSize, forKey: .pageSize)
+        try container.encode(displayMode, forKey: .displayMode)
+        try container.encode(displayFields, forKey: .displayFields)
+        try container.encodeIfPresent(owner, forKey: .owner)
+        try container.encodeIfPresent(permissions, forKey: .setPermissions)
     }
 }
