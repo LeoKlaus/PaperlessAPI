@@ -53,7 +53,7 @@ import Foundation
     #expect(customField.extraData?.defaultCurrency == "EUR")
 }
 
-@Test func decodeCustomFieldSelect() async throws {
+@Test func decodeCustomFieldSelectV6() async throws {
     
     let json = """
 {
@@ -77,7 +77,45 @@ import Foundation
     #expect(customField.id == 27)
     #expect(customField.name == "Solution")
     #expect(customField.dataType == .select)
-    #expect(customField.extraData?.selectOptions == [
-        "A", "C", "D"
-    ])
+    #expect(customField.extraData?.selectOptions?[0].label == "A")
+    #expect(customField.extraData?.selectOptions?[1].label == "C")
+    #expect(customField.extraData?.selectOptions?[2].label == "D")
+}
+
+@Test func decodeCustomFieldSelectV7() async throws {
+    
+    let json = """
+{
+    "id": 27,
+    "name": "Solution",
+    "data_type": "select",
+    "extra_data": {
+        "select_options": [
+          {
+            "id": "5t7Ix9oT5zdhPVrV",
+            "label": "A"
+          },
+          {
+            "id": "Vc3LcT9H1SI14hiA",
+            "label": "C"
+          },
+          {
+            "id": "g0w1ngwRB7lmxIoz",
+            "label": "D"
+          }
+        ]
+    }
+}
+""".data(using: .utf8)!
+    
+    
+    let decoder = JSONDecoder()
+    let customField = try decoder.decode(CustomField.self, from: json)
+    
+    #expect(customField.id == 27)
+    #expect(customField.name == "Solution")
+    #expect(customField.dataType == .select)
+    #expect(customField.extraData?.selectOptions?[0] == CustomFieldSelectOption(id: "5t7Ix9oT5zdhPVrV", "A"))
+    #expect(customField.extraData?.selectOptions?[1] == CustomFieldSelectOption(id: "Vc3LcT9H1SI14hiA", "C"))
+    #expect(customField.extraData?.selectOptions?[2] == CustomFieldSelectOption(id: "g0w1ngwRB7lmxIoz", "D"))
 }

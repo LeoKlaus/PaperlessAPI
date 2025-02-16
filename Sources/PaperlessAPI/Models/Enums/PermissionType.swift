@@ -5,7 +5,8 @@
 //  Created by Leo Wehrfritz on 13.12.24.
 //
 
-public enum PermissionType: RawRepresentable, Codable {
+
+public enum PermissionType: RawRepresentable, Codable, Sendable {
     case add, change, delete, view
     case unknown(String)
     

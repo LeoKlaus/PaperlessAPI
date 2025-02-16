@@ -16,9 +16,9 @@ public struct CustomField: ListableObject, ModifiableObject, Hashable {
     public static var pluralEndpoint: ApiEndpoint = .customFields
     
     public var id: Int
-    public let name: String
+    public var name: String
     public let dataType: CustomFieldDataType
-    public let extraData: CustomFieldExtraData?
+    public var extraData: CustomFieldExtraData?
     
     enum CodingKeys: String, CodingKey {
         case id
