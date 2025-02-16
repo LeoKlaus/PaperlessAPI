@@ -17,15 +17,15 @@ public struct StoragePath: ListableObject, ModifiableObject, Hashable {
     
     public var id: Int
     public let slug: String
-    public let name: String
-    public let path: String
-    public let match: String
-    public let matchingAlgorithm: MatchingAlgorithm
-    public let isInsensitive: Bool
+    public var name: String
+    public var path: String
+    public var match: String
+    public var matchingAlgorithm: MatchingAlgorithm
+    public var isInsensitive: Bool
     public let documentCount: Int?
-    public let owner: Int?
+    public var owner: Int?
     public let userCanChange: Bool?
-    public let permissions: ObjectPermissions?
+    public var permissions: ObjectPermissions?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -53,5 +53,26 @@ public struct StoragePath: ListableObject, ModifiableObject, Hashable {
         self.owner = owner
         self.userCanChange = nil
         self.permissions = permissions
+    }
+    
+    enum EncodingKeys: String, CodingKey {
+        case name
+        case path
+        case match
+        case matchingAlgorithm = "matching_algorithm"
+        case isInsesitive = "is_insensitive"
+        case owner
+        case setPermissions = "set_permissions"
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: EncodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(path, forKey: .path)
+        try container.encode(match, forKey: .match)
+        try container.encode(matchingAlgorithm, forKey: .matchingAlgorithm)
+        try container.encode(isInsensitive, forKey: .isInsesitive)
+        try container.encodeIfPresent(owner, forKey: .owner)
+        try container.encodeIfPresent(permissions, forKey: .setPermissions)
     }
 }

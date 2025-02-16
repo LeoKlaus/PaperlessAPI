@@ -46,17 +46,6 @@ public struct PaperlessTag: ListableObject, ModifiableObject, Identifiable, Hash
         case permissions
     }
     
-    enum EncodingKeys: String, CodingKey {
-         case name
-         case color
-         case match
-         case matchingAlgorithm = "matching_algorithm"
-         case isInsesitive = "is_insensitive"
-         case isInboxTag = "is_inbox_tag"
-         case owner
-         case setPermissions = "set_permissions"
-    }
-    
     public init(id: Int, slug: String, name: String, color: Color, textColor: Color, match: String, matchingAlgorithm: MatchingAlgorithm, isInsensitive: Bool, isInboxTag: Bool, documentCount: Int?, owner: Int?, userCanChange: Bool?, permissions: ObjectPermissions?) {
         self.id = id
         self.slug = slug
@@ -71,6 +60,17 @@ public struct PaperlessTag: ListableObject, ModifiableObject, Identifiable, Hash
         self.owner = owner
         self.userCanChange = userCanChange
         self.permissions = permissions
+    }
+    
+    enum EncodingKeys: String, CodingKey {
+        case name
+        case color
+        case match
+        case matchingAlgorithm = "matching_algorithm"
+        case isInsesitive = "is_insensitive"
+        case isInboxTag = "is_inbox_tag"
+        case owner
+        case setPermissions = "set_permissions"
     }
     
     public func encode(to encoder: any Encoder) throws {
