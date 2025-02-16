@@ -18,17 +18,17 @@ public struct PaperlessTag: ListableObject, ModifiableObject, Identifiable, Hash
     
     public var id: Int
     public let slug: String
-    public let name: String
-    public let color: Color
-    public let textColor: Color
-    public let match: String
-    public let matchingAlgorithm: MatchingAlgorithm
-    public let isInsensitive: Bool
-    public let isInboxTag: Bool
+    public var name: String
+    public var color: Color
+    public var textColor: Color
+    public var match: String
+    public var matchingAlgorithm: MatchingAlgorithm
+    public var isInsensitive: Bool
+    public var isInboxTag: Bool
     public let documentCount: Int?
-    public let owner: Int?
+    public var owner: Int?
     public let userCanChange: Bool?
-    public let permissions: ObjectPermissions?
+    public var permissions: ObjectPermissions?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -46,6 +46,17 @@ public struct PaperlessTag: ListableObject, ModifiableObject, Identifiable, Hash
         case permissions
     }
     
+    enum EncodingKeys: String, CodingKey {
+         case name
+         case color
+         case match
+         case matchingAlgorithm = "matching_algorithm"
+         case isInsesitive = "is_insensitive"
+         case isInboxTag = "is_inbox_tag"
+         case owner
+         case setPermissions = "set_permissions"
+    }
+    
     public init(id: Int, slug: String, name: String, color: Color, textColor: Color, match: String, matchingAlgorithm: MatchingAlgorithm, isInsensitive: Bool, isInboxTag: Bool, documentCount: Int?, owner: Int?, userCanChange: Bool?, permissions: ObjectPermissions?) {
         self.id = id
         self.slug = slug
@@ -60,5 +71,17 @@ public struct PaperlessTag: ListableObject, ModifiableObject, Identifiable, Hash
         self.owner = owner
         self.userCanChange = userCanChange
         self.permissions = permissions
+    }
+    
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: EncodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(color.toHex(), forKey: .color)
+        try container.encode(match, forKey: .match)
+        try container.encode(matchingAlgorithm.rawValue, forKey: .matchingAlgorithm)
+        try container.encode(isInsensitive, forKey: .isInsesitive)
+        try container.encode(isInboxTag, forKey: .isInboxTag)
+        try container.encodeIfPresent(owner, forKey: .owner)
+        try container.encodeIfPresent(permissions, forKey: .setPermissions)
     }
 }

@@ -6,8 +6,8 @@
 //
 
 public struct ObjectPermissions: Codable, Equatable, Hashable {
-    public let view: ObjectPermission
-    public let change: ObjectPermission
+    public var view: ObjectPermission
+    public var change: ObjectPermission
     
     public init(view: ObjectPermission, change: ObjectPermission) {
         self.view = view
@@ -16,8 +16,8 @@ public struct ObjectPermissions: Codable, Equatable, Hashable {
 }
 
 public struct ObjectPermission: Codable, Equatable, Hashable {
-    public let users: [Int]
-    public let groups: [Int]
+    public var users: [Int]
+    public var groups: [Int]
     
     public init(users: [Int], groups: [Int]) {
         self.users = users
