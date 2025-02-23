@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct StoragePath: ListableObject, ModifiableObject, Hashable {
+public struct StoragePath: ListableObject, ModifiableObject, Hashable, Sendable {
     
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .storagePath(id)

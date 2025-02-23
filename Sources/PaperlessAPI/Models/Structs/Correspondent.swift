@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Correspondent: ListableObject, ModifiableObject, Hashable {
+public struct Correspondent: ListableObject, ModifiableObject, Hashable, Sendable {
     
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         return .correspondent(id)
