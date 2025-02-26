@@ -18,10 +18,12 @@ public class ApiHandler {
     public var serverURL: URL
     private var apiToken: String
     private var session: URLSession?
+    private var staticHeaders: [String:String] = [:]
     
-    public init(serverURL: URL, apiToken: String, session: URLSession? = nil) {
+    public init(serverURL: URL, apiToken: String, staticHeaders: [String:String] = [:], session: URLSession? = nil) {
         self.serverURL = serverURL
         self.apiToken = apiToken
+        self.staticHeaders = staticHeaders
         self.session = session
     }
     
@@ -47,6 +49,10 @@ public class ApiHandler {
             request.addValue("multipart/form-data; boundary=\(multiPartBoundary)", forHTTPHeaderField: "Content-Type")
         } else {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
+        
+        for header in self.staticHeaders {
+            request.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
         for header in headers {
@@ -102,6 +108,10 @@ public class ApiHandler {
         request.addValue("application/json; Version=6", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        for header in self.staticHeaders {
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
+        
         for header in headers {
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
@@ -144,6 +154,10 @@ public class ApiHandler {
         request.httpMethod = HttpMethod.get.rawValue
         request.addValue("Token \(apiToken)", forHTTPHeaderField: "Authorization")
         request.addValue("*/*", forHTTPHeaderField: "Accept")
+        
+        for header in self.staticHeaders {
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
         
         for header in headers {
             request.addValue(header.value, forHTTPHeaderField: header.key)
