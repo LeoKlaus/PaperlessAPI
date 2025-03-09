@@ -8,13 +8,17 @@
 import Foundation
 
 public extension ApiHandler {
-    static func getAuthToken(for serverURL: URL, user: String, password: String, headers: [String: String] = [:], session: URLSession = .shared) async throws -> String {
+    static func getAuthToken(for serverURL: URL, user: String, password: String, oneTimeCode: String? = nil, headers: [String: String] = [:], session: URLSession = .shared) async throws -> String {
         let url = serverURL.appendingPathComponent(ApiEndpoint.token.rawValue)
         
-        let body = [
+        var body = [
             "username": user,
             "password": password
         ]
+        
+        if let oneTimeCode {
+            body["code"] = oneTimeCode
+        }
         
         var request = URLRequest(url: url)
         
