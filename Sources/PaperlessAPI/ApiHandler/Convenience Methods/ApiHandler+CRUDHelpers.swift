@@ -10,13 +10,13 @@ import UniformTypeIdentifiers
 
 public extension ApiHandler {
     
-    func uploadDocument(_ document: Document, fileURL: URL, headers: [String:String] = [:]) async throws -> String {
+    func uploadDocument(_ document: Document, fileURL: URL, headers: [String:String] = [:], delegate: URLSessionTaskDelegate? = nil) async throws -> String {
         
         let boundary = UUID().uuidString
         
         let body = try document.toMultiPartData(boundary: boundary, fileURL: fileURL)
         
-        let uuidData = try await self.sendRequest(method: .post, endpoint: .postDocument, body: body, multiPartBoundary: boundary, headers: headers)
+        let uuidData = try await self.sendRequest(method: .post, endpoint: .postDocument, body: body, multiPartBoundary: boundary, headers: headers, delegate: delegate)
         
         guard let uuidString = String(data: uuidData, encoding: .utf8)?.replacing("\"", with: "") else {
             throw ApiError.invalidResponse(uuidData, nil)

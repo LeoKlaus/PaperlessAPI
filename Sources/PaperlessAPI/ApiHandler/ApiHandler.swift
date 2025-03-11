@@ -31,7 +31,7 @@ public class ApiHandler {
         self.apiToken = apiToken
     }
     
-    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, multiPartBoundary: String? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:], delegate: URLSessionDownloadDelegate? = nil) async throws -> Data {
+    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, multiPartBoundary: String? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:], delegate: URLSessionTaskDelegate? = nil) async throws -> Data {
         
         var url = serverURL.appendingPathComponent(endpoint.rawValue)
         
