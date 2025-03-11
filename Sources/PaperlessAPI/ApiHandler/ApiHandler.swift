@@ -31,7 +31,7 @@ public class ApiHandler {
         self.apiToken = apiToken
     }
     
-    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, multiPartBoundary: String? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:]) async throws -> Data {
+    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, multiPartBoundary: String? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:], delegate: URLSessionDownloadDelegate? = nil) async throws -> Data {
         
         var url = serverURL.appendingPathComponent(endpoint.rawValue)
         
@@ -63,7 +63,7 @@ public class ApiHandler {
         
         Self.logger.debug("Sending \(method.rawValue) request to \(url.absoluteString)")
         
-        let (data, response) = try await urlSession.data(for: request)
+        let (data, response) = try await urlSession.data(for: request, delegate: delegate)
         
         if let httpResponse = response as? HTTPURLResponse {
             if 200...299 ~= httpResponse.statusCode {
@@ -84,9 +84,9 @@ public class ApiHandler {
         throw ApiError.invalidResponse(data, response)
     }
     
-    public func sendRequest<T>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:]) async throws -> T where T: Decodable {
+    public func sendRequest<T>(method: HttpMethod, endpoint: ApiEndpoint, body: Data? = nil, headers: [String:String] = [:] , parameters: [String:String] = [:], delegate: URLSessionDownloadDelegate? = nil) async throws -> T where T: Decodable {
         
-        let data: Data = try await self.sendRequest(method: method, endpoint: endpoint, body: body, headers: headers, parameters: parameters)
+        let data: Data = try await self.sendRequest(method: method, endpoint: endpoint, body: body, headers: headers, parameters: parameters, delegate: delegate)
         
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .paperlessDateDecodingStrategy
@@ -94,7 +94,7 @@ public class ApiHandler {
         return try decoder.decode(T.self, from: data)
     }
     
-    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, headers: [String:String] = [:], parameters: [String:String] = [:]) async throws {
+    public func sendRequest(method: HttpMethod, endpoint: ApiEndpoint, headers: [String:String] = [:], parameters: [String:String] = [:], delegate: URLSessionDownloadDelegate? = nil) async throws {
         
         var url = serverURL.appendingPathComponent(endpoint.rawValue)
         
@@ -119,7 +119,7 @@ public class ApiHandler {
         let urlSession = self.session ?? URLSession.shared
         
         Self.logger.debug("Sending \(method.rawValue) request to \(url.absoluteString)")
-        let (data, response) = try await urlSession.data(for: request)
+        let (data, response) = try await urlSession.data(for: request, delegate: delegate)
         
         if let httpResponse = response as? HTTPURLResponse {
             if 200...299 ~= httpResponse.statusCode {
@@ -140,7 +140,7 @@ public class ApiHandler {
         throw ApiError.invalidResponse(data, response)
     }
     
-    public func getDocumentPreview(id: Int, headers: [String:String] = [:], downloadOriginal: Bool = false) async throws -> (String?, Data) {
+    public func getDocumentPreview(id: Int, headers: [String:String] = [:], downloadOriginal: Bool = false, delegate: URLSessionTaskDelegate? = nil) async throws -> (String?, Data) {
         
         var url = serverURL.appendingPathComponent(ApiEndpoint.documentPreview(id).rawValue)
         
@@ -167,7 +167,7 @@ public class ApiHandler {
         
         Self.logger.debug("Sending \(HttpMethod.get.rawValue) request to \(url.absoluteString)")
         
-        let (data, response) = try await urlSession.data(for: request)
+        let (data, response) = try await urlSession.data(for: request, delegate: delegate)
         
         if let httpResponse = response as? HTTPURLResponse {
             if 200...299 ~= httpResponse.statusCode {
