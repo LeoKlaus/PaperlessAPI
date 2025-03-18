@@ -13,4 +13,9 @@ public struct RemoteVersion: Codable {
         case version
         case updateAvailable = "update_available"
     }
+    
+    public init(version: String, updateAvailable: Bool) {
+        self.version = version
+        self.updateAvailable = updateAvailable
+    }
 }
