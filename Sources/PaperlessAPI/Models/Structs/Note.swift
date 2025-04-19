@@ -11,10 +11,10 @@ public struct Note: Codable, Equatable, Hashable {
     public var id: Int
     public let note: String?
     public let created: Date?
-    public let document: Int
+    public let document: Int?
     public let user: Int?
     
-    public init(id: Int, note: String?, created: Date?, document: Int, user: Int?) {
+    public init(id: Int, note: String?, created: Date?, document: Int?, user: Int?) {
         self.id = id
         self.note = note
         self.created = created
