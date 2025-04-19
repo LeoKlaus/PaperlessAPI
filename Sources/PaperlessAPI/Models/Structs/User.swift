@@ -22,10 +22,10 @@ public struct User: ListableObject, ModifiableObject, Hashable, Sendable {
     public let firstName: String?
     public let lastName: String?
     public let dateJoined: Date?
-    public let isStaff: Bool
+    public let isStaff: Bool?
     public let isActive: Bool?
-    public let isSuperuser: Bool
-    public let groups: [Int]
+    public let isSuperuser: Bool?
+    public let groups: [Int]?
     public let userPermissions: [PaperlessPermission]?
     public let inheritedPermissions: [PaperlessPermission]?
     
