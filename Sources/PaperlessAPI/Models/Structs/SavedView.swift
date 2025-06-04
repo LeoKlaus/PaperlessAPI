@@ -19,7 +19,7 @@ public struct SavedView: ListableObject, ModifiableObject, Hashable {
     public var name: String
     public var showOnDashboard: Bool
     public var showInSidebar: Bool
-    public var sortField: SavedViewSortField
+    public var sortField: SavedViewSortField?
     public var sortReverse: Bool
     public let filterRules: [FilterRule]
     public var pageSize: Int?
