@@ -7,9 +7,9 @@
 
 public struct Statistics: Codable {
     public let documentsTotal: Int
-    public let documentsInbox: Int
-    public let inboxTag: Int
-    public let inboxTags: [Int]
+    public let documentsInbox: Int?
+    public let inboxTag: Int?
+    public let inboxTags: [Int]?
     public let documentFileTypeCounts: [DocumentFileTypeCounts]
     public let characterCount: Int
     public let tagCount: Int
