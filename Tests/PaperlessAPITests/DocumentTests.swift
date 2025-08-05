@@ -77,7 +77,7 @@ import Foundation
     #expect(document.userCanChange ?? false)
     #expect(!(document.isSharedByRequester ?? true))
     #expect(document.notes == [
-        Note(id: 16, note: "Test-Note", created: Date(timeIntervalSince1970: 1700649699.38), document: 23, user: 2)
+        Note(id: 16, note: "Test-Note", created: Date(timeIntervalSince1970: 1700649699.38), user: 2)
     ])
     #expect(document.customFields == [
         CustomFieldContent(value: .number(0), field: 27)
