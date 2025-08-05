@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 15.12.24.
 //
 
-public struct ObjectPermissions: Codable, Equatable, Hashable {
+public struct ObjectPermissions: Codable, Equatable, Hashable, Sendable {
     public var view: ObjectPermission
     public var change: ObjectPermission
     
@@ -15,7 +15,7 @@ public struct ObjectPermissions: Codable, Equatable, Hashable {
     }
 }
 
-public struct ObjectPermission: Codable, Equatable, Hashable {
+public struct ObjectPermission: Codable, Equatable, Hashable, Sendable {
     public var users: [Int]
     public var groups: [Int]
     
