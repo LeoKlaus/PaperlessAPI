@@ -132,7 +132,7 @@ public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable
         
         body.append("--\(boundary)\r\n")
         body.append("Content-Disposition: form-data; name=\"created\"\r\n\r\n")
-        body.append(created.ISO8601Format())
+        body.append(Formatter.iso8601withoutTimeZone.string(from: created))
         body.append("\r\n")
         
         if let correspondent {
