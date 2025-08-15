@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CustomFieldSelectOption: Codable, Identifiable, Hashable {
+public struct CustomFieldSelectOption: Codable, Identifiable, Hashable, Sendable {
     public let id: String
     public var label: String
     
@@ -37,7 +37,7 @@ public struct CustomFieldSelectOption: Codable, Identifiable, Hashable {
     }
 }
 
-public struct CustomFieldExtraData: Codable, Hashable {
+public struct CustomFieldExtraData: Codable, Hashable, Sendable {
     public var selectOptions: [CustomFieldSelectOption]?
     public var defaultCurrency: String?
     

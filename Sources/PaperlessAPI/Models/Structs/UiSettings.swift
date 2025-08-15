@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public struct UiSettings: Codable {
+public struct UiSettings: Codable, Sendable {
     public let user: User
     public let settings: Settings
     public let permissions: [PaperlessPermission]

@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public enum ConfigMode: RawRepresentable, Codable, Equatable {
+public enum ConfigMode: RawRepresentable, Codable, Equatable, Sendable {
     case skip, redo, force, skipNoArchive
     case unknown(String)
     

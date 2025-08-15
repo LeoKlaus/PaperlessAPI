@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Config: Codable {
+public struct Config: Codable, Sendable {
     public let id: Int
     public let userArgs: String?
     public let outputType: ConfigOutputType?

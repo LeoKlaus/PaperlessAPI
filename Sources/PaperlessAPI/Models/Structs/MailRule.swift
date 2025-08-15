@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct MailRule: ListableObject, ModifiableObject {
+public struct MailRule: ListableObject, ModifiableObject, Sendable {
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .mailRule(id)
     }
     
-    public static var pluralEndpoint: ApiEndpoint = .mailRules
+    public static let pluralEndpoint: ApiEndpoint = .mailRules
     
     
     public let id: Int

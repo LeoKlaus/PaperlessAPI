@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public enum ConfigUnpaperClean: RawRepresentable, Codable, Equatable {
+public enum ConfigUnpaperClean: RawRepresentable, Codable, Equatable, Sendable {
     case clean, cleanFinal, none
     case unknown(String)
     

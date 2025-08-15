@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum BulkEditMethod {
+public enum BulkEditMethod: Sendable {
     case setCorrespondent(id: Int)
     case setDocumentType(id: Int)
     case setStoragePath(id: Int)

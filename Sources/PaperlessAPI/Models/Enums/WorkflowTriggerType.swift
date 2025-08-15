@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public enum WorkflowTriggerType: RawRepresentable, Codable, Equatable {
+public enum WorkflowTriggerType: RawRepresentable, Codable, Equatable, Sendable {
     case consumptionStarted, documentAdded, documentUpdated
     case unknown(Int)
     

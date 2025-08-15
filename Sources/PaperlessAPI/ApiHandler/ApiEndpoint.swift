@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ApiEndpoint: RawRepresentable {
+public enum ApiEndpoint: RawRepresentable, Sendable {
     // Authorization
     case token
     // General usage
@@ -180,7 +180,7 @@ public enum ApiEndpoint: RawRepresentable {
     }
 }
 
-public enum LogType: RawRepresentable, Codable {
+public enum LogType: RawRepresentable, Codable, Sendable {
     case mail, paperless
     case unknown(String)
     

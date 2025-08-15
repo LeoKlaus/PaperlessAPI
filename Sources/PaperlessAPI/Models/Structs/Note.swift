@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Note: Codable, Equatable, Hashable, Identifiable {
+public struct Note: Codable, Equatable, Hashable, Identifiable, Sendable {
     public var id: Int
     public let note: String?
     public let created: Date?

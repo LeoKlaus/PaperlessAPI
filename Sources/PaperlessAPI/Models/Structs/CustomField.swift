@@ -7,13 +7,13 @@
 
 import Foundation
 
-public struct CustomField: ListableObject, ModifiableObject, Hashable {
+public struct CustomField: ListableObject, ModifiableObject, Hashable, Sendable {
     
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .customField(id)
     }
     
-    public static var pluralEndpoint: ApiEndpoint = .customFields
+    public static let pluralEndpoint: ApiEndpoint = .customFields
     
     public var id: Int
     public var name: String

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MailRuleAttachmentType: RawRepresentable, Codable {
+public enum MailRuleAttachmentType: RawRepresentable, Codable, Sendable {
     case attachments, allFiles
     case unknown(Int)
     

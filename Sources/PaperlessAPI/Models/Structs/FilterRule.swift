@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 13.12.24.
 //
 
-public struct FilterRule: Codable, Equatable, Hashable {
+public struct FilterRule: Codable, Equatable, Hashable, Sendable {
     public let ruleType: RuleType
     public let value: String?
     

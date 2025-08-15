@@ -8,12 +8,12 @@
 import Foundation
 import UniformTypeIdentifiers
 
-public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable {
+public struct Document: ListableObject, ModifiableObject, Identifiable, Hashable, Sendable {
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .document(id)
     }
     
-    public static var pluralEndpoint: ApiEndpoint = .documents
+    public static let pluralEndpoint: ApiEndpoint = .documents
     
     
     public var id: Int

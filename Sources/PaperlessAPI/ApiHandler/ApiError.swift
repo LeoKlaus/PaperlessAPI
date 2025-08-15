@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ApiError: Error {
+public enum ApiError: Error, Sendable {
     case noCredentials
     case forbidden
     case notFound

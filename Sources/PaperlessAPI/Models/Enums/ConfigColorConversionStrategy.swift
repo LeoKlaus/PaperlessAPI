@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public enum ConfigColorConversionStrategy: RawRepresentable, Codable, Equatable {
+public enum ConfigColorConversionStrategy: RawRepresentable, Codable, Equatable, Sendable {
     case leaveColorUnchanged, rgb, useDeviceIndependentColor, gray, cmyk
     case unknown(String)
     

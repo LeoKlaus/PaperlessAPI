@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Status: Codable {
+public struct Status: Codable, Sendable {
     public let pngxVersion: String
     public let serverOs: String
     public let installType: String
@@ -25,12 +25,12 @@ public struct Status: Codable {
     }
 }
 
-public struct StatusStorage: Codable {
+public struct StatusStorage: Codable, Sendable {
     public let total: Int
     public let available: Int
 }
 
-public struct StatusDatabase: Codable {
+public struct StatusDatabase: Codable, Sendable {
     public let type: String
     public let url: String
     public let status: String
@@ -46,7 +46,7 @@ public struct StatusDatabase: Codable {
     }
 }
 
-public struct StatusDatabaseMigrationStatus: Codable {
+public struct StatusDatabaseMigrationStatus: Codable, Sendable {
     public let latestMigration: String
     public let unappliedMigrations: [String]
     
@@ -56,7 +56,7 @@ public struct StatusDatabaseMigrationStatus: Codable {
     }
 }
 
-public struct StatusTasks: Codable {
+public struct StatusTasks: Codable, Sendable {
     public let redisUrl: String
     public let redisStatus: String
     public let redisError: String?

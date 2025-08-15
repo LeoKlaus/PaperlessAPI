@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Suggestions: Decodable {
+public struct Suggestions: Decodable, Sendable {
     
     public var correspondents: Set<Int>
     public var tags: Set<Int>

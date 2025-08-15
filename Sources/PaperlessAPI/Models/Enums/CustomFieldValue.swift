@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum CustomFieldValue: Codable, Equatable, Hashable {
+public enum CustomFieldValue: Codable, Equatable, Hashable, Sendable {
     case boolean(Bool)
     case number(Float)
     case text(String)

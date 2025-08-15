@@ -6,7 +6,7 @@
 //
 
 
-public enum SavedViewSortField: RawRepresentable, Codable, Hashable {
+public enum SavedViewSortField: RawRepresentable, Codable, Hashable, Sendable {
     case asn, correspondent, title, documentType, created, added, modified, notes, owner, pages
     case unknown(String)
     

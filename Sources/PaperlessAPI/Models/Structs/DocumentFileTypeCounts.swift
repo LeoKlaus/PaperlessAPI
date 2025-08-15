@@ -7,7 +7,7 @@
 
 import UniformTypeIdentifiers
 
-public struct DocumentFileTypeCounts: Codable, Equatable {
+public struct DocumentFileTypeCounts: Codable, Equatable, Sendable {
     public let mimeType: UTType?
     public let mimeTypeDescription: String
     public let mimeTypeCount: Int

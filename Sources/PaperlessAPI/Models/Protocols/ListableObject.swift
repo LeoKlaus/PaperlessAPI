@@ -5,6 +5,6 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public protocol ListableObject: Codable {
+public protocol ListableObject: Codable, Sendable {
     var id: Int { get }
 }

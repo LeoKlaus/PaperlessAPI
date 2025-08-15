@@ -13,7 +13,7 @@ public struct User: ListableObject, ModifiableObject, Hashable, Sendable {
         .user(id)
     }
     
-    public static var pluralEndpoint: ApiEndpoint = .users
+    public static let pluralEndpoint: ApiEndpoint = .users
     
     public var id: Int
     public let username: String

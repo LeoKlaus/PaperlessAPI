@@ -7,13 +7,13 @@
 
 import Foundation
 
-public struct ShareLink: ListableObject, ModifiableObject {
+public struct ShareLink: ListableObject, ModifiableObject, Sendable {
     
     public static func singularEndpoint(_ id: Int) -> ApiEndpoint {
         .shareLink(id)
     }
     
-    public static var pluralEndpoint: ApiEndpoint = .shareLinks
+    public static let pluralEndpoint: ApiEndpoint = .shareLinks
     
     public let id: Int
     public let created: Date

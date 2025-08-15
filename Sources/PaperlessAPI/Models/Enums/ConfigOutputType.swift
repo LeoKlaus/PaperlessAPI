@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public enum ConfigOutputType: RawRepresentable, Codable, Equatable {
+public enum ConfigOutputType: RawRepresentable, Codable, Equatable, Sendable {
     case pdf, pdfa, pdfa1, pdfa2, pdfa3
     case unknown(String)
     

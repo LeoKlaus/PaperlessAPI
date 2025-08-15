@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public enum WorkflowTriggerSource: RawRepresentable, Codable, Equatable {
+public enum WorkflowTriggerSource: RawRepresentable, Codable, Equatable, Sendable {
     case consumeFolder, apiUpload, mailFetch
     case unknown(Int)
     

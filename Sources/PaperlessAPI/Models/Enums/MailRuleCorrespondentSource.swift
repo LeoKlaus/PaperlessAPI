@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MailRuleCorrespondentSource: RawRepresentable, Codable {
+public enum MailRuleCorrespondentSource: RawRepresentable, Codable, Sendable {
     case doNotAssign, mailAddress, name, selected
     case unknown(Int)
     

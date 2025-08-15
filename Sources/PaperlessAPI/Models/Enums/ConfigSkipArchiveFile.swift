@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public enum ConfigSkipArchiveFile: RawRepresentable, Codable, Equatable {
+public enum ConfigSkipArchiveFile: RawRepresentable, Codable, Equatable, Sendable {
     case never, withText, always
     case unknown(String)
     

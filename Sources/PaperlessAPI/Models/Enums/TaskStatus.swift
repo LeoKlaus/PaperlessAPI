@@ -8,7 +8,7 @@
 import Foundation
 
 // These are from Celery
-public enum TaskStatus: RawRepresentable, Codable {
+public enum TaskStatus: RawRepresentable, Codable, Sendable {
     case pending, started, success, failure, retry, revoked
     case unknown(String)
     

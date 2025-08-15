@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct Settings: Codable {
+public struct Settings: Codable, Sendable {
     public let updateChecking: UpdateCheckingSettings
     public let tourComplete: Bool?
     public let bulkEdit: BulkEditSettings?
@@ -53,7 +53,7 @@ public struct Settings: Codable {
     }
 }
 
-public struct UpdateCheckingSettings: Codable {
+public struct UpdateCheckingSettings: Codable, Sendable {
     public let enabled: Bool?
     public let backendSetting: String
     
@@ -63,7 +63,7 @@ public struct UpdateCheckingSettings: Codable {
     }
 }
 
-public struct BulkEditSettings: Codable {
+public struct BulkEditSettings: Codable, Sendable {
     public let applyOnClose: Bool
     public let confirmationDialogs: Bool
     
@@ -73,7 +73,7 @@ public struct BulkEditSettings: Codable {
     }
 }
 
-public struct DarkModeSettings: Codable {
+public struct DarkModeSettings: Codable, Sendable {
     public let useSystem: Bool
     public let enabled: Bool
     public let thumbInverted: Bool
@@ -101,11 +101,11 @@ public struct DarkModeSettings: Codable {
     }
 }
 
-public struct ThemeSettings: Codable {
+public struct ThemeSettings: Codable, Sendable {
     public let color: String
 }
 
-public struct DocumentDetailSettings: Codable {
+public struct DocumentDetailSettings: Codable, Sendable {
     public let nativePdfViewer: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -113,7 +113,7 @@ public struct DocumentDetailSettings: Codable {
     }
 }
 
-public struct DateDisplaySettings: Codable {
+public struct DateDisplaySettings: Codable, Sendable {
     public let dateLocale: String
     public let dateFormat: String
     
@@ -123,7 +123,7 @@ public struct DateDisplaySettings: Codable {
     }
 }
 
-public struct NotificationSettings: Codable {
+public struct NotificationSettings: Codable, Sendable {
     public let consumerNewDocuments: Bool
     public let consumerSuccess: Bool
     public let consumerFailed: Bool
@@ -137,7 +137,7 @@ public struct NotificationSettings: Codable {
     }
 }
 
-public struct SavedViewSettings: Codable {
+public struct SavedViewSettings: Codable, Sendable {
     public let warnOnUnsavedChange: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -145,7 +145,7 @@ public struct SavedViewSettings: Codable {
     }
 }
 
-public struct PermissionSettings: Codable {
+public struct PermissionSettings: Codable, Sendable {
     public let defaultOwner: Int?
     public let defaultViewUsers: [Int]
     public let defaultViewGroups: [Int]
@@ -161,7 +161,7 @@ public struct PermissionSettings: Codable {
     }
 }
 
-public struct DocumentEditingSettings: Codable {
+public struct DocumentEditingSettings: Codable, Sendable {
     public let removeInboxTags: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -169,7 +169,7 @@ public struct DocumentEditingSettings: Codable {
     }
 }
 
-public struct SearchSettings: Codable {
+public struct SearchSettings: Codable, Sendable {
     public let dbOnly: Bool
     
     enum CodingKeys: String, CodingKey {

@@ -6,7 +6,7 @@
 //
 
 // Ref: https://github.com/paperless-ngx/paperless-ngx/blob/dev/src/documents/serialisers.py#L1621
-public enum TaskType: RawRepresentable, Codable {
+public enum TaskType: RawRepresentable, Codable, Sendable {
     case file
     case unknown(String)
     

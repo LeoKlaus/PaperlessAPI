@@ -13,7 +13,7 @@ public struct StoragePath: ListableObject, ModifiableObject, Hashable, Sendable 
         .storagePath(id)
     }
     
-    public static var pluralEndpoint: ApiEndpoint = .storagePaths
+    public static let pluralEndpoint: ApiEndpoint = .storagePaths
     
     public var id: Int
     public let slug: String

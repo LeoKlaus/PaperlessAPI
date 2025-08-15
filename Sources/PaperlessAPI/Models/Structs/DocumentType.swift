@@ -13,7 +13,7 @@ public struct DocumentType: ListableObject, ModifiableObject, Hashable, Sendable
         .documentType(id)
     }
     
-    public static var pluralEndpoint: ApiEndpoint = .documentTypes
+    public static let pluralEndpoint: ApiEndpoint = .documentTypes
     
     public var id: Int
     public let slug: String

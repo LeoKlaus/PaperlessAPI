@@ -13,7 +13,7 @@ public struct Correspondent: ListableObject, ModifiableObject, Hashable, Sendabl
         return .correspondent(id)
     }
     
-    public static var pluralEndpoint: ApiEndpoint = .correspondents
+    public static let pluralEndpoint: ApiEndpoint = .correspondents
     
     public var id: Int
     public let slug: String

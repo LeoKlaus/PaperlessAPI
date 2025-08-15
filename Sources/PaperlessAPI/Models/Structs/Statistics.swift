@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public struct Statistics: Codable {
+public struct Statistics: Codable, Sendable {
     public let documentsTotal: Int
     public let documentsInbox: Int?
     public let inboxTag: Int?

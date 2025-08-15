@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MailRuleTitleSource: RawRepresentable, Codable {
+public enum MailRuleTitleSource: RawRepresentable, Codable, Sendable {
     case subject, attachment, doNotAssign
     case unknown(Int)
     

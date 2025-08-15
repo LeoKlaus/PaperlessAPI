@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MailEncryptionPolicy: RawRepresentable, Codable {
+public enum MailEncryptionPolicy: RawRepresentable, Codable, Sendable {
     case none, ssl, starttls
     case unknown(Int)
     

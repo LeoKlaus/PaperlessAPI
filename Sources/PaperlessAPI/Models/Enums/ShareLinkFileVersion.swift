@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public enum ShareLinkFileVersion: RawRepresentable, Codable {
+public enum ShareLinkFileVersion: RawRepresentable, Codable, Sendable {
     case archive, original
     case unknown(String)
     

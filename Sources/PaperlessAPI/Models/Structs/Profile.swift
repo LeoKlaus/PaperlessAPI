@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public struct Profile: Codable {
+public struct Profile: Codable, Sendable {
     public let email: String
     public let password: String
     public let firstName: String

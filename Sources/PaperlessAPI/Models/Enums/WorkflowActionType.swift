@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public enum WorkflowActionType: RawRepresentable, Codable {
+public enum WorkflowActionType: RawRepresentable, Codable, Sendable {
     case assignment, removal
     case unknown(Int)
     

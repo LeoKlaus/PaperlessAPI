@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MailRuleConsumptionScope: RawRepresentable, Codable {
+public enum MailRuleConsumptionScope: RawRepresentable, Codable, Sendable {
     case attachments, message, messageAndAttachments
     case unknown(Int)
     

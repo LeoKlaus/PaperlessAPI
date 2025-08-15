@@ -8,14 +8,14 @@
 import Foundation
 import OSLog
 
-public class ApiHandler {
+public actor ApiHandler {
     
     public static let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
         category: String(describing: ApiHandler.self)
     )
     
-    public var serverURL: URL
+    public let serverURL: URL
     private var apiToken: String
     private var session: URLSession?
     private var staticHeaders: [String:String] = [:]

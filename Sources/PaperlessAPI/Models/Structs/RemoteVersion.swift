@@ -5,7 +5,7 @@
 //  Created by Leo Wehrfritz on 14.12.24.
 //
 
-public struct RemoteVersion: Codable {
+public struct RemoteVersion: Codable, Sendable {
     public let version: String
     public let updateAvailable: Bool
     
