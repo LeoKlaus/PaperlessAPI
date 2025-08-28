@@ -30,4 +30,26 @@ public struct ShareLink: ListableObject, ModifiableObject, Sendable {
         case document
         case fileVersion = "file_version"
     }
+    
+    enum EncodingKeys: String, CodingKey {
+        case expiration
+        case document
+        case fileVersion = "file_version"
+    }
+    
+    public init(id: Int = 0, created: Date = .now, expiration: Date?, slug: String = "", document: Int, fileVersion: ShareLinkFileVersion) {
+        self.id = id
+        self.created = created
+        self.expiration = expiration
+        self.slug = slug
+        self.document = document
+        self.fileVersion = fileVersion
+    }
+    
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: EncodingKeys.self)
+        try container.encode(self.expiration, forKey: .expiration)
+        try container.encode(self.document, forKey: .document)
+        try container.encode(self.fileVersion, forKey: .fileVersion)
+    }
 }
