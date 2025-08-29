@@ -50,6 +50,11 @@ public enum RuleType: RawRepresentable, Codable, Equatable, Hashable, Sendable {
     case doesNotHaveCustomFieldIn   //40
     case doesNotHaveCustomField     //41
     case customFieldsQuery          //42
+    case createdTo                  //43
+    case createdFrom                //44
+    case addedTo                    //45
+    case addedFrom                  //46
+    case mimeTypeIs                 //47
     case unknown(Int)
     
     public typealias RawValue = Int
@@ -141,6 +146,16 @@ public enum RuleType: RawRepresentable, Codable, Equatable, Hashable, Sendable {
             return(41)
         case .customFieldsQuery:
             return(42)
+        case .createdTo:
+            return(43)
+        case .createdFrom:
+            return(44)
+        case .addedTo:
+            return(45)
+        case .addedFrom:
+            return(46)
+        case .mimeTypeIs:
+            return(47)
         case .unknown(let int):
             return int
         }
@@ -234,6 +249,16 @@ public enum RuleType: RawRepresentable, Codable, Equatable, Hashable, Sendable {
             self = .doesNotHaveCustomField
         case 42:
             self = .customFieldsQuery
+        case 43:
+            self = .createdTo
+        case 44:
+            self = .createdFrom
+        case 45:
+            self = .addedTo
+        case 46:
+            self = .addedFrom
+        case 47:
+            self = .mimeTypeIs
         default:
             self = .unknown(rawValue)
         }
