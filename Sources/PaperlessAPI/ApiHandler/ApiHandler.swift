@@ -140,7 +140,7 @@ public actor ApiHandler {
         throw ApiError.invalidResponse(data, response)
     }
     
-    public func getDocumentPreview(id: Int, headers: [String:String] = [:], downloadOriginal: Bool = false, delegate: URLSessionTaskDelegate? = nil) async throws -> (String?, Data) {
+    public func getDocumentPreview(id: Int, headers: [String:String] = [:], downloadOriginal: Bool = false, delegate: URLSessionTaskDelegate? = nil) async throws -> (String?, Data, String?) {
         
         var url = serverURL.appendingPathComponent(ApiEndpoint.documentPreview(id).rawValue)
         
@@ -171,7 +171,7 @@ public actor ApiHandler {
         
         if let httpResponse = response as? HTTPURLResponse {
             if 200...299 ~= httpResponse.statusCode {
-                return (response.mimeType, data)
+                return (response.mimeType, data, httpResponse.suggestedFilename)
             } else if 403 == httpResponse.statusCode {
                 Self.logger.error("Server returned 403:\n\(String(data: data, encoding: .utf8) ?? "")")
                 throw ApiError.forbidden
