@@ -49,7 +49,7 @@ public extension ApiHandler {
         return try await self.sendRequest(method: .delete, endpoint: T.singularEndpoint(object.id), headers: headers)
     }
     
-    func delete(id: Int, type: ModifiableObject.Type, headers: [String:String] = [:]) async throws {
+    func delete(id: Int, type: any ModifiableObject.Type, headers: [String:String] = [:]) async throws {
         return try await self.sendRequest(method: .delete, endpoint: type.singularEndpoint(id), headers: headers)
     }
 }
