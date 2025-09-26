@@ -24,7 +24,7 @@ public struct SavedView: ListableObject, ModifiableObject, Hashable, Sendable {
     public let filterRules: [FilterRule]
     public var pageSize: Int?
     public var displayMode: DisplayMode?
-    public var displayFields: [SavedViewDisplayField]?
+    public var displayFields: Set<SavedViewDisplayField>?
     public var owner: Int?
     public let userCanChange: Bool?
     public var permissions: ObjectPermissions?
@@ -45,7 +45,7 @@ public struct SavedView: ListableObject, ModifiableObject, Hashable, Sendable {
         case permissions
     }
     
-    public init(id: Int, name: String, showOnDashboard: Bool, showInSidebar: Bool, sortField: SavedViewSortField, sortReverse: Bool, filterRules: [FilterRule], pageSize: Int?, displayMode: DisplayMode?, displayFields: [SavedViewDisplayField]?, owner: Int?, userCanChange: Bool?, permissions: ObjectPermissions?) {
+    public init(id: Int, name: String, showOnDashboard: Bool, showInSidebar: Bool, sortField: SavedViewSortField, sortReverse: Bool, filterRules: [FilterRule], pageSize: Int?, displayMode: DisplayMode?, displayFields: Set<SavedViewDisplayField>?, owner: Int?, userCanChange: Bool?, permissions: ObjectPermissions?) {
         self.id = id
         self.name = name
         self.showOnDashboard = showOnDashboard
