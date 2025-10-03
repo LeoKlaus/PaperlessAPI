@@ -53,7 +53,12 @@ public enum PaperlessPermission: RawRepresentable, Codable, Equatable, Hashable,
     case userObjectPermission(PermissionType)
     case workflow(PermissionType)
     case workflowAction(PermissionType)
+    case workflowActionEmail(PermissionType)
+    case workflowActionRun(PermissionType)
+    case workflowActionWebhook(PermissionType)
+    case workflowRun(PermissionType)
     case workflowTrigger(PermissionType)
+    case authenticator(PermissionType)
     case unknown(String)
     
     public typealias RawValue = String
@@ -151,8 +156,18 @@ public enum PaperlessPermission: RawRepresentable, Codable, Equatable, Hashable,
             return "\(type)_workflow"
         case .workflowAction(let type):
             return "\(type)_workflowaction"
+        case .workflowActionEmail(let type):
+            return "\(type)_workflowactionemail"
+        case .workflowActionRun(let type):
+            return "\(type)_workflowactionrun"
+        case .workflowActionWebhook(let type):
+            return "\(type)_workflowactionwebhook"
+        case .workflowRun(let type):
+            return "\(type)_workflowrun"
         case .workflowTrigger(let type):
             return "\(type)_workflowtrigger"
+        case .authenticator(let type):
+            return "\(type)_authenticator"
         case .unknown(let str):
             return "unknown: \(str)"
         }
@@ -262,8 +277,18 @@ public enum PaperlessPermission: RawRepresentable, Codable, Equatable, Hashable,
             self = .workflow(type)
         case "workflowaction":
             self = .workflowAction(type)
+        case "workflowactionemail":
+            self = .workflowActionEmail(type)
+        case "workflowactionrun":
+            self = .workflowActionRun(type)
+        case "workflowactionwebhook":
+            self = .workflowActionWebhook(type)
+        case "workflowrun":
+            self = .workflowRun(type)
         case "workflowtrigger":
             self = .workflowTrigger(type)
+        case "authenticator":
+            self = .authenticator(type)
         default:
             self = .unknown(rawValue)
         }
