@@ -61,6 +61,17 @@ public struct UpdateCheckingSettings: Codable, Sendable {
         case enabled
         case backendSetting = "backend_setting"
     }
+    
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.enabled = try container.decodeIfPresent(Bool.self, forKey: .enabled)
+        do {
+            self.backendSetting = try container.decode(String.self, forKey: .backendSetting)
+        } catch DecodingError.typeMismatch {
+            let boolValue = try container.decode(Bool.self, forKey: .backendSetting)
+            self.backendSetting = String(boolValue)
+        }
+    }
 }
 
 public struct BulkEditSettings: Codable, Sendable {
