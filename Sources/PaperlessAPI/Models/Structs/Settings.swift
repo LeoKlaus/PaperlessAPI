@@ -158,10 +158,10 @@ public struct SavedViewSettings: Codable, Sendable {
 
 public struct PermissionSettings: Codable, Sendable {
     public let defaultOwner: Int?
-    public let defaultViewUsers: [Int]
-    public let defaultViewGroups: [Int]
-    public let defaultEditUsers: [Int]
-    public let defaultEditGroups: [Int]
+    public var defaultViewUsers: [Int] = []
+    public var defaultViewGroups: [Int] = []
+    public var defaultEditUsers: [Int] = []
+    public var defaultEditGroups: [Int] = []
     
     enum CodingKeys: String, CodingKey {
         case defaultOwner = "default_owner"
