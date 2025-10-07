@@ -149,7 +149,7 @@ public struct NotificationSettings: Codable, Sendable {
 }
 
 public struct SavedViewSettings: Codable, Sendable {
-    public let warnOnUnsavedChange: Bool
+    public let warnOnUnsavedChange: Bool?
     
     enum CodingKeys: String, CodingKey {
         case warnOnUnsavedChange = "warn_on_unsaved_change"
