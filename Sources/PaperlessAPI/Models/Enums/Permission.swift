@@ -179,7 +179,8 @@ public enum PaperlessPermission: RawRepresentable, Codable, Equatable, Hashable,
          syntax including the group (i.e. "documents.add_correspondent"),
          it is just dropped when decoding permissions.
          */
-        guard let permissionString = rawValue.split(separator: ".").last, let typeString = permissionString.split(separator: "_").first else {
+        guard let permissionString = rawValue.split(separator: ".", maxSplits: 1).last,
+                let typeString = permissionString.split(separator: "_", maxSplits: 1).first else {
             self = .unknown(rawValue)
             return
         }
