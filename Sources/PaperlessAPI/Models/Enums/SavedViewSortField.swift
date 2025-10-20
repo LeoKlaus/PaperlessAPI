@@ -11,25 +11,6 @@ public enum SavedViewSortField: RawRepresentable, Codable, Hashable, Sendable {
     case unknown(String)
     
     public typealias RawValue = String
-    
-    public init?(rawValue: String) {
-        
-        switch rawValue {
-        case "archive_serial_number": self = .asn
-        case "added": self = .added
-        case "correspondent__name": self = .correspondent
-        case "created": self = .created
-        case "document_type__name": self = .documentType
-        case "modified": self = .modified
-        case "num_notes": self = .notes
-        case "owner": self = .owner
-        case "page_count": self = .pages
-        case "title": self = .title
-            
-        default: self = .unknown(rawValue)
-        }
-    }
-    
     public var rawValue: String {
         switch self {
         case .asn:
@@ -53,6 +34,33 @@ public enum SavedViewSortField: RawRepresentable, Codable, Hashable, Sendable {
         case .pages:
             return "page_count"
         case .unknown(let value): return value
+        }
+    }
+    
+    public init(rawValue: String) {
+        switch rawValue {
+        case "archive_serial_number":
+            self = .asn
+        case "added":
+            self = .added
+        case "correspondent__name":
+            self = .correspondent
+        case "created":
+            self = .created
+        case "document_type__name":
+            self = .documentType
+        case "modified":
+            self = .modified
+        case "num_notes":
+            self = .notes
+        case "owner":
+            self = .owner
+        case "page_count":
+            self = .pages
+        case "title":
+            self = .title
+        default:
+            self = .unknown(rawValue)
         }
     }
 }

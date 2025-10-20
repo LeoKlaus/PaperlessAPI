@@ -35,7 +35,7 @@ public enum CustomFieldDataType: RawRepresentable, Codable, Hashable, Sendable {
         }
     }
     
-    public init?(rawValue: String) {
+    public init(rawValue: String) {
         switch rawValue {
         case "string":
             self = .string

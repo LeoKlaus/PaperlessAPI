@@ -17,7 +17,7 @@ public enum SavedViewDisplayField: RawRepresentable, Codable, Hashable, Identifi
     }
     
     public typealias RawValue = String
-    public init?(rawValue: String) {
+    public init(rawValue: String) {
         
         let customFieldRegex = #/custom_field_(\d+)/#
         if let match = try? customFieldRegex.firstMatch(in: rawValue), let customFieldId = Int(match.1) {

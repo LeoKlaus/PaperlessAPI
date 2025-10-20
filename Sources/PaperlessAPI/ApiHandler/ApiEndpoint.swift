@@ -73,7 +73,7 @@ public enum ApiEndpoint: RawRepresentable, Sendable {
     case custom(String)
     
     public typealias RawValue = String
-    public init?(rawValue: String) {
+    public init(rawValue: String) {
         switch rawValue {
         case "/api/token/": self = .token
         case "/api/correspondents/": self = .correspondents

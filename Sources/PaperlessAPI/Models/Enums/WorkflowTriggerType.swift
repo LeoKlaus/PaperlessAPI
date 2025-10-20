@@ -10,7 +10,7 @@ public enum WorkflowTriggerType: RawRepresentable, Codable, Equatable, Sendable 
     case unknown(Int)
     
     public typealias RawValue = Int
-    public init?(rawValue: Int) {
+    public init(rawValue: Int) {
         switch rawValue {
         case 1: self = .consumptionStarted
         case 2: self = .documentAdded

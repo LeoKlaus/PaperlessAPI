@@ -19,7 +19,7 @@ public enum DisplayMode: RawRepresentable, Codable, Hashable, Sendable {
         case .table:
             return "table"
         case .unknown(let str):
-            return "unknown: \(str)"
+            return str
         }
     }
     

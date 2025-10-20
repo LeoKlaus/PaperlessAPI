@@ -12,7 +12,7 @@ public enum MailRuleTitleSource: RawRepresentable, Codable, Sendable {
     case unknown(Int)
     
     public typealias RawValue = Int
-    public init?(rawValue: Int) {
+    public init(rawValue: Int) {
         switch rawValue {
         case 1: self = .subject
         case 2: self = .attachment

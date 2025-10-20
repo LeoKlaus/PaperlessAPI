@@ -10,7 +10,7 @@ public enum ConfigOutputType: RawRepresentable, Codable, Equatable, Sendable {
     case unknown(String)
     
     public typealias RawValue = String
-    public init?(rawValue: String) {
+    public init(rawValue: String) {
         switch rawValue {
         case "pdf": self = .pdf
         case "pdfa": self = .pdfa
