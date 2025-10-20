@@ -21,7 +21,7 @@ public struct SavedView: ListableObject, ModifiableObject, Hashable, Sendable {
     public var showInSidebar: Bool
     public var sortField: SavedViewSortField?
     public var sortReverse: Bool
-    public let filterRules: [FilterRule]
+    public var filterRules: [FilterRule]
     public var pageSize: Int?
     public var displayMode: DisplayMode?
     public var displayFields: Set<SavedViewDisplayField>?
