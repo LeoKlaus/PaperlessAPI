@@ -113,7 +113,7 @@ public struct DarkModeSettings: Codable, Sendable {
 }
 
 public struct ThemeSettings: Codable, Sendable {
-    public let color: String
+    public let color: String?
 }
 
 public struct DocumentDetailSettings: Codable, Sendable {
