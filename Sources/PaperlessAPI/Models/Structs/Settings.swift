@@ -21,6 +21,7 @@ public struct Settings: Codable, Sendable {
     public let notesEnabled: Bool?
     public let savedViews: SavedViewSettings?
     public let language: String?
+    public let version: String?
     public let appTitle: String?
     public let appLogo: String?
     public let permissions: PermissionSettings?
@@ -43,6 +44,7 @@ public struct Settings: Codable, Sendable {
         case notesEnabled = "notes_enabled"
         case savedViews = "saved_views"
         case language
+        case version
         case appTitle = "app_title"
         case appLogo = "app_logo"
         case permissions
@@ -52,7 +54,7 @@ public struct Settings: Codable, Sendable {
         case trashDelay = "trash_delay"
     }
     
-    public init(updateChecking: UpdateCheckingSettings, tourComplete: Bool?, bulkEdit: BulkEditSettings?, documentListSize: Int?, slimSidebar: Bool?, darkMode: DarkModeSettings?, theme: ThemeSettings?, documentDetails: DocumentDetailSettings?, dateDisplay: DateDisplaySettings?, notifications: NotificationSettings?, notesEnabled: Bool?, savedViews: SavedViewSettings?, language: String?, appTitle: String?, appLogo: String?, permissions: PermissionSettings?, documentEditing: DocumentEditingSettings?, auditlogEnabled: Bool, search: SearchSettings?, trashDelay: Int) {
+    public init(updateChecking: UpdateCheckingSettings, tourComplete: Bool?, bulkEdit: BulkEditSettings?, documentListSize: Int?, slimSidebar: Bool?, darkMode: DarkModeSettings?, theme: ThemeSettings?, documentDetails: DocumentDetailSettings?, dateDisplay: DateDisplaySettings?, notifications: NotificationSettings?, notesEnabled: Bool?, savedViews: SavedViewSettings?, language: String?, version: String?, appTitle: String?, appLogo: String?, permissions: PermissionSettings?, documentEditing: DocumentEditingSettings?, auditlogEnabled: Bool, search: SearchSettings?, trashDelay: Int) {
         self.updateChecking = updateChecking
         self.tourComplete = tourComplete
         self.bulkEdit = bulkEdit
@@ -66,6 +68,7 @@ public struct Settings: Codable, Sendable {
         self.notesEnabled = notesEnabled
         self.savedViews = savedViews
         self.language = language
+        self.version = version
         self.appTitle = appTitle
         self.appLogo = appLogo
         self.permissions = permissions
