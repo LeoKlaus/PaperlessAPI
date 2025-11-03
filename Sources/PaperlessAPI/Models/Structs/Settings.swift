@@ -51,6 +51,29 @@ public struct Settings: Codable, Sendable {
         case search
         case trashDelay = "trash_delay"
     }
+    
+    public init(updateChecking: UpdateCheckingSettings, tourComplete: Bool?, bulkEdit: BulkEditSettings?, documentListSize: Int?, slimSidebar: Bool?, darkMode: DarkModeSettings?, theme: ThemeSettings?, documentDetails: DocumentDetailSettings?, dateDisplay: DateDisplaySettings?, notifications: NotificationSettings?, notesEnabled: Bool?, savedViews: SavedViewSettings?, language: String?, appTitle: String?, appLogo: String?, permissions: PermissionSettings?, documentEditing: DocumentEditingSettings?, auditlogEnabled: Bool, search: SearchSettings?, trashDelay: Int) {
+        self.updateChecking = updateChecking
+        self.tourComplete = tourComplete
+        self.bulkEdit = bulkEdit
+        self.documentListSize = documentListSize
+        self.slimSidebar = slimSidebar
+        self.darkMode = darkMode
+        self.theme = theme
+        self.documentDetails = documentDetails
+        self.dateDisplay = dateDisplay
+        self.notifications = notifications
+        self.notesEnabled = notesEnabled
+        self.savedViews = savedViews
+        self.language = language
+        self.appTitle = appTitle
+        self.appLogo = appLogo
+        self.permissions = permissions
+        self.documentEditing = documentEditing
+        self.auditlogEnabled = auditlogEnabled
+        self.search = search
+        self.trashDelay = trashDelay
+    }
 }
 
 public struct UpdateCheckingSettings: Codable, Sendable {
