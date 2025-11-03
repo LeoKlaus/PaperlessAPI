@@ -95,6 +95,11 @@ public struct UpdateCheckingSettings: Codable, Sendable {
             self.backendSetting = String(boolValue)
         }
     }
+    
+    public init(enabled: Bool, backendSetting: String) {
+        self.enabled = enabled
+        self.backendSetting = backendSetting
+    }
 }
 
 public struct BulkEditSettings: Codable, Sendable {
@@ -104,6 +109,11 @@ public struct BulkEditSettings: Codable, Sendable {
     enum CodingKeys: String, CodingKey {
         case applyOnClose = "apply_on_close"
         case confirmationDialogs = "confirmation_dialogs"
+    }
+    
+    public init(applyOnClose: Bool, confirmationDialogs: Bool) {
+        self.applyOnClose = applyOnClose
+        self.confirmationDialogs = confirmationDialogs
     }
 }
 
@@ -133,10 +143,20 @@ public struct DarkModeSettings: Codable, Sendable {
         try container.encode(enabled ? "true" : "false", forKey: .enabled)
         try container.encode(thumbInverted ? "true" : "false", forKey: .thumbInverted)
     }
+    
+    public init(useSystem: Bool, enabled: Bool, thumbInverted: Bool) {
+        self.useSystem = useSystem
+        self.enabled = enabled
+        self.thumbInverted = thumbInverted
+    }
 }
 
 public struct ThemeSettings: Codable, Sendable {
     public let color: String?
+    
+    public init(color: String?) {
+        self.color = color
+    }
 }
 
 public struct DocumentDetailSettings: Codable, Sendable {
@@ -144,6 +164,10 @@ public struct DocumentDetailSettings: Codable, Sendable {
     
     enum CodingKeys: String, CodingKey {
         case nativePdfViewer = "native_pdf_viewer"
+    }
+    
+    public init(nativePdfViewer: Bool) {
+        self.nativePdfViewer = nativePdfViewer
     }
 }
 
@@ -154,6 +178,11 @@ public struct DateDisplaySettings: Codable, Sendable {
     enum CodingKeys: String, CodingKey {
         case dateLocale = "date_locale"
         case dateFormat = "date_format"
+    }
+    
+    public init(dateLocale: String, dateFormat: String) {
+        self.dateLocale = dateLocale
+        self.dateFormat = dateFormat
     }
 }
 
@@ -169,6 +198,13 @@ public struct NotificationSettings: Codable, Sendable {
         case consumerFailed = "consumer_failed"
         case consumerSuppressOnDashboard = "consumer_suppress_on_dashboard"
     }
+    
+    public init(consumerNewDocuments: Bool, consumerSuccess: Bool, consumerFailed: Bool, consumerSuppressOnDashboard: Bool) {
+        self.consumerNewDocuments = consumerNewDocuments
+        self.consumerSuccess = consumerSuccess
+        self.consumerFailed = consumerFailed
+        self.consumerSuppressOnDashboard = consumerSuppressOnDashboard
+    }
 }
 
 public struct SavedViewSettings: Codable, Sendable {
@@ -176,6 +212,10 @@ public struct SavedViewSettings: Codable, Sendable {
     
     enum CodingKeys: String, CodingKey {
         case warnOnUnsavedChange = "warn_on_unsaved_change"
+    }
+    
+    public init(warnOnUnsavedChange: Bool?) {
+        self.warnOnUnsavedChange = warnOnUnsavedChange
     }
 }
 
@@ -193,6 +233,14 @@ public struct PermissionSettings: Codable, Sendable {
         case defaultEditUsers = "default_edit_users"
         case defaultEditGroups = "default_edit_groups"
     }
+    
+    public init(defaultOwner: Int?, defaultViewUsers: [Int], defaultViewGroups: [Int], defaultEditUsers: [Int], defaultEditGroups: [Int]) {
+        self.defaultOwner = defaultOwner
+        self.defaultViewUsers = defaultViewUsers
+        self.defaultViewGroups = defaultViewGroups
+        self.defaultEditUsers = defaultEditUsers
+        self.defaultEditGroups = defaultEditGroups
+    }
 }
 
 public struct DocumentEditingSettings: Codable, Sendable {
@@ -201,6 +249,10 @@ public struct DocumentEditingSettings: Codable, Sendable {
     enum CodingKeys: String, CodingKey {
         case removeInboxTags = "remove_inbox_tags"
     }
+    
+    public init(removeInboxTags: Bool) {
+        self.removeInboxTags = removeInboxTags
+    }
 }
 
 public struct SearchSettings: Codable, Sendable {
@@ -208,5 +260,9 @@ public struct SearchSettings: Codable, Sendable {
     
     enum CodingKeys: String, CodingKey {
         case dbOnly = "db_only"
+    }
+    
+    public init(dbOnly: Bool) {
+        self.dbOnly = dbOnly
     }
 }
