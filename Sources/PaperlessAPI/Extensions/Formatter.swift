@@ -12,8 +12,6 @@ public extension Formatter {
     
     static let iso8601withFractionalSeconds: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = .current
         formatter.timeZone = .current
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         return formatter
@@ -21,8 +19,6 @@ public extension Formatter {
     
     static let iso8601withoutFractionalSeconds: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = .current
         formatter.timeZone = .current
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXXXX"
         return formatter
@@ -30,8 +26,6 @@ public extension Formatter {
     
     static let yearMonthDayString: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = .current
         formatter.timeZone = .current
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
@@ -39,8 +33,6 @@ public extension Formatter {
     
     static let iso8601withoutTimeZone: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = .current
         formatter.timeZone = .current
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return formatter
