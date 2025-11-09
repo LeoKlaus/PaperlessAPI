@@ -348,11 +348,11 @@ import SwiftUI
         "language": "",
         "app_title": null,
         "bulk_edit": {
-            "apply_on_close": false,
+            "apply_on_close": "false",
             "confirmation_dialogs": true
         },
         "dark_mode": {
-            "enabled": "false",
+            "enabled": false,
             "use_system": true,
             "thumb_inverted": "true"
         },

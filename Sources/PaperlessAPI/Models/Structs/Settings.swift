@@ -118,6 +118,17 @@ public struct BulkEditSettings: Codable, Sendable {
         self.applyOnClose = applyOnClose
         self.confirmationDialogs = confirmationDialogs
     }
+    
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        do {
+            self.applyOnClose = try container.decode(Bool.self, forKey: .applyOnClose)
+        } catch DecodingError.typeMismatch(_, _) {
+            let applyOnCloseString = try container.decode(String.self, forKey: .applyOnClose)
+            self.applyOnClose = applyOnCloseString == "true" ? true : false
+        }
+        self.confirmationDialogs = try container.decode(Bool.self, forKey: .confirmationDialogs)
+    }
 }
 
 public struct DarkModeSettings: Codable, Sendable {
@@ -134,8 +145,12 @@ public struct DarkModeSettings: Codable, Sendable {
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.useSystem = try container.decode(Bool.self, forKey: .useSystem)
-        let enabledStr = try container.decode(String.self, forKey: .enabled)
-        self.enabled = enabledStr == "true" ? true : false
+        do {
+            self.enabled = try container.decode(Bool.self, forKey: .enabled)
+        } catch DecodingError.typeMismatch(_, _) {
+            let enabledStr = try container.decode(String.self, forKey: .enabled)
+            self.enabled = enabledStr == "true" ? true : false
+        }
         let thumbInvertedStr = try container.decode(String.self, forKey: .thumbInverted)
         self.thumbInverted = thumbInvertedStr == "true" ? true : false
     }
