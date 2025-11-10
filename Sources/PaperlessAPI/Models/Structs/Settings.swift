@@ -127,7 +127,12 @@ public struct BulkEditSettings: Codable, Sendable {
             let applyOnCloseString = try container.decode(String.self, forKey: .applyOnClose)
             self.applyOnClose = applyOnCloseString == "true" ? true : false
         }
-        self.confirmationDialogs = try container.decode(Bool.self, forKey: .confirmationDialogs)
+        do {
+            self.confirmationDialogs = try container.decode(Bool.self, forKey: .confirmationDialogs)
+        } catch DecodingError.typeMismatch(_, _) {
+            let confirmationDialogsString = try container.decode(String.self, forKey: .confirmationDialogs)
+            self.confirmationDialogs = confirmationDialogsString == "true" ? true : false
+        }
     }
 }
 

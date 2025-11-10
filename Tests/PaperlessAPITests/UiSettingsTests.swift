@@ -349,7 +349,7 @@ import SwiftUI
         "app_title": null,
         "bulk_edit": {
             "apply_on_close": "false",
-            "confirmation_dialogs": true
+            "confirmation_dialogs": "true"
         },
         "dark_mode": {
             "enabled": false,
