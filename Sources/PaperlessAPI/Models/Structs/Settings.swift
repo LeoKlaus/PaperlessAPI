@@ -77,6 +77,39 @@ public struct Settings: Codable, Sendable {
         self.search = search
         self.trashDelay = trashDelay
     }
+    
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.updateChecking = try container.decode(UpdateCheckingSettings.self, forKey: .updateChecking)
+        self.tourComplete = try container.decodeIfPresent(Bool.self, forKey: .tourComplete)
+        self.bulkEdit = try container.decodeIfPresent(BulkEditSettings.self, forKey: .bulkEdit)
+        do {
+            self.documentListSize = try container.decodeIfPresent(Int.self, forKey: .documentListSize)
+        } catch DecodingError.typeMismatch(_, _) {
+            if let documentListSizeString = try container.decodeIfPresent(String.self, forKey: .documentListSize) {
+                self.documentListSize = Int(documentListSizeString)
+            } else {
+                self.documentListSize = nil
+            }
+        }
+        self.slimSidebar = try container.decodeIfPresent(Bool.self, forKey: .slimSidebar)
+        self.darkMode = try container.decodeIfPresent(DarkModeSettings.self, forKey: .darkMode)
+        self.theme = try container.decodeIfPresent(ThemeSettings.self, forKey: .theme)
+        self.documentDetails = try container.decodeIfPresent(DocumentDetailSettings.self, forKey: .documentDetails)
+        self.dateDisplay = try container.decodeIfPresent(DateDisplaySettings.self, forKey: .dateDisplay)
+        self.notifications = try container.decodeIfPresent(NotificationSettings.self, forKey: .notifications)
+        self.notesEnabled = try container.decodeIfPresent(Bool.self, forKey: .notesEnabled)
+        self.savedViews = try container.decodeIfPresent(SavedViewSettings.self, forKey: .savedViews)
+        self.language = try container.decodeIfPresent(String.self, forKey: .language)
+        self.version = try container.decodeIfPresent(String.self, forKey: .version)
+        self.appTitle = try container.decodeIfPresent(String.self, forKey: .appTitle)
+        self.appLogo = try container.decodeIfPresent(String.self, forKey: .appLogo)
+        self.permissions = try container.decodeIfPresent(PermissionSettings.self, forKey: .permissions)
+        self.documentEditing = try container.decodeIfPresent(DocumentEditingSettings.self, forKey: .documentEditing)
+        self.auditlogEnabled = try container.decode(Bool.self, forKey: .auditlogEnabled)
+        self.search = try container.decodeIfPresent(SearchSettings.self, forKey: .search)
+        self.trashDelay = try container.decode(Int.self, forKey: .trashDelay)
+    }
 }
 
 public struct UpdateCheckingSettings: Codable, Sendable {
